@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.hrdatabank.otome.domain.JobOtome;
+import com.hrdatabank.otome.model.JobDto;
 import com.hrdatabank.otome.repositories.JobOtomeRepository;
 
 /**
@@ -37,8 +38,8 @@ public class JobOtomeService {
 	 *
 	 * @return the list
 	 */
-	public List<JobOtome> findAllJobs() {
-		return jobOtomeRepository.findAll();
+	public List<JobDto> findAllJobs() {
+		return jobOtomeRepository.getAllJobsByDto();
 	}
 
 	/**

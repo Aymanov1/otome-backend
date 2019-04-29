@@ -28,6 +28,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.hrdatabank.otome.domain.JobOtome;
 import com.hrdatabank.otome.domain.LineStationOtome;
+import com.hrdatabank.otome.model.JobDto;
 import com.hrdatabank.otome.repositories.JobOtomeRepository;
 import com.hrdatabank.otome.repositories.LineStationOtomeRepository;
 
@@ -77,8 +78,8 @@ public class JobOtomeController {
 	 */
 	@GetMapping("/jobsOtome")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public List<JobOtome> retrieveAllJobOtomes() {
-		return jobOtomeRepository.findAll();
+	public List<JobDto> retrieveAllJobOtomes() {
+		return jobOtomeRepository.getAllJobsByDto();
 	}
 
 	/**

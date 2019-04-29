@@ -204,6 +204,7 @@ public class CrawlerManagerController {
 	@GetMapping("/clean")
 	public void verifiyShopNameNotBanned() {
 		jobOtomeRepository.cleanJobs();
+		System.out.println("jobs cleaned");
 	}
 
 	public void verifiyJobBaitoru() {

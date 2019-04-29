@@ -107,7 +107,7 @@ public class JobOtome implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idJob;
+	private long idJob;
 	private int numberStaffNeeded;
 	private int possibleWorkingDaysPerWeek;
 	private int possibleWorkingHoursPerDay;
@@ -115,7 +115,7 @@ public class JobOtome implements Serializable {
 	private Double latitude;
 	private Double longitude;
 	private Double salary;
-	private Double HourlyWage;
+	private Double hourlyWage;
 
 	private String shopName;
 	@Builder.Default
@@ -163,7 +163,7 @@ public class JobOtome implements Serializable {
 		this.shopName = shopName;
 		this.pictureJob = imageURL;
 		this.jobURL = jobURL;
-
+		this.status = true;
 		this.jobType = jobType;
 		this.jobDetails = detail;
 		this.positionName = positionName;
@@ -177,6 +177,5 @@ public class JobOtome implements Serializable {
 	public JobOtome(String shopName2, String jobImgUrl, String jobUrl2, String categoryName, String jobDescription,
 			String positionName2, String jobAddress, String wage, String minHoursPerDay, String minWorkingDays,
 			Date startTime2, Date finishTime2, boolean transportation2) {
-		// TODO Auto-generated constructor stub
 	}
 }
