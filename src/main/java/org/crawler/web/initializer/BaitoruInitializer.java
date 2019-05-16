@@ -66,6 +66,7 @@ public class BaitoruInitializer extends AbstractInitializer {
 		list.put("conveni-supermarket-drugstore-homecenter", "store");
 		list.put("food", "food");
 		list.put("izakaya", "izakaya");
+		list.put("store", "store");
 		// list.put("nurseaide-carevisit-facilitycare-geriatrichealthservices",
 		// "healthcare");
 		// list.put("sorting-picking-packing-inventory-inspection-warehousing-materialtransport-forklift",

@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.hrdatabank.otome.domain.JobOtome;
 import com.hrdatabank.otome.model.JobDto;
+import com.hrdatabank.otome.repositories.JobOtomeReactiveRepository;
 import com.hrdatabank.otome.repositories.JobOtomeRepository;
 
+import reactor.core.publisher.Flux;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class JobOtomeService.
  */
@@ -21,6 +25,10 @@ public class JobOtomeService {
 	/** The job otome repository. */
 	@Autowired
 	private JobOtomeRepository jobOtomeRepository;
+
+	/** The job otome reactive repository. */
+	@Autowired
+	JobOtomeReactiveRepository jobOtomeReactiveRepository;
 
 	/**
 	 * Find job by id.
@@ -40,6 +48,16 @@ public class JobOtomeService {
 	 */
 	public List<JobDto> findAllJobs() {
 		return jobOtomeRepository.getAllJobsByDto();
+	}
+
+	/**
+	 * Find all jobs reactive.
+	 *
+	 * @return the flux
+	 */
+	@SuppressWarnings("unchecked")
+	public Flux<JobOtome> findAllJobsReactive() {
+		return (Flux<JobOtome>) jobOtomeReactiveRepository.findAll();
 	}
 
 	/**
@@ -85,6 +103,16 @@ public class JobOtomeService {
 		return jobOtomeRepository.getBaitoruJobsAffiliateActivated(PageRequest.of(page, size));
 	}
 
+	/**
+	 * Gets the jobs by station and job category.
+	 *
+	 * @param page the page
+	 * @param size the size
+	 * @param latitudeStation the latitude station
+	 * @param longitudeStation the longitude station
+	 * @param maxKm the max km
+	 * @return the jobs by station and job category
+	 */
 	public Page<JobOtome> getJobsByStationAndJobCategory(int page, int size, Double latitudeStation,
 			Double longitudeStation, int maxKm) {
 		return jobOtomeRepository.getJobsByStationAndJobCategory(latitudeStation, longitudeStation, maxKm,

@@ -2,9 +2,9 @@ package com.hrdatabank.otome;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +22,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.hrdatabank.otome.domain.ConfigCrawler;
 import com.hrdatabank.otome.repositories.ApplicationUserRepository;
 import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
 
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class OtomeBotApplication.
  */
@@ -34,7 +40,8 @@ import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
 // scan otome bot parts
 @ComponentScan(basePackages = { "com.hrdatabank.otome.*", "com.hrdatabank.otome.model", "com.hrdatabank.otome.security",
 		"com.hrdatabank.otome.repositories", "com.hrdatabank.otome.domain", "com.hrdatabank.controllers",
-		"com.hrdatabank.otome.services", "com.hrdatabank.otome.config", "org.crawler.web.* " })
+		"com.hrdatabank.otome.services", "com.hrdatabank.otome.config", "org.crawler.web.*",
+		"org.crawler.web.crawlcontroller" })
 // scan joboty parts after migration to spring 2
 @ComponentScan(basePackages = { "com.hrdatabank.mtproject.repositories", "com.hrdatabank.mtproject.entities",
 		"com.hrdatabank.mtproject.model", "com.hrdatabank.mtproject.services",
@@ -49,6 +56,11 @@ public class OtomeBotApplication implements CommandLineRunner {
 	@Value("${myapp.description}")
 	String description;
 
+	/** The connection pool size. */
+	@Value("${spring.datasource.maximum-pool-size}")
+	private int connectionPoolSize;
+
+	/** The application user repository. */
 	@Autowired
 	ApplicationUserRepository applicationUserRepository;
 
@@ -88,18 +100,21 @@ public class OtomeBotApplication implements CommandLineRunner {
 		log.info(description);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @param configRepository
+	 *            the config repository
+	 * @return the application runner
+	 */
 	@Bean
 	ApplicationRunner init(ConfigCrawlerRepository configRepository) {
 
 		if (configRepository.findAll().isEmpty()) {
-			// applicationUserRepository.findAll().forEach(e->
-			// {
 			ConfigCrawler configCrawler = new ConfigCrawler();
-
 			configCrawler.setScheduler("0 0 0 * * *");
 			configCrawler.setSchedulerShopName("0 0 0 * * *");
 			configRepository.save(configCrawler);
-			// });
 
 		}
 		return args -> configRepository.findAll().forEach(e -> {
@@ -125,6 +140,11 @@ public class OtomeBotApplication implements CommandLineRunner {
 		return cal.getTime();
 	}
 
+	/**
+	 * Task executor.
+	 *
+	 * @return the executor for crawling process
+	 */
 	@Bean
 	public Executor taskExecutor() {
 		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -136,8 +156,38 @@ public class OtomeBotApplication implements CommandLineRunner {
 		return executor;
 	}
 
+	/**
+	 * B crypt password encoder.
+	 *
+	 * @return the bcrypt password encoder for registration
+	 */
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
+	/**
+	 * Jdbc scheduler.
+	 *
+	 * @return the scheduler of database in order to prepare JPA connection to be
+	 *         reactive
+	 */
+	@Bean
+	public Scheduler jdbcScheduler() {
+		return Schedulers.fromExecutor(Executors.newFixedThreadPool(connectionPoolSize));
+	}
+
+	/**
+	 * Transaction template.
+	 *
+	 * @param transactionManager
+	 *            the transaction manager
+	 * @return the transaction template in order to prepare JPA connection to be
+	 *         reactive
+	 */
+	@Bean
+	public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
+		return new TransactionTemplate(transactionManager);
+	}
+
 }

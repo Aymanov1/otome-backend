@@ -31,10 +31,13 @@ import com.hrdatabank.otome.domain.LineStationOtome;
 import com.hrdatabank.otome.model.JobDto;
 import com.hrdatabank.otome.repositories.JobOtomeRepository;
 import com.hrdatabank.otome.repositories.LineStationOtomeRepository;
+import com.hrdatabank.otome.services.JobOtomeService;
+import com.hrdatabank.otome.services.JobOtomeServiceImpl;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reactor.core.publisher.Flux;
 
 @Data
 
@@ -67,6 +70,12 @@ public class JobOtomeController {
 	@Autowired
 	private JobOtomeRepository jobOtomeRepository;
 
+	@Autowired
+	private JobOtomeService jobOtomeService;
+
+	@Autowired
+	private JobOtomeServiceImpl jobOtomeServiceImpl;
+
 	/** The line station otome repository. */
 	@Autowired
 	private LineStationOtomeRepository lineStationOtomeRepository;
@@ -76,10 +85,16 @@ public class JobOtomeController {
 	 *
 	 * @return the list
 	 */
+	// @GetMapping("/jobsOtome")
+	// @CrossOrigin(origins = "http://localhost:4200")
+	// public List<JobDto> retrieveAllJobOtomes() {
+	// return jobOtomeRepository.getAllJobsByDto();
+	// }
+
 	@GetMapping("/jobsOtome")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public List<JobDto> retrieveAllJobOtomes() {
-		return jobOtomeRepository.getAllJobsByDto();
+	public Flux<JobDto> retrieveAllJobOtomes() {
+		return jobOtomeServiceImpl.findAllJobDTO();
 	}
 
 	/**

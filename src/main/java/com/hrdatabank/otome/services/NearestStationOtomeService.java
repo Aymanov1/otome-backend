@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.otome.domain.NearestStationOtome;
 import com.hrdatabank.otome.repositories.NearestStationOtomeRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class NearestStationOtomeService.
  */
@@ -60,6 +61,12 @@ public class NearestStationOtomeService {
 		return nearestStationOtomeRepository.saveAndFlush(nearestStationOtome);
 	}
 
+	/**
+	 * Gets the near station by id line CD.
+	 *
+	 * @param i the i
+	 * @return the near station by id line CD
+	 */
 	public NearestStationOtome getNearStationByIdLineCD(int i) {
 		return nearestStationOtomeRepository.getNearStationByIdLineCD(i);
 	}

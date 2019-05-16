@@ -39,6 +39,9 @@ public interface JobOtomeRepository extends JpaRepository<JobOtome, Long> {
 
 	@Query("select count(j) from JobOtome j")
 	Long findCount();
+	
+	@Query("select  count( distinct j.shopName) from JobOtome j")
+	int findCountShops();
 
 	@Transactional
 	@Modifying

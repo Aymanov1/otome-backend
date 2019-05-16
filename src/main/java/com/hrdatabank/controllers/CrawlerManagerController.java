@@ -206,7 +206,13 @@ public class CrawlerManagerController {
 		jobOtomeRepository.cleanJobs();
 		System.out.println("jobs cleaned");
 	}
-
+	
+	@GetMapping("/findCountShops")
+	public int findCountShops() {
+		return jobOtomeRepository.findCountShops();
+		
+	}
+	
 	public void verifiyJobBaitoru() {
 
 		int countLineAff = (int) jobOtomeService.countBaitoruJobsAffiliateActivated();

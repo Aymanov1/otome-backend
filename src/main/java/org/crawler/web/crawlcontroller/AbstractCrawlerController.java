@@ -9,11 +9,13 @@ import edu.uci.ics.crawler4j.crawler.WebCrawler;
  * 
  * @author Hanios
  */
+
 public abstract class AbstractCrawlerController {
 
 	/** The crawl storage folder. */
-	protected String crawlStorageFolder = "C:/Users/Hamada/Documents/data";
 
+	//protected String crawlStorageFolder = "/opt/tomcat/data";
+	 protected String crawlStorageFolder = "C:/Users/Hamada/Documents/data";
 	/** The number of crawlers. */
 	protected int numberOfCrawlers = 200;
 
