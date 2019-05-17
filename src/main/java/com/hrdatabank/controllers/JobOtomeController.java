@@ -34,6 +34,9 @@ import com.hrdatabank.otome.repositories.LineStationOtomeRepository;
 import com.hrdatabank.otome.services.JobOtomeService;
 import com.hrdatabank.otome.services.JobOtomeServiceImpl;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -90,6 +93,11 @@ public class JobOtomeController {
 	// public List<JobDto> retrieveAllJobOtomes() {
 	// return jobOtomeRepository.getAllJobsByDto();
 	// }
+	@ApiOperation(value = "get Jobs in reactive way")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public Flux<JobDto> retrieveAllJobOtomes() {
@@ -103,6 +111,11 @@ public class JobOtomeController {
 	 *            the id
 	 * @return the job otome
 	 */
+	@ApiOperation(value = "Retrieve Job")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public JobOtome retrieveJob(@PathVariable long id) {
@@ -120,6 +133,11 @@ public class JobOtomeController {
 	 * @param id
 	 *            the id
 	 */
+	@ApiOperation(value = "Delete Job")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@DeleteMapping("/jobsOtome/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public void deleteJob(@PathVariable long id) {
@@ -137,6 +155,11 @@ public class JobOtomeController {
 	 *            the work time english
 	 * @return the job by station time category
 	 */
+	@ApiOperation(value = "get Jobs By Station, Time and Category")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/getJobByStationTimeCategory")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<JobOtome> getJobByStationTimeCategory(@RequestParam(name = "idLineStation") long idLineStation,
@@ -168,6 +191,11 @@ public class JobOtomeController {
 	 *            the work time english
 	 * @return the jobs by time working
 	 */
+	@ApiOperation(value = "Get Jobs By Time Working")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/getJobsByTimeWorking/{start}/{finish}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<JobOtome> getJobsByTimeWorking(@PathVariable String start, @PathVariable String finish) {
@@ -226,6 +254,11 @@ public class JobOtomeController {
 	 *            the job
 	 * @return the response entity
 	 */
+	@ApiOperation(value = "Create new Job")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PostMapping("/jobsOtome")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Object> createJobOtome(@RequestBody JobOtome job) {
@@ -244,6 +277,11 @@ public class JobOtomeController {
 	 *            the id
 	 * @return the response entity
 	 */
+	@ApiOperation(value = "Updating Job")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PutMapping("/jobsOtome/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Object> updateJobOtome(@RequestBody JobOtome job, @PathVariable long id) {

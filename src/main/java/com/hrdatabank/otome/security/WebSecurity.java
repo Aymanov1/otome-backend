@@ -16,6 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import static com.hrdatabank.otome.security.SecurityConstants.SWAGGER;
+import static com.hrdatabank.otome.security.SecurityConstants.WEBJARS;
+import static com.hrdatabank.otome.security.SecurityConstants.API_DOC;
+import static com.hrdatabank.otome.security.SecurityConstants.SWAGGER_RESOURCES;
+import static com.hrdatabank.otome.security.SecurityConstants.SWAGGER_JSON;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -37,6 +42,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		 * works fine with permit all
 		 */
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAGGER).permitAll()
+				.antMatchers(API_DOC, SWAGGER_RESOURCES, SWAGGER, WEBJARS, SWAGGER_JSON).permitAll()
+
 				.anyRequest().authenticated().and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager())).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
