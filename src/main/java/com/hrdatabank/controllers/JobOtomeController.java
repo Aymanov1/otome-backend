@@ -90,7 +90,6 @@ public class JobOtomeController {
 	// public List<JobDto> retrieveAllJobOtomes() {
 	// return jobOtomeRepository.getAllJobsByDto();
 	// }
-
 	@GetMapping("/jobsOtome")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public Flux<JobDto> retrieveAllJobOtomes() {
