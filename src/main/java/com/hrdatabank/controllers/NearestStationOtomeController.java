@@ -23,15 +23,46 @@ import com.hrdatabank.otome.domain.NearestStationOtome;
 import com.hrdatabank.otome.services.JobOtomeService;
 import com.hrdatabank.otome.services.NearestStationOtomeService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+/**
+ * The Class NearestStationOtomeController.
+ */
 @RestController
 @RequestMapping("/nearestStation")
 public class NearestStationOtomeController {
+
+	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(JobOtomeController.class);
+
+	/** The nearest station otome service. */
 	@Autowired
 	private NearestStationOtomeService nearestStationOtomeService;
+
+	/** The job otome service. */
 	@Autowired
 	private JobOtomeService jobOtomeService;
 
+	/**
+	 * Gets the job nearest station.
+	 *
+	 * @param idNearestStation
+	 *            the id nearest station
+	 * @param maxKm
+	 *            the max km
+	 * @param page
+	 *            the page
+	 * @param size
+	 *            the size
+	 * @return the job nearest station
+	 */
+	@ApiOperation(value = "get Job Nearest Station")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobs")
 	ResponseEntity<LinkedHashMap<String, Object>> getJobNearestStation(
 			@RequestParam(name = "idNearestStation", defaultValue = "0") int idNearestStation,
@@ -121,6 +152,7 @@ public class NearestStationOtomeController {
 
 	}
 
+	/** The job to job dto. */
 	Function<JobOtome, LinkedHashMap<String, Object>> jobToJobDto = (JobOtome j) -> {
 		LinkedHashMap<String, Object> jobDetail = new LinkedHashMap<>();
 		jobDetail.put("idJob", j.getIdJob());

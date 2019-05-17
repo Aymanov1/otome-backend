@@ -42,7 +42,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import reactor.core.publisher.Flux;
 
+// TODO: Auto-generated Javadoc
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/**
+ * Instantiates a new job otome controller.
+ */
 
 /**
  * Instantiates a new job otome controller.
@@ -57,6 +65,15 @@ import reactor.core.publisher.Flux;
  * @param lineStationOtomeRepository
  *            the line station otome repository
  */
+
+/**
+ * Instantiates a new job otome controller.
+ *
+ * @param jobOtomeRepository the job otome repository
+ * @param jobOtomeService the job otome service
+ * @param jobOtomeServiceImpl the job otome service impl
+ * @param lineStationOtomeRepository the line station otome repository
+ */
 @AllArgsConstructor
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -65,6 +82,8 @@ public class JobOtomeController {
 
 	/** The Constant MAX_KM. */
 	private static final int MAX_KM = 1;
+	
+	/** The Constant COLON. */
 	private static final String COLON = ":";
 	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(JobOtomeController.class);
@@ -73,9 +92,11 @@ public class JobOtomeController {
 	@Autowired
 	private JobOtomeRepository jobOtomeRepository;
 
+	/** The job otome service. */
 	@Autowired
 	private JobOtomeService jobOtomeService;
 
+	/** The job otome service impl. */
 	@Autowired
 	private JobOtomeServiceImpl jobOtomeServiceImpl;
 
@@ -183,12 +204,8 @@ public class JobOtomeController {
 	/**
 	 * Gets the jobs by time working.
 	 *
-	 * @param idLineStation
-	 *            the id line station
-	 * @param positionCategoryEnglish
-	 *            the position category english
-	 * @param workTimeEnglish
-	 *            the work time english
+	 * @param start the start
+	 * @param finish the finish
 	 * @return the jobs by time working
 	 */
 	@ApiOperation(value = "Get Jobs By Time Working")
@@ -211,11 +228,24 @@ public class JobOtomeController {
 				&& job.getFinishTime().getTime() == finishTime.getTime()).collect(Collectors.toList());
 	}
 
+	/**
+	 * Convert time.
+	 *
+	 * @param time the time
+	 * @return the string
+	 */
 	public String convertTime(Long time) {
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		return df.format(time);
 	}
 
+	/**
+	 * Sets the time.
+	 *
+	 * @param hourOfDay the hour of day
+	 * @param minute the minute
+	 * @return the date
+	 */
 	public Date setTime(int hourOfDay, int minute) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, hourOfDay);

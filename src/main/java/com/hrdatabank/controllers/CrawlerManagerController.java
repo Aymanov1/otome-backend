@@ -32,6 +32,11 @@ import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
 import com.hrdatabank.otome.repositories.JobOtomeRepository;
 import com.hrdatabank.otome.services.JobOtomeService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class CrawlerMangerCOntroller. still yet in developmenet
  * 
@@ -45,23 +50,33 @@ public class CrawlerManagerController {
 	/** The baitoru preparer impl. */
 	@Autowired(required = true)
 	BaitoruPreparerImpl baitoruPreparerImpl;
+
+	/** The message. */
 	protected String message;
 
+	/** The jsen preparer impl. */
 	@Autowired(required = true)
 	JsenPreparerImpl jsenPreparerImpl;
 
+	/** The job otome repository. */
 	@Autowired
 	protected JobOtomeRepository jobOtomeRepository;
 
+	/** The job otome service. */
 	@Autowired
 	protected JobOtomeService jobOtomeService;
 
+	/** The config crawler repository. */
 	@Autowired
 	ConfigCrawlerRepository configCrawlerRepository;
 
+	/** The task scheduler. */
 	private ConcurrentTaskScheduler taskScheduler;
 
+	/** The task scheduler shop name. */
 	private ConcurrentTaskScheduler taskSchedulerShopName;
+
+	/** The scheduled future. */
 	@SuppressWarnings("rawtypes")
 	private ScheduledFuture scheduledFuture;
 
@@ -76,6 +91,11 @@ public class CrawlerManagerController {
 	 *            the type
 	 * @return the string
 	 */
+	@ApiOperation(value = " Starting Full Search by crawler type ")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(value = "/startFullSearch")
 	public String onStartingFullSearch(@RequestParam(name = "type") String type) {
 		Optional<CrawlerTypesEnum> crawlerTypesEnum = Optional.ofNullable(Arrays.asList(CrawlerTypesEnum.values())
@@ -104,6 +124,11 @@ public class CrawlerManagerController {
 	 *            the category
 	 * @return the string
 	 */
+	@ApiOperation(value = " Starting Part Search by crawler type")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(value = "/startPartSearch")
 	public String onStartingPartSearch(@RequestParam(name = "type") String type,
 			@RequestParam(name = "area") String area, @RequestParam(name = "category") String category) {
@@ -136,6 +161,20 @@ public class CrawlerManagerController {
 		return message;
 	}
 
+	/**
+	 * Renew schedule.
+	 *
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
+	 * @return the response entity
+	 */
+	@ApiOperation(value = "Renew Schedule for 404 jobs removing")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PutMapping("/updateConfigCrawler/{id}")
 	public ResponseEntity<Object> renewSchedule(@RequestBody ConfigCrawler configCrawler, @PathVariable long id) {
 
@@ -166,10 +205,29 @@ public class CrawlerManagerController {
 		return ResponseEntity.noContent().build();
 	}
 
+	/**
+	 * Scheduled future.
+	 *
+	 * @return the scheduled future
+	 */
 	private ScheduledFuture<?> scheduledFuture() {
 		return scheduledFuture;
 	}
 
+	/**
+	 * Renew schedule for shop name cleaning.
+	 *
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
+	 * @return the response entity
+	 */
+	@ApiOperation(value = "renew Schedule For Shop Name Cleaning")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PutMapping("/updateConfigCrawlerShopName/{id}")
 	public ResponseEntity<Object> renewScheduleForShopNameCleaning(@RequestBody ConfigCrawler configCrawler,
 			@PathVariable long id) {
@@ -201,18 +259,39 @@ public class CrawlerManagerController {
 		return ResponseEntity.noContent().build();
 	}
 
+	/**
+	 * Verifiy shop name not banned.
+	 */
+	@ApiOperation(value = "verifiy Shop Name Not Banned")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/clean")
 	public void verifiyShopNameNotBanned() {
 		jobOtomeRepository.cleanJobs();
 		System.out.println("jobs cleaned");
 	}
-	
+
+	/**
+	 * Find count shops.
+	 *
+	 * @return the int
+	 */
+	@ApiOperation(value = "Get Count Shops")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/findCountShops")
 	public int findCountShops() {
 		return jobOtomeRepository.findCountShops();
-		
+
 	}
-	
+
+	/**
+	 * Verifiy job baitoru.
+	 */
 	public void verifiyJobBaitoru() {
 
 		int countLineAff = (int) jobOtomeService.countBaitoruJobsAffiliateActivated();
