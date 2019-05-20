@@ -19,7 +19,7 @@ public class SwaggerDocumentation {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.hrdatabank.controllers")).paths(regex("/api.*")).build()
+				.apis(RequestHandlerSelectors.basePackage("com.hrdatabank.controllers")).paths(regex("/*.*")).build()
 				.apiInfo(metaInfo());
 	}
 
