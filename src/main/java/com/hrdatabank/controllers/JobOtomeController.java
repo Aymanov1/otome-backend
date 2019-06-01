@@ -42,16 +42,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import reactor.core.publisher.Flux;
 
-// TODO: Auto-generated Javadoc
 /* (non-Javadoc)
  * @see java.lang.Object#toString()
  */
 @Data
-
-/**
- * Instantiates a new job otome controller.
- */
-
 /**
  * Instantiates a new job otome controller.
  */

@@ -6,6 +6,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -21,15 +25,15 @@ import reactor.core.scheduler.Scheduler;
 /**
  * The Class JobOtomeServiceImpl.
  */
+@CacheConfig(cacheNames = { "jobOtomes" })
 @Service
 @Transactional
-public class JobOtomeServiceImpl implements JobReactiveService{
+public class JobOtomeServiceImpl implements JobReactiveService {
 
-	
 	/** The job otome reactive repository. */
 	@Autowired
-	private  JobOtomeReactiveRepository jobOtomeReactiveRepository;
-	
+	private JobOtomeReactiveRepository jobOtomeReactiveRepository;
+
 	/** The transaction template. */
 	@Autowired
 	private TransactionTemplate transactionTemplate;
@@ -38,8 +42,10 @@ public class JobOtomeServiceImpl implements JobReactiveService{
 	@Autowired
 	@Qualifier("jdbcScheduler")
 	private Scheduler jdbcScheduler;
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.hrdatabank.otome.services.JobReactiveService#findById(long)
 	 */
 	@Override
@@ -47,42 +53,58 @@ public class JobOtomeServiceImpl implements JobReactiveService{
 		return Mono.defer(() -> Mono.just(this.jobOtomeReactiveRepository.findById(id))).subscribeOn(jdbcScheduler);
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.hrdatabank.otome.services.JobReactiveService#findAll()
 	 */
+	@Cacheable
 	@Override
 	public Flux<JobOtome> findAll() {
-		return Flux.defer(() -> Flux.fromIterable(this.jobOtomeReactiveRepository.findAll())).subscribeOn(jdbcScheduler);
+		return Flux.defer(() -> Flux.fromIterable(this.jobOtomeReactiveRepository.findAll()))
+				.subscribeOn(jdbcScheduler);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.hrdatabank.otome.services.JobReactiveService#save(com.hrdatabank.otome.domain.JobOtome)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.hrdatabank.otome.services.JobReactiveService#save(com.hrdatabank.otome.
+	 * domain.JobOtome)
 	 */
+	@CachePut
 	@Override
 	public Mono<JobOtome> save(JobOtome job) {
 		return Mono.fromCallable(() -> transactionTemplate.execute(status -> {
 			return jobOtomeReactiveRepository.save(job);
 		})).subscribeOn(jdbcScheduler);
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see com.hrdatabank.otome.services.JobReactiveService#deleteById(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.hrdatabank.otome.services.JobReactiveService#deleteById(java.lang.Long)
 	 */
 	@Override
+	@CacheEvict(allEntries = true)
 	public Mono<Void> deleteById(Long id) {
 		jobOtomeReactiveRepository.deleteById(id);
 		return Mono.empty();
 	}
 
-
-
 	@Override
+	@Cacheable
 	public Flux<JobDto> findAllJobDTO() {
-		return Flux.defer(() -> Flux.fromIterable(this.jobOtomeReactiveRepository.getAllJobsByDto())).subscribeOn(jdbcScheduler);
+		try {
+			Thread.sleep(3000L);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return Flux.defer(() -> Flux.fromIterable(this.jobOtomeReactiveRepository.getAllJobsByDto()))
+				.subscribeOn(jdbcScheduler);
 
 	}
 

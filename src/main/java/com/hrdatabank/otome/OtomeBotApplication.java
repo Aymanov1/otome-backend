@@ -17,6 +17,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -32,7 +33,6 @@ import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class OtomeBotApplication.
  */
@@ -50,6 +50,7 @@ import reactor.core.scheduler.Schedulers;
 @EntityScan(basePackages = { "com.hrdatabank.mtproject.entities", "com.hrdatabank.otome.domain" })
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@EnableCaching 
 public class OtomeBotApplication implements CommandLineRunner {
 
 	/** The description. */
