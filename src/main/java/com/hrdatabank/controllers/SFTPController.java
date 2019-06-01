@@ -90,13 +90,13 @@ public class SFTPController {
 			sftpChannel.exit();
 
 			session.disconnect();
-			return "done Successfully";
+			return "Download done successfully  ";
 		} catch (JSchException e) {
 			e.printStackTrace();
-			return "it seems there is a problem, please check the log for details";
 		} catch (SftpException e) {
 			e.printStackTrace();
-			return "it seems there is a problem, please check the log for details";
+
 		}
+		return "It seems there is a problem, please check the log for details";
 	}
 }
