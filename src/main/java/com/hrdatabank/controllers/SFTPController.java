@@ -1,7 +1,15 @@
 package com.hrdatabank.controllers;
 
-import java.text.MessageFormat;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.crawler.web.enumeration.CrawlerTypesEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,59 +27,155 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SFTPController.
+ */
 @RestController
 @RequestMapping("/sftp")
 public class SFTPController {
+
+	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(SFTPController.class);
-	/** The description. */
+
+	/** The Constant ERROR. */
+	private final static String ERROR = "ERROR ";
+
+	/** The host lacotto. */
 	@Value("${hostLacotto}")
 	private String hostLacotto;
 
+	/** The user lacotto. */
 	@Value("${userLacotto}")
 	private String userLacotto;
 
+	/** The password lacotto. */
 	@Value("${passwordLacotto}")
 	private String passwordLacotto;
 
+	/** The path lacotto from. */
 	@Value("${pathLacottoFrom}")
 	private String pathLacottoFrom;
 
+	/** The path lacotto destination. */
 	@Value("${pathLacottoDestination}")
 	private String pathLacottoDestination;
 
+	/** The port lacotto. */
 	@Value("${portLacotto}")
 	private int portLacotto;
 
+	/** The host jsen. */
 	@Value("${hostJsen}")
 	private String hostJsen;
 
+	/** The user jsen. */
 	@Value("${userJsen}")
 	private String userJsen;
 
+	/** The password jsen. */
 	@Value("${passwordJsen}")
 	private String passwordJsen;
 
+	/** The path jsen from. */
 	@Value("${pathJsenFrom}")
 	private String pathJsenFrom;
 
+	/** The path jsen destination. */
 	@Value("${pathJsenDestination}")
 	private String pathJsenDestination;
 
+	/** The port jsen. */
 	@Value("${portJsen}")
 	private int portJsen;
 
+	/**
+	 * Download files to server.
+	 *
+	 * @param serverType
+	 *            the server type (LACOTTO-JSEN)
+	 * @return the status of downloading from the SFTP/FTP server
+	 */
 	@GetMapping(path = "/download/{serverType}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public String downloadFilesToServer(@PathVariable("serverType") String serverType) {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			return downloadFromServer(hostLacotto, userLacotto, passwordLacotto, portLacotto, pathLacottoFrom,
 					pathLacottoDestination);
+
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
-			return downloadFromServer(hostJsen, userJsen, passwordJsen, portJsen, pathJsenFrom, pathJsenDestination);
+			return downloadFromFTPServer(hostJsen, userJsen, passwordJsen, pathJsenFrom, pathJsenDestination);
 		}
 		return "it seems there is a problem, please check the log for details";
 	}
 
+	/**
+	 * Download from FTP server.
+	 *
+	 * @param host
+	 *            the host of sftp server
+	 * @param user
+	 *            the user of sftp server
+	 * @param password
+	 *            the password of sftp server
+	 * @param pathRemote
+	 *            the path remote of the downloaded file
+	 * @param pathLocal
+	 *            the path local of the destination of the downloaded file
+	 * @return the status of downloading from the SFTP/FTP server
+	 */
+	private String downloadFromFTPServer(String host, String user, String password, String pathRemote,
+			String pathLocal) {
+		FTPClient client = new FTPClient();
+		String statusOfDownloading = "";
+		FileOutputStream fos = null;
+
+		try {
+			client.connect(host);
+			client.login(user, password);
+
+			// Fetch file from server
+			File downloadFile1 = new File(pathLocal + pathRemote);
+			OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
+
+			boolean success = client.retrieveFile(pathLocal + pathRemote, outputStream1);
+			outputStream1.close();
+			if (success) {
+				log.info("File #1 has been downloaded successfully.");
+			}
+			statusOfDownloading = "Download done successfully  ";
+		} catch (IOException e) {
+			log.error(ERROR, e);
+			statusOfDownloading = "It seems there is a problem, please check the log for details";
+		} finally {
+			try {
+				if (fos != null) {
+					fos.close();
+				}
+				client.disconnect();
+
+			} catch (IOException e) {
+				log.error(ERROR, e);
+			}
+		}
+		return statusOfDownloading;
+	}
+
+	/**
+	 * Download from server.
+	 *
+	 * @param host
+	 *            the host of sftp server
+	 * @param user
+	 *            the user of sftp server
+	 * @param password
+	 *            the password of sftp server
+	 * @param pathRemote
+	 *            the path remote of the downloaded file
+	 * @param pathLocal
+	 *            the path local of the destination of the downloaded file
+	 * @return the status of downloading from the SFTP/FTP server
+	 */
 	private static String downloadFromServer(String host, String user, String password, int port, String pathRemote,
 			String pathLocal) {
 		JSch jsch = new JSch();
@@ -86,17 +190,56 @@ public class SFTPController {
 			channel.connect();
 			ChannelSftp sftpChannel = (ChannelSftp) channel;
 			sftpChannel.get(pathRemote, pathLocal);
-			log.info("download done successfully  ");
+			log.info("download done successfully");
 			sftpChannel.exit();
 
 			session.disconnect();
-			return "Download done successfully  ";
-		} catch (JSchException e) {
-			e.printStackTrace();
-		} catch (SftpException e) {
-			e.printStackTrace();
 
+			unzip(pathLocal + "lacotto_job_offer.zip", pathLocal);
+			log.info("Unzip done successfully");
+			return "Downloading and Unzipping done successfully  ";
+		} catch (JSchException | SftpException e) {
+			log.error(ERROR, e);
 		}
 		return "It seems there is a problem, please check the log for details";
 	}
+
+	private static void unzip(String zipFilePath, String destDir) {
+		File dir = new File(destDir);
+		// create output directory if it doesn't exist
+		if (!dir.exists())
+			dir.mkdirs();
+		FileInputStream fis;
+		// buffer for read and write data to file
+		byte[] buffer = new byte[1024];
+		try {
+			fis = new FileInputStream(zipFilePath);
+			ZipInputStream zis = new ZipInputStream(fis);
+			ZipEntry ze = zis.getNextEntry();
+			while (ze != null) {
+				String fileName = ze.getName();
+				File newFile = new File(destDir + File.separator + fileName);
+				System.out.println("Unzipping to " + newFile.getAbsolutePath());
+				// create directories for sub directories in zip
+				new File(newFile.getParent()).mkdirs();
+				FileOutputStream fos = new FileOutputStream(newFile);
+				int len;
+				while ((len = zis.read(buffer)) > 0) {
+					fos.write(buffer, 0, len);
+				}
+				fos.close();
+				// close this ZipEntry
+				zis.closeEntry();
+				ze = zis.getNextEntry();
+			}
+			// close last ZipEntry
+			zis.closeEntry();
+			zis.close();
+			fis.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
