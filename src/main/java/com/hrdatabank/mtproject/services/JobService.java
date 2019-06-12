@@ -965,4 +965,12 @@ public class JobService {
 		return jobRepository.getJobsByStationAndJobCategory(positionCategory, lat, lng, maxKm,
 				PageRequest.of(page, size));
 	}
+
+	public List<Job> getCheckedJsenJobsByIdJobDetail(String idJobDetail) {
+		return jobRepository.getCheckedJsenJobsByIdJobDetail(idJobDetail);
+	}
+
+	public List<Job> getCheckedLacottoJobsByIdJobDetail(String idJobDetail) {
+		return jobRepository.getCheckedLacottoJobsByIdJobDetail(idJobDetail);
+	}
 }

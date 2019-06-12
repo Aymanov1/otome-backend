@@ -341,4 +341,11 @@ public class ShopService {
 
 	}
 
+	public List<Shop> findListShopByNameShopAndByAddress_Position(String shopName, String shopAddresse) {
+		return shopRepository.findListShopByNameShopAndByAddress_Position(shopName, shopAddresse);
+	}
+
+	public List<Shop> findListShopByAddress_Position(String addressShop) {
+		return shopRepository.findListShopByAddress_Position(addressShop);
+	}
 }

@@ -1003,5 +1003,17 @@ public interface JobRepository extends JpaRepository<Job, Serializable>, JpaSpec
 	@Query(value = "SELECT j.* FROM Job j INNER JOIN Shop s ON j.id_shop = s.id_shop WHERE j.status = TRUE and (acos(sin(RADIANS(:lat)) * sin(RADIANS(s.latitude)) + cos(RADIANS(:lat)) * cos(RADIANS(s.latitude)) * cos(RADIANS(s.longitude) - (RADIANS(:lng)))) * 6371 <=(:maxKm)) and (lower(j.position_category_english) like lower(CONCAT('%',:positionCategory,'%')) or lower(j.position_category_japanese) like lower(CONCAT('%',:positionCategory,'%'))) GROUP BY j.id_job, ?#{#pageable}", nativeQuery = true)
 	public Page<Job> getJobsByStationAndJobCategory(@Param("positionCategory") String positionCategory,
 			@Param("lat") double lat, @Param("lng") double lng, @Param("maxKm") int maxKm, Pageable pageable);
+	
+	@Query(value = "SELECT j FROM Job j where (lower(j.interviewType) like lower('affiliate')) and j.status = TRUE and j.idJobDetail =:idJobDetail and j.jobURL LIKE CONCAT('%','j-sen','%')")
+    public List<Job> getCheckedJsenJobsByIdJobDetail(@Param("idJobDetail") String idJobDetail);
+	
+	/**
+     * Lacotto jobs
+     *
+     * @param idJobDetail
+     * @return
+     */
+    @Query(value = "SELECT j FROM Job j where (lower(j.interviewType) like lower('affiliate')) and j.status = TRUE and j.idJobDetail =:idJobDetail and j.jobURL LIKE CONCAT('%','lacotto','%')")
+    public List<Job> getCheckedLacottoJobsByIdJobDetail(@Param("idJobDetail") String idJobDetail);
 
 }

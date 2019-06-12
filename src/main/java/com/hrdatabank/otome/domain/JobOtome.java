@@ -155,6 +155,8 @@ public class JobOtome implements Serializable {
 	private Date startTime;
 	@Temporal(TemporalType.TIME)
 	private Date finishTime;
+	@Temporal(TemporalType.TIME)
+	private Date injectionDate;
 
 	public JobOtome(String shopName, String imageURL, String jobDetailId, String jobURL, String jobType, String detail,
 			String positionName, String address, String wage, boolean transportation, Date startTime, Date finishTime) {
@@ -178,4 +180,10 @@ public class JobOtome implements Serializable {
 			String positionName2, String jobAddress, String wage, String minHoursPerDay, String minWorkingDays,
 			Date startTime2, Date finishTime2, boolean transportation2) {
 	}
+
+	public JobOtome() {
+
+	}
+	
+	
 }

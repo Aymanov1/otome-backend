@@ -209,4 +209,11 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	public Page<Shop> getAllShopsByIdCompanyByNamePaginated(Pageable pageable, @Param("idCompany") int idCompany,
 			@Param("name") String name);
 
+	@Query(value = "select * from shop s where position (lower(:nameShop) in lower(s.name_shop)) > 0 and position (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
+	public List<Shop> findListShopByNameShopAndByAddress_Position(@Param("nameShop") String nameShop,
+			@Param("addressShop") String addressShop);
+
+	@Query(value = "select * from shop s where (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
+	public List<Shop> findListShopByAddress_Position(@Param("addressShop") String addressShop);
+
 }
