@@ -50,7 +50,7 @@ import reactor.core.scheduler.Schedulers;
 @EntityScan(basePackages = { "com.hrdatabank.mtproject.entities", "com.hrdatabank.otome.domain" })
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-@EnableCaching 
+@EnableCaching
 public class OtomeBotApplication implements CommandLineRunner {
 
 	/** The description. */
@@ -118,9 +118,7 @@ public class OtomeBotApplication implements CommandLineRunner {
 			configRepository.save(configCrawler);
 
 		}
-		return args -> configRepository.findAll().forEach(e -> {
-			System.out.println(e);
-		});
+		return args -> configRepository.findAll().forEach(e -> log.info("{}", e));
 	}
 
 	/**
