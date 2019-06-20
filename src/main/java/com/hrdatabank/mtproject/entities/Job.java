@@ -149,7 +149,7 @@ public class Job implements Serializable {
 
 	/** The shop. */
 	@ManyToOne
-	@JoinColumn(name = "idShop", referencedColumnName = "idShop")
+	@JoinColumn(name = "idShop", referencedColumnName = "id_shop")
 
 	@JsonIgnoreProperties({ "jobs" })
 	private Shop shop;
@@ -166,6 +166,9 @@ public class Job implements Serializable {
 
 	@Column(columnDefinition = "varchar(255) default '0'")
 	private String casePrice;
+	
+	@Temporal(TemporalType.TIME)
+	private Date injectionDate;
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
@@ -1442,5 +1445,15 @@ public class Job implements Serializable {
 	public void setCasePrice(String casePrice) {
 		this.casePrice = casePrice;
 	}
+
+	public Date getInjectionDate() {
+		return injectionDate;
+	}
+
+	public void setInjectionDate(Date injectionDate) {
+		this.injectionDate = injectionDate;
+	}
+	
+	
 
 }

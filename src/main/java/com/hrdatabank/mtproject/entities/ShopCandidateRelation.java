@@ -84,7 +84,7 @@ public class ShopCandidateRelation implements Serializable {
 
 	/** The shop. */
 	@ManyToOne
-	@JoinColumn(name = "idShop", referencedColumnName = "idShop", insertable = false, updatable = false)
+	@JoinColumn(name = "idShop", referencedColumnName = "id_Shop", insertable = false, updatable = false)
 	@JsonIgnoreProperties({ "shopCandidateRelations, jobCandidateRelations", "candidate", "jobs", "staffs" })
 	private Shop shop;
 

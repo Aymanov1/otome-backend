@@ -1,4 +1,4 @@
-package com.hrdatabank.mtproject.entities;
+package com.hrdatabank.otome.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,56 +39,45 @@ public class Company implements Serializable {
 	@Id
 	@SequenceGenerator(name = "identifier", initialValue = 1, sequenceName = "COMPANY_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "identifier")
-	@Column(name = "id_company")
 	private int idCompany;
 
 	/** The name company. */
-	@Column(name = "name_company")
 	private String nameCompany;
 
 	/** The login id. */
-	@Column(name = "login_id")
 	private String loginId;
 
 	/** The password. */
 	private String password;
 
 	/** The authorized key. */
-	@Column(name = "authorized_key")
 	private String authorizedKey;
 
 	/** The token. */
 	private String token;
 
 	/** The logo company. */
-	@Column(name = "logo_company")
 	private String logoCompany;
 
 	/** The description. */
 	private String description;
 
 	/** The phone number. */
-	@Column(name = "phone_number")
 	private String phoneNumber;
 
 	/** The address company. */
-	@Column(name = "address_company")
 	private String addressCompany;
 
 	/** The email company. */
-	@Column(name = "email_company")
 	private String emailCompany;
 
 	/** The interview type. */
-	@Column(name = "interview_type")
 	private String interviewType;
 
 	/** The email requirement status. */
-	@Column(name = "email_requirement_status")
 	private String emailRequirementStatus;
 
 	/** The ats status. */
-	@Column(name = "ats_status")
 	private String atsStatus;
 
 	/** The shops. */
@@ -99,18 +86,7 @@ public class Company implements Serializable {
 	@JsonIgnore
 	private List<Shop> shops;
 
-	/** The staffs. */
-	@OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
-	@JsonIgnore
-	private List<Staff> staffs;
-
-	/** The super admin. */
-	@OneToOne
-	@JoinColumn(name = "id_super_admin", referencedColumnName = "id_user")
-	@JsonIgnoreProperties({ "company", "staffShopRelations" })
-	private Staff superAdmin;
-
-	@Column(name = "payment_cycle", columnDefinition = "int default 0")
+	@Column(columnDefinition = "int default 0")
 	private int paymentCycle;
 	/************************ Fake attributes ***/
 
@@ -126,15 +102,10 @@ public class Company implements Serializable {
 	 *         Class Name: Company.java
 	 *
 	 */
-	@Column(name = "company_fax")
 	private String companyFax;
-	@Column(name = "responsible_person")
 	private String responsiblePerson;
-	@Column(name = "company_contract_period")
 	private String companyContractPeriod;
-	@Column(name = "traning_period")
 	private String traningPeriod;
-	@Column(name = "education_history")
 	private String educationHistory;
 	/************/
 }

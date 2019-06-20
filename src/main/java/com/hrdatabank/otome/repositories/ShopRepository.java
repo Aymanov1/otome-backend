@@ -1,4 +1,4 @@
-package com.hrdatabank.mtproject.repositories;
+package com.hrdatabank.otome.repositories;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,9 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
-
-import com.hrdatabank.mtproject.entities.Shop;
 import com.hrdatabank.mtproject.model.ShopObject;
+import com.hrdatabank.otome.domain.Shop;
 
 /**
  * The Interface ShopRepository.
@@ -58,10 +57,16 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	 *            the address shop
 	 * @return the shop
 	 */
-	@Query(value = "select s from Shop s where lower(s.nameShop) like lower(:nameShop) and lower(s.addressShop) like lower(:addressShop) ")
-	public Shop findByNameShopAndByAddress(@Param("nameShop") String nameShop,
-			@Param("addressShop") String addressShop);
-
+	// @Query(value = "select s from Shop s where lower(s.nameShop) like
+	// lower(:nameShop) and lower(s.addressShop) like lower(:addressShop) ")
+	// public Shop findByNameShopAndByAddress(@Param("nameShop") String nameShop,
+	// @Param("addressShop") String addressShop);
+	//
+	// @Query(value = "select s from Shop s where lower(s.nameShop) like
+	// lower(:nameShop) and lower(s.addressShop) like lower(:addressShop) ")
+	// public List<Shop> findListShopByNameShopAndByAddress(@Param("nameShop")
+	// String nameShop,
+	// @Param("addressShop") String addressShop);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
@@ -206,13 +211,23 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	public Page<Shop> getAllShopsByIdCompanyByNamePaginated(Pageable pageable, @Param("idCompany") int idCompany,
 			@Param("name") String name);
 
-	@Query(value = "select * from shop s where position (lower(:nameShop) in lower(s.name_shop)) > 0 and position (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
+	// @Query(value = "select * from shop s where position (lower(:nameShop) in
+	// lower(s.nameShop)) > 0 and position (lower(:addressShop) in
+	// lower(s.addressshop)) > 0 ", nativeQuery = true)
+	// public List<Shop> findListShopByNameShopAndByAddress(@Param("nameShop")
+	// String nameShop,
+	// @Param("addressShop") String addressShop);
+	//
+	// @Query(value = "select * from shop s where (lower(:addressShop) in
+	// lower(s.addressshop)) > 0 ", nativeQuery = true)
+	// public List<Shop> findListShopByAddress(@Param("addressShop") String
+	// addressShop);
+
+	@Query(value = "select s from Shop s where lower(s.addressShop) like lower(:addressShop) ")
+	public List<Shop> findListShopByAddress(@Param("addressShop") String addressShop);
+
+	@Query(value = "select s from Shop s where lower(s.nameShop) like lower(:nameShop) and lower(s.addressShop) like lower(:addressShop) ")
 	public List<Shop> findListShopByNameShopAndByAddress(@Param("nameShop") String nameShop,
 			@Param("addressShop") String addressShop);
-
-	@Query(value = "select * from shop s where (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
-	public List<Shop> findListShopByAddress(@Param("addressShop") String addressShop);
-	
-	
 
 }

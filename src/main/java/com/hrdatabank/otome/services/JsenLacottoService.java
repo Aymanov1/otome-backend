@@ -31,13 +31,10 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.hrdatabank.mtproject.entities.Company;
-import com.hrdatabank.mtproject.entities.Job;
-import com.hrdatabank.mtproject.entities.Shop;
-import com.hrdatabank.mtproject.repositories.JobRepository;
-import com.hrdatabank.mtproject.services.CompanyService;
-import com.hrdatabank.mtproject.services.JobService;
-import com.hrdatabank.mtproject.services.ShopService;
+import com.hrdatabank.otome.domain.Company;
+import com.hrdatabank.otome.domain.Job;
+import com.hrdatabank.otome.domain.Shop;
+import com.hrdatabank.otome.repositories.JobRepository;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -61,7 +58,6 @@ public class JsenLacottoService {
 	private static final String BEFORESCHOOL_NIGHTSHIFT_AFTERSCHOOL_EN = "Before School and Night Shift and After School";
 	private static final String BEFORESCHOOL_NIGHTSHIFT_AFTERSCHOOL_JP = "学校前 and 夜勤 and 学校後";
 	private static final String NIGHT_SCHOOL = "Night School";
-
 
 	@Autowired
 	private JobService jobService;
@@ -91,7 +87,7 @@ public class JsenLacottoService {
 
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(',').build();
 
-		CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(csvParser).withSkipLines(0)
+		CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(csvParser).withSkipLines(1)
 				.build();
 
 		String[] nextLine = null;
@@ -105,7 +101,7 @@ public class JsenLacottoService {
 				company.setEmailCompany("apply_joboty@willgroup.co.jp");
 				company.setNameCompany("テスト会社");
 				company.setAddressCompany("東京都新宿区新宿三丁目1番24号 京王新宿三丁目ビル3階");
-				company = companyService.saveCompany(company);
+				company = new Company();// companyService.saveCompany(company);
 			}
 			/***********************/
 
@@ -123,12 +119,12 @@ public class JsenLacottoService {
 			int reason_shop_null = 0;
 
 			try (Writer writer = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream("/home/mahdi/Téléchargements/file.txt"), "utf-8"))) {
+					new OutputStreamWriter(new FileOutputStream("/home/heni/Téléchargements/file.txt"), "utf-8"))) {
 				writer.write("/*****************************************************************************/ \n");
 
 				List<Job> listBatchJobs = new ArrayList<>();
-
 				while ((nextLine = reader.readNext()) != null) {
+
 					String reason_to_skip = "";
 					if (nextLine != null) {
 						numLine++;
@@ -317,7 +313,7 @@ public class JsenLacottoService {
 								job.setPositionCategoryJapanese(positionCategoryJapanese);
 							} else {
 								skipJob = true;
-								reason_to_skip = reason_to_skip + "/" + "from category job 1 --> num category : "
+								reason_to_skip = reason_to_skip + "/" + "from category job 1 --> num category: "
 										+ categoryCode;
 								reason_category_job++;
 							}
@@ -428,10 +424,9 @@ public class JsenLacottoService {
 						/****************************/
 						if (shopName != "" && shopAddresse != "") {
 
-							// List<Shop> shops = shopService.findListShopByNameShopAndByAddress(shopName,
-							// shopAddresse);
-							List<Shop> shops = shopService.findListShopByNameShopAndByAddress_Position(shopName,
-									shopAddresse);
+							// List<Shop> shops =
+							shopService.findListShopByNameShopAndByAddress(shopName, shopAddresse);
+							List<Shop> shops = shopService.findListShopByNameShopAndByAddress(shopName, shopAddresse);
 
 							if (!shops.isEmpty()) {
 
@@ -744,12 +739,10 @@ public class JsenLacottoService {
 
 	public void importCSVForLacottoJobsWithOpenCsv(String fileName) throws IOException {
 
-		Writer writer = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream("/home/mahdi/Téléchargements/fileLacotto.txt"), "utf-8"));
 		// CSVReader reader = new CSVReader(new FileReader(fileName));
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(',').build();
 
-		CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(csvParser).withSkipLines(0)
+		CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(csvParser).withSkipLines(1)
 				.build();
 		String[] nextLine = null;
 
@@ -1311,7 +1304,12 @@ public class JsenLacottoService {
 						try {
 							logger.info("-----------AddressShop----------------:{}", addressShop);
 							// List<Shop> shopsByAddress = shopService.findListShopByAddress(addressShop);
-							List<Shop> shopsByAddress = shopService.findListShopByAddress_Position(addressShop);
+							List<Shop> shopsByAddress = null;
+							try {
+								shopsByAddress = shopService.findListShopByAddress(addressShop);
+							} catch (Exception e) {
+								shopsByAddress = new ArrayList<>();
+							}
 							if (shopsByAddress.isEmpty()) {
 								JSONObject latLong = getLangitudeAndLatitude(addressShop);
 								if (latLong != null) {
@@ -1595,7 +1593,9 @@ public class JsenLacottoService {
 							job = setWorkTimeEnglishJapanese(job, startTime, finishTime);
 							logger.info("------------job.getWorkTimeEnglish()---------------------------:"
 									+ job.getWorkTimeEnglish());
-							logger.info("------------job.getWorkTimeJapanese()---------------------------:{}",
+							logger.info(
+									"--------				reader.readNext();\n"
+											+ "----job.getWorkTimeJapanese()---------------------------:{}",
 									job.getWorkTimeJapanese());
 
 							if (job.getWorkTimeEnglish() == null || job.getWorkTimeJapanese() == null) {
@@ -1727,8 +1727,11 @@ public class JsenLacottoService {
 					}
 					System.out.println(
 							"------**************----idJobDetail----********************--------------:" + idJobDetail);
-
-					listJobs = jobService.getCheckedLacottoJobsByIdJobDetail(idJobDetail);
+					try {
+						listJobs = jobService.getCheckedLacottoJobsByIdJobDetail(idJobDetail);
+					} catch (Exception exception) {
+						listJobs = new ArrayList<>();
+					}
 
 					if (idJobDetail == null) {
 
@@ -1804,7 +1807,12 @@ public class JsenLacottoService {
 				if (shopName != "" && addressShop != null) {
 					// List<Shop> shops = shopService.findListShopByNameShopAndByAddress(shopName,
 					// addressShop);
-					List<Shop> shops = shopService.findListShopByNameShopAndByAddress_Position(shopName, addressShop);
+					List<Shop> shops = null;
+					try {
+						shops = shopService.findListShopByNameShopAndByAddress(shopName, addressShop);
+					} catch (Exception e) {
+						shops = new ArrayList<>();
+					}
 					if (!shops.isEmpty()) {
 
 						shop = shops.get(0);
@@ -1829,9 +1837,10 @@ public class JsenLacottoService {
 					// System.out.println("Checked Job 1111111111111");
 					// job = listJobs.get(0);
 					// }
+					System.out.println("shooooooooooop =" + shop.getAddressShop());
 					shop = shopService.saveShop(shop);
 					job.setShop(shop);
-					// jobService.saveJob(job);
+					jobService.saveJob(job);
 					listBatchJobs.add(job);
 
 					logger.info("--------------JOB---SAVED-----------------------");
@@ -1884,27 +1893,6 @@ public class JsenLacottoService {
 
 		}
 
-		writer.write(reason_to_skip + "\n");
-		writer.write("Statistics on Investigation skip \n\n");
-		writer.write("nb_skipOccupationCodeNotFound: " + nb_skipOccupationCodeNotFound + "\n"
-				+ "nb_skipOccupationCodeNull: " + nb_skipOccupationCodeNull + "\n" + "nb_skipOccupationCodeException: "
-				+ nb_skipOccupationCodeException + "\n" + "nb_skipIdEmploymentNotFound: " + nb_skipIdEmploymentNotFound
-				+ "\n" + "nb_skipIdEmploymentEmpty: " + nb_skipIdEmploymentEmpty + "\n"
-				+ "nb_skipIdEmploymentException: " + nb_skipIdEmploymentException + "\n" + "nb_skipHourlyWageNotFound: "
-				+ nb_skipHourlyWageNotFound + "\n" + "nb_skipHourlyWageException: " + nb_skipHourlyWageException + "\n"
-				+ "nb_skipSalaryTypeId_1: " + nb_skipSalaryTypeId_1 + "\n" + "nb_skipSalaryTypeIdException: "
-				+ nb_skipSalaryTypeIdException + "\n" + "nb_skipLongitudeAndLatitudeNull: "
-				+ nb_skipLongitudeAndLatitudeNull + "\n" + "nb_skipLongitudeAndLatitudeException: "
-				+ nb_skipLongitudeAndLatitudeException + "\n" + "nb_skipAddressShopNull: " + nb_skipAddressShopNull
-				+ "\n" + "nb_skipLongitudeOrLatitudeNull: " + nb_skipLongitudeOrLatitudeNull + "\n"
-				+ "nb_skipColumnAddressNull: " + nb_skipColumnAddressNull + "\n" + "nb_skipAddressException: "
-				+ nb_skipAddressException + "\n" + "nb_skipWorkTimeNull: " + nb_skipWorkTimeNull + "\n"
-				+ "nb_skipStartOrFinishTimeNull: " + nb_skipStartOrFinishTimeNull + "\n"
-				+ "nb_skipStartAndFinishTimeException_1: " + nb_skipStartAndFinishTimeException_1 + "\n"
-				+ "nb_skipStartAndFinishTimeException_2: " + nb_skipStartAndFinishTimeException_2 + "\n"
-				+ "nb_skipIdJobDetailNull: " + nb_skipIdJobDetailNull + "\n" + "nb_skipJobExpired: " + nb_skipJobExpired
-				+ "\n" + "nb_skipUrlNull: " + nb_skipUrlNull + "\n" + "nb_skipShopNameOrAddressShopNull: "
-				+ nb_skipShopNameOrAddressShopNull + "\n");
 		logger.info("--------------------EXPIRED URL----LIST---------------------------:{}", urlExpired.size());
 
 		logger.info("---------------NOT-----EXPIRED URL------LIST-------------------------:{}", urlNOTExpired.size());

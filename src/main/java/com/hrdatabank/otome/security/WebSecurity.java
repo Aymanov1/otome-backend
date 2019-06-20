@@ -46,6 +46,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers(API_DOC, SWAGGER_RESOURCES, SWAGGER, WEBJARS, SWAGGER_JSON).permitAll()
 				.antMatchers("/actuator/**").permitAll()
 				.antMatchers("/sftp/**").permitAll()
+				.antMatchers("/test/**").permitAll()
 				.anyRequest().authenticated().and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager())).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -53,7 +53,7 @@ public class Staff extends UserInformation implements Serializable {
 
 	/** The company. */
 	@ManyToOne
-	@JoinColumn(name = "idCompany", referencedColumnName = "idCompany")
+	@JoinColumn(name = "idCompany", referencedColumnName = "id_company")
 	@JsonIgnoreProperties({ "staffs", "staff", "shop", "shops", "shopCandidateRelation", "shopCandidateRelations",
 			"jobCandidateRelation", "jobCandidateRelations", "candidate", "jobs", "staffs", "job" })
 	private Company company;

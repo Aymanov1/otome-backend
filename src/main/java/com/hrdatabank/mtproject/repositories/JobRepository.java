@@ -1,6 +1,7 @@
 package com.hrdatabank.mtproject.repositories;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -1015,5 +1016,8 @@ public interface JobRepository extends JpaRepository<Job, Serializable>, JpaSpec
      */
     @Query(value = "SELECT j FROM Job j where (lower(j.interviewType) like lower('affiliate')) and j.status = TRUE and j.idJobDetail =:idJobDetail and j.jobURL LIKE CONCAT('%','lacotto','%')")
     public List<Job> getCheckedLacottoJobsByIdJobDetail(@Param("idJobDetail") String idJobDetail);
+    
+    @Query(value = "SELECT j FROM Job j where j.affiliateType like :type and j.injectionDate = :injectionDate")
+	public Page<Job> findAllJobsByAffiliateInjectionDate(@Param("type") String affiliateType,@Param("injectionDate")Date injectionDate, Pageable pageable);
 
 }
