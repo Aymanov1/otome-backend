@@ -174,9 +174,7 @@ public class OtomeBotApplication implements CommandLineRunner {
 			configRepository.save(configCrawler);
 
 		}
-		return args -> configRepository.findAll().forEach(e -> {
-			System.out.println(e);
-		});
+		return args -> configRepository.findAll().forEach(e -> log.info("{}", e));
 	}
 
 	/**

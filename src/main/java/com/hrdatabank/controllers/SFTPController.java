@@ -13,6 +13,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.crawler.web.enumeration.CrawlerTypesEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hrdatabank.otome.services.JsenLacottoService;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -89,6 +91,9 @@ public class SFTPController {
 	@Value("${portJsen}")
 	private int portJsen;
 
+	@Autowired
+	JsenLacottoService jsenLacottoService;
+
 	/**
 	 * Download files to server.
 	 *
@@ -105,6 +110,30 @@ public class SFTPController {
 
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
 			return downloadFromFTPServer(hostJsen, userJsen, passwordJsen, pathJsenFrom, pathJsenDestination);
+		}
+		return "it seems there is a problem, please check the log for details";
+	}
+
+	@GetMapping(path = "/inject/{serverType}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public String injectFilesToServer(@PathVariable("serverType") String serverType) {
+		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
+			try {
+				jsenLacottoService.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
+				return "Done";
+			} catch (IOException e) {
+				e.printStackTrace();
+				return "not Done";
+			}
+
+		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
+			try {
+				jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
+				return "Done";
+			} catch (IOException e) {
+				e.printStackTrace();
+				return "not Done";
+			}
 		}
 		return "it seems there is a problem, please check the log for details";
 	}
@@ -138,10 +167,10 @@ public class SFTPController {
 			File downloadFile1 = new File(pathLocal + pathRemote);
 			OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 
-			boolean success = client.retrieveFile(pathLocal + pathRemote, outputStream1);
+			boolean success = client.retrieveFile(pathRemote, outputStream1);
 			outputStream1.close();
 			if (success) {
-				log.info("File #1 has been downloaded successfully.");
+				log.info("File #1 has been downloaded successfully.{}", "");
 			}
 			statusOfDownloading = "Download done successfully  ";
 		} catch (IOException e) {
@@ -209,35 +238,34 @@ public class SFTPController {
 		// create output directory if it doesn't exist
 		if (!dir.exists())
 			dir.mkdirs();
-		FileInputStream fis;
 		// buffer for read and write data to file
 		byte[] buffer = new byte[1024];
-		try {
-			fis = new FileInputStream(zipFilePath);
-			ZipInputStream zis = new ZipInputStream(fis);
+		try (FileInputStream fis = new FileInputStream(zipFilePath); ZipInputStream zis = new ZipInputStream(fis);) {
+
 			ZipEntry ze = zis.getNextEntry();
+
 			while (ze != null) {
 				String fileName = ze.getName();
 				File newFile = new File(destDir + File.separator + fileName);
-				System.out.println("Unzipping to " + newFile.getAbsolutePath());
+				log.info("Unzipping to {}", newFile.getAbsolutePath());
 				// create directories for sub directories in zip
 				new File(newFile.getParent()).mkdirs();
-				FileOutputStream fos = new FileOutputStream(newFile);
-				int len;
-				while ((len = zis.read(buffer)) > 0) {
-					fos.write(buffer, 0, len);
+				try (FileOutputStream fos = new FileOutputStream(newFile)) {
+					int len;
+					while ((len = zis.read(buffer)) > 0) {
+						fos.write(buffer, 0, len);
+					}
+
+					// close this ZipEntry
+					zis.closeEntry();
+					ze = zis.getNextEntry();
 				}
-				fos.close();
-				// close this ZipEntry
-				zis.closeEntry();
-				ze = zis.getNextEntry();
 			}
 			// close last ZipEntry
 			zis.closeEntry();
-			zis.close();
-			fis.close();
+
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(ERROR, e);
 		}
 
 	}
