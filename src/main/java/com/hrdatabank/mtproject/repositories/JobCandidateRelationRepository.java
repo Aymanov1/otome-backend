@@ -704,7 +704,8 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	 *            the id shop
 	 * @param idCompany
 	 *            the id company
-	 * @return the long
+	 * @return the long	@Query("Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社') ORDER BY jc.appliedDate DESC")
+	public List<JobCandidateRelation> getAllHiredListByIdJob(@Param("idJob") int idJob);
 	 */
 	@Query("Select count(jc) from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and jc.job.shop.company.idCompany=:idCompany and jc.interviewDate IS NOT NULL")
 	public long countAllInterviewsByIdShopAndByIdCompany(@Param("idShop") int idShop,

@@ -28,6 +28,8 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 	@Autowired
 	private BaitoruCrawlerServiceLauncherImpl baitoruCrawlerServiceLauncherImpl;
 
+	private CompletableFuture<Boolean> done;
+
 	/** The Constant logger. */
 	private static final Logger LOGGER = Logger.getLogger(BaitoruURLServiceCollectorImpl.class.getName());
 
@@ -61,6 +63,12 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 		} catch (InterruptedException | ExecutionException e) {
 			LOGGER.log(Level.SEVERE, "startPartCrawling", e);
 		}
+	}
+
+	@Override
+	public void stopCrawling() {
+		if (!done.isCancelled())
+			done.cancel(true);
 	}
 
 }

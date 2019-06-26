@@ -36,6 +36,7 @@ public class SFTPController {
 
 	@Autowired
 	SFTPService sftpService;
+	
 	/** The host lacotto. */
 	@Value("${hostLacotto}")
 	private String hostLacotto;

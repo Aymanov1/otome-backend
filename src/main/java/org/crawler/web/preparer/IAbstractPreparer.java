@@ -18,10 +18,10 @@ public interface IAbstractPreparer {
 	 * Start part crawling.
 	 * 
 	 * @author Hanios
-	 * @param area
-	 *            the area
-	 * @param category
-	 *            the category
+	 * @param area     the area
+	 * @param category the category
 	 */
 	void startPartCrawling(String area, String category);
+
+	void stopCrawling();
 }

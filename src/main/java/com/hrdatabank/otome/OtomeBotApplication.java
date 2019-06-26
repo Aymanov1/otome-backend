@@ -1,7 +1,10 @@
 package com.hrdatabank.otome;
 
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -26,9 +29,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import com.hrdatabank.mtproject.entities.UserInformation;
+import com.hrdatabank.mtproject.repositories.UserRepository;
+import com.hrdatabank.otome.domain.Company;
 import com.hrdatabank.otome.domain.ConfigCrawler;
+import com.hrdatabank.otome.domain.Shop;
 import com.hrdatabank.otome.repositories.ApplicationUserRepository;
+import com.hrdatabank.otome.repositories.CompanyRepository;
 import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
+import com.hrdatabank.otome.repositories.ShopRepository;
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
@@ -64,6 +77,12 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/** The application user repository. */
 	@Autowired
 	ApplicationUserRepository applicationUserRepository;
+	@Autowired
+	private CompanyRepository companyRepository;
+	@Autowired
+	private ShopRepository shopRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(OtomeBotApplication.class);
@@ -99,6 +118,43 @@ public class OtomeBotApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 		log.info(description);
+//		CSVParser csvParser = new CSVParserBuilder().withSeparator(',').build();
+//
+//		CSVReader reader = new CSVReaderBuilder(
+//				new FileReader("/home/heni/Téléchargements/shops-companies-csv/shops.csv")).withCSVParser(csvParser)
+//						.withSkipLines(0).build();
+//		System.out.println("fzefzef = " + reader.readNext().length);
+//		String[] nextRecord = null;
+//		List<Shop> shops = new ArrayList<>();
+//		Shop shop = null;
+//
+//		while ((nextRecord = reader.readNext()) != null) {
+//			shop = new Shop();
+//			shop.setAddressShop(nextRecord[1]);
+//			shop.setCategory(nextRecord[2]);
+//			shop.setChannelToken(nextRecord[3]);
+//			shop.setDescriptionShop(nextRecord[4]);
+//			shop.setEmailShop(nextRecord[5]);
+//			shop.setInterviewVenue(nextRecord[6]);
+//			shop.setLatitude(nextRecord[7].equals("") ? null : Double.parseDouble(nextRecord[7]));
+//			shop.setLogoShop(nextRecord[8]);
+//			shop.setLongitude(nextRecord[7].equals("") ? null : Double.parseDouble(nextRecord[9]));
+//			shop.setNameShop(nextRecord[10]);
+//			shop.setOpenTime(nextRecord[11]);
+//			shop.setPhoneNumber(nextRecord[12]);
+//			shop.setPossiblePhoneTime(nextRecord[13]);
+//			shop.setReference(nextRecord[14]);
+//			shop.setRequirement(nextRecord[15]);
+//			shop.setTransportationAllowance(nextRecord[16].equals("") ? false : Boolean.parseBoolean(nextRecord[16]));
+//			shop.setUserIdLine(nextRecord[17]);
+//			shop.setApplyPhoneNumber(nextRecord[20]);
+//			shop.setIdShopCSV(nextRecord[21]);
+//
+//			shops.add(shop);
+//
+//		}
+//		//System.out.println("sizzzzzzzzzzze = " + shops.size());
+//		 shops.forEach(comp -> shopRepository.save(comp));
 	}
 
 	/**

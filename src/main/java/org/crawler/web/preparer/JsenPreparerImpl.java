@@ -65,4 +65,9 @@ public class JsenPreparerImpl implements IAbstractPreparer {
 
 	}
 
+	@Override
+	public void stopCrawling() {
+		
+	}
+
 }
