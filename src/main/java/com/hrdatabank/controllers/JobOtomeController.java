@@ -103,11 +103,6 @@ public class JobOtomeController {
 	 *
 	 * @return the list
 	 */
-	// @GetMapping("/jobsOtome")
-	// @CrossOrigin(origins = "http://localhost:4200")
-	// public List<JobDto> retrieveAllJobOtomes() {
-	// return jobOtomeRepository.getAllJobsByDto();
-	// }
 	@ApiOperation(value = "get Jobs in reactive way")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
 			@ApiResponse(code = 401, message = "Unauthorized Action"),
