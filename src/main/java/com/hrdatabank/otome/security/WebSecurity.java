@@ -47,6 +47,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/actuator/**").permitAll()
 				.antMatchers("/sftp/**").permitAll()
 				.antMatchers("/test/**").permitAll()
+				.antMatchers("/fetch/**").permitAll()
 				.anyRequest().authenticated().and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager())).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

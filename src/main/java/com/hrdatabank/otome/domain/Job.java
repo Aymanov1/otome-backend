@@ -1,6 +1,7 @@
 package com.hrdatabank.otome.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -162,7 +163,6 @@ public class Job implements Serializable {
 	@Column(columnDefinition = "varchar(255) default '0'")
 	private String casePrice;
 
-	@Temporal(TemporalType.TIME)
-	private Date injectionDate;
+	private LocalDate injectionDate = LocalDate.now();
 
 }

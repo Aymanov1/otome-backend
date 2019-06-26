@@ -1,13 +1,11 @@
 package com.hrdatabank.otome.services;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +19,6 @@ import com.hrdatabank.otome.repositories.JobRepository;
  */
 @Service
 public class JobService {
-	private static Logger logger = LoggerFactory.getLogger(JobService.class);
 
 	/** The job repository. */
 	@Autowired
@@ -30,11 +27,11 @@ public class JobService {
 	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	public Job saveJob(Job job) {
 		return jobRepository.save(job);
 	}
-	
+
 	public List<Job> getCheckedJsenJobsByIdJobDetail(String idJobDetail) {
 		return jobRepository.getCheckedJsenJobsByIdJobDetail(idJobDetail);
 	}
@@ -43,7 +40,8 @@ public class JobService {
 		return jobRepository.getCheckedLacottoJobsByIdJobDetail(idJobDetail);
 	}
 
-	public Page<Job> findAllJobsByAffiliateInjectionDate(String affiliateType, Date injectionDate, Pageable pageable) {
+	public Page<Job> findAllJobsByAffiliateInjectionDate(String affiliateType, LocalDate injectionDate,
+			Pageable pageable) {
 		return jobRepository.findAllJobsByAffiliateInjectionDate(affiliateType, injectionDate, pageable);
 	}
 }

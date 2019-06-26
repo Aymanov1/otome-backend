@@ -9,15 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrdatabank.otome.services.JsenLacottoService;
+import com.hrdatabank.otome.services.JsenLacottoServiceImple;
 
 @Service
 public class LacottoJsenCSVManager {
 
 	@Autowired
 	private JsenLacottoService jsenLacottoService;
+	@Autowired
+	private JsenLacottoServiceImple jsenLacottoServiceImple;
 
 	public void importCsvStreamLacotto(String csvDirectoryLacotto) throws IOException {
-		jsenLacottoService.importCSVForLacottoJobsWithOpenCsv(csvDirectoryLacotto);
+		jsenLacottoServiceImple.importCSVForLacottoJobsWithOpenCsv(csvDirectoryLacotto);
 		// int[] numArr = { 0 };
 		// try {
 		//
@@ -51,7 +54,7 @@ public class LacottoJsenCSVManager {
 	 * @throws IOException
 	 */
 	public void importCsvStreamJsen(String csvDirectoryJsen) throws IOException {
-		jsenLacottoService.importJsenCSV(csvDirectoryJsen);
+		jsenLacottoServiceImple.importJsenCSV(csvDirectoryJsen);
 
 		// try {
 		// Files.newDirectoryStream(Paths.get(csvDirectoryJsen), path ->

@@ -16,19 +16,22 @@ public class TestController {
 
 	@Autowired
 	private LacottoJsenCSVManager lacottoJsenCSVManager;
-	
+
 	@GetMapping
 	public ResponseEntity test() throws IOException {
-		//lacottoJsenCSVManager.importCsvStreamLacotto("/home/heni/Vidéos/lacottoCSV/lacotto777.csv");
-		//lacottoJsenCSVManager.importCsvStreamJsen("/home/heni/Vidéos/lacottoCSV/j-sen_joboty.csv");
-		lacottoJsenCSVManager.importCsvStreamJsen("/home/heni/Vidéos/lacottoCSV/jsencsv/");
+		// lacottoJsenCSVManager.importCsvStreamLacotto("/home/heni/Vidéos/lacottoCSV/lacotto777.csv");
+		// lacottoJsenCSVManager.importCsvStreamJsen("/home/heni/Vidéos/lacottoCSV/j-sen_joboty.csv");
+		// lacottoJsenCSVManager.importCsvStreamJsen("/home/heni/Vidéos/lacottoCSV/jsencsv/");
+
+		lacottoJsenCSVManager.importCsvStreamLacotto("/Users/user/Downloads/lacotto777.csv");
+		//lacottoJsenCSVManager.importCsvStreamJsen("/Users/user/Downloads/j-sen_joboty.csv");
 		return ResponseEntity.ok().build();
 	}
 
 	@GetMapping("/import")
 	public void importcsv() throws IOException {
-		
-		//companyRepository.saveAll(companies);
+
+		// companyRepository.saveAll(companies);
 	}
 
 }
