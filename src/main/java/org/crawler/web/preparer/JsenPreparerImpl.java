@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import org.crawler.web.concurrent.service.JsenICrawlerServiceLauncherImpl;
 import org.crawler.web.concurrent.service.collector.BaitoruURLServiceCollectorImpl;
 import org.crawler.web.concurrent.service.collector.JsenURLServiceCollectorImpl;
+import org.crawler.web.crawlcontroller.JsenCrawlerController;
 import org.crawler.web.initializer.JsenInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -67,7 +68,7 @@ public class JsenPreparerImpl implements IAbstractPreparer {
 
 	@Override
 	public void stopCrawling() {
-		
+		JsenCrawlerController.getInstance().getController().shutdown();
 	}
 
 }

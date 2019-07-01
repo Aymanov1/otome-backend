@@ -23,6 +23,8 @@ public class BaitoruCrawlerController extends AbstractCrawlerController {
 	/** The Constant BAITORU_CRAWLER_CONTROLLER. */
 	private static final BaitoruCrawlerController BAITORU_CRAWLER_CONTROLLER = new BaitoruCrawlerController();
 
+	private CrawlController controller;
+
 	/**
 	 * Instantiates a new baitoru crawler controller.
 	 * 
@@ -61,11 +63,11 @@ public class BaitoruCrawlerController extends AbstractCrawlerController {
 			config.setMaxPagesToFetch(numberOfPages);
 			config.setIncludeBinaryContentInCrawling(false);
 			config.setResumableCrawling(false);
+			config.setShutdownOnEmptyQueue(true);
 
 			PageFetcher pageFetcher = new PageFetcher(config);
 			RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
 			RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-			CrawlController controller;
 
 			controller = new CrawlController(config, pageFetcher, robotstxtServer);
 
@@ -77,6 +79,10 @@ public class BaitoruCrawlerController extends AbstractCrawlerController {
 			LOGGER.log(Level.SEVERE, "Exception", exception);
 		}
 
+	}
+
+	public CrawlController getController() {
+		return controller;
 	}
 
 }
