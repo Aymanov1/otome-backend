@@ -264,12 +264,12 @@ public class BaitoruCrawler extends AbstractCrawler {
 				jobDetail.setPositionCategoryEnglish(categoryName);
 				jobDetail.setPositionCategoryJapanese(BaitoruInitializer.getInstance().getJobMap().get(categoryName));
 				try {
-					jobDetail.setLongitude(getLangitudeAndLatitude(jobAddress).getDouble("lng"));
-					jobDetail.setLatitude(getLangitudeAndLatitude(jobAddress).getDouble("lat"));
+					jobDetail.setLongitude(0.0);
+					jobDetail.setLatitude(0.0);
 					jobDetail.setAffiliateType(CrawlerTypesEnum.BAITORU.name());
 					DateFormat dateFormat = new SimpleDateFormat("hh:mm");
 					getWorkTimeEnWorkTimeJP(dateFormat.format(startTime), dateFormat.format(finishTime), jobDetail);
-				} catch (ParseException | JSONException e) {
+				} catch (ParseException e) {
 					logger.error("ERROR {}", e);
 				}
 				logger.error("Job Adresss latitude langitude {}", jobDetail);

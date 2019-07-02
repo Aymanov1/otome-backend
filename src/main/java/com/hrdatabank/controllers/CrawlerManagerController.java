@@ -76,6 +76,7 @@ public class CrawlerManagerController {
 	/** The task scheduler shop name. */
 	private ConcurrentTaskScheduler taskSchedulerShopName;
 
+	private ConcurrentTaskScheduler taskSchedulerAutoCrawler;
 	/** The scheduled future. */
 	@SuppressWarnings("rawtypes")
 	private ScheduledFuture scheduledFuture;
@@ -98,16 +99,13 @@ public class CrawlerManagerController {
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(value = "/startFullSearch")
 	public String onStartingFullSearch(@RequestParam(name = "type") String type) {
+		System.out.println("startFullSearch");
 		Optional<CrawlerTypesEnum> crawlerTypesEnum = Optional.ofNullable(Arrays.asList(CrawlerTypesEnum.values())
 				.stream().filter(x -> type.equalsIgnoreCase(x.name())).findAny().orElse(null));
 		crawlerTypesEnum.ifPresent(target -> {
-			if (target.equals(CrawlerTypesEnum.BAITORU)) {
-				baitoruPreparerImpl.startFullCrawling();
-			}
 
-			if (target.equals(CrawlerTypesEnum.JSEN)) {
-				jsenPreparerImpl.startFullCrawling();
-			}
+			baitoruPreparerImpl.startFullCrawling();
+
 		});
 		return crawlerTypesEnum.isPresent() ? "Full search Crawler is terminated" : "Wrong crawler type";
 	}
@@ -260,6 +258,54 @@ public class CrawlerManagerController {
 	}
 
 	/**
+	 * Renew schedule for shop name cleaning.
+	 *
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
+	 * @return the response entity
+	 */
+	@ApiOperation(value = "renew Schedule For Auto crawling")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
+	@PutMapping("/updateConfigCrawlerAutoCrawling/{id}")
+	public ResponseEntity<Object> renewScheduleAutoCrawling(@RequestBody ConfigCrawler configCrawler,
+			@PathVariable long id) {
+
+		Optional<ConfigCrawler> configCrawlerOptional = configCrawlerRepository.findById(id);
+		if (!configCrawlerOptional.isPresent())
+			return ResponseEntity.notFound().build();
+		configCrawler.setId(id);
+		configCrawlerRepository.save(configCrawler);
+
+		if (taskSchedulerAutoCrawler == null) {
+			this.taskSchedulerAutoCrawler = new ConcurrentTaskScheduler();
+			System.out.println("---------CREATE----------ConcurrentTaskScheduler3----3------------");
+		}
+		if (this.scheduledFuture() != null) {
+			System.out.println("---------CANCEL----------scheduledFuture3-----3----------");
+			this.scheduledFuture().cancel(true);
+		}
+		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
+			String cronString1 = configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler();
+			scheduledFuture = taskSchedulerAutoCrawler.schedule(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("-----------All the scheduled tasks are here-------3---------------");
+					onStartingFullSearch("Baitoru");
+					// verifiyShopNameNotBanned();
+				}
+			}, new CronTrigger(cronString1));
+		}
+		return ResponseEntity.noContent().build();
+	}
+
+	
+	
+	/**
 	 * Verifiy shop name not banned.
 	 */
 	@ApiOperation(value = "verifiy Shop Name Not Banned")
@@ -272,6 +318,7 @@ public class CrawlerManagerController {
 		jobOtomeRepository.cleanJobs();
 		System.out.println("jobs cleaned");
 	}
+
 
 	/**
 	 * Find count shops.

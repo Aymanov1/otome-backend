@@ -94,7 +94,7 @@ public class JsenLacottoService implements IJsenLacottoService {
 			int reason_shop_null = 0;
 
 			try (Writer writer = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream("/home/heni/Téléchargements/file.txt"), "utf-8"))) {
+					new OutputStreamWriter(new FileOutputStream("/opt/tomcat/logs/file.txt"), "utf-8"))) {
 				writer.write("/*****************************************************************************/ \n");
 
 				List<Job> listBatchJobs = new ArrayList<>();

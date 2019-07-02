@@ -1,18 +1,27 @@
 package com.hrdatabank.controllers;
 
 import java.io.IOException;
+import java.util.Optional;
+import java.util.concurrent.ScheduledFuture;
 
 import org.crawler.web.enumeration.CrawlerTypesEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
+import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hrdatabank.otome.domain.ConfigCrawler;
+import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
 import com.hrdatabank.otome.services.JsenLacottoService;
 import com.hrdatabank.otome.services.SFTPService;
 
@@ -36,7 +45,7 @@ public class SFTPController {
 
 	@Autowired
 	SFTPService sftpService;
-	
+
 	/** The host lacotto. */
 	@Value("${hostLacotto}")
 	private String hostLacotto;
@@ -87,6 +96,93 @@ public class SFTPController {
 
 	@Autowired
 	JsenLacottoService jsenLacottoService;
+
+	@Autowired
+	ConfigCrawlerRepository configCrawlerRepository;
+
+	/** The task scheduler. */
+	private ConcurrentTaskScheduler taskSchedulerJSEN;
+
+	/** The task scheduler shop name. */
+	private ConcurrentTaskScheduler taskSchedulerLacotto;
+
+	/** The scheduled future. */
+	@SuppressWarnings("rawtypes")
+	private ScheduledFuture scheduledFuture;
+
+	@ApiOperation(value = "renew Schedule For Auto crawling")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
+	@PutMapping("/updateConfigInjectorLacotto/{id}")
+	public ResponseEntity<Object> renewScheduleLacottoInjection(@RequestBody ConfigCrawler configCrawler,
+			@PathVariable long id) {
+
+		Optional<ConfigCrawler> configCrawlerOptional = configCrawlerRepository.findById(id);
+		if (!configCrawlerOptional.isPresent())
+			return ResponseEntity.notFound().build();
+		configCrawler.setId(id);
+		configCrawlerRepository.save(configCrawler);
+
+		if (taskSchedulerLacotto == null) {
+			this.taskSchedulerLacotto = new ConcurrentTaskScheduler();
+			System.out.println("---------CREATE----------ConcurrentTaskScheduler4----4------------");
+		}
+		if (this.scheduledFuture() != null) {
+			System.out.println("---------CANCEL----------scheduledFuture4-----4----------");
+			this.scheduledFuture().cancel(true);
+		}
+		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
+			String cronString1 = configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler();
+			scheduledFuture = taskSchedulerLacotto.schedule(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("-----------All the scheduled tasks are here-------4---------------");
+					if (downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString()).equalsIgnoreCase("Done"))
+						injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
+				}
+			}, new CronTrigger(cronString1));
+		}
+		return ResponseEntity.noContent().build();
+	}
+
+	@ApiOperation(value = "renew Schedule For Auto crawling")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
+	@PutMapping("/updateConfigInjectorJSEN/{id}")
+	public ResponseEntity<Object> renewScheduleJSENInjection(@RequestBody ConfigCrawler configCrawler,
+			@PathVariable long id) {
+
+		Optional<ConfigCrawler> configCrawlerOptional = configCrawlerRepository.findById(id);
+		if (!configCrawlerOptional.isPresent())
+			return ResponseEntity.notFound().build();
+		configCrawler.setId(id);
+		configCrawlerRepository.save(configCrawler);
+
+		if (taskSchedulerJSEN == null) {
+			this.taskSchedulerJSEN = new ConcurrentTaskScheduler();
+			System.out.println("---------CREATE----------ConcurrentTaskScheduler5----5------------");
+		}
+		if (this.scheduledFuture() != null) {
+			System.out.println("---------CANCEL----------scheduledFuture5----5----------");
+			this.scheduledFuture().cancel(true);
+		}
+		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
+			String cronString1 = configCrawlerRepository.findById(id).get().getSchedulerAutoInjectionJSEN();
+			scheduledFuture = taskSchedulerJSEN.schedule(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("-----------All the scheduled tasks are here-------5---------------");
+					if (downloadFilesToServer(CrawlerTypesEnum.JSEN.toString()).equalsIgnoreCase("Done"))
+						injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
+				}
+			}, new CronTrigger(cronString1));
+		}
+		return ResponseEntity.noContent().build();
+	}
 
 	/**
 	 * Download files to server.
@@ -141,6 +237,15 @@ public class SFTPController {
 			}
 		}
 		return "it seems there is a problem, please check the log for details";
+	}
+
+	/**
+	 * Scheduled future.
+	 *
+	 * @return the scheduled future
+	 */
+	private ScheduledFuture<?> scheduledFuture() {
+		return scheduledFuture;
 	}
 
 }

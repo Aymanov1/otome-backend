@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-//@EntityListeners(JobSchedulerBaitoru.class)
+// @EntityListeners(JobSchedulerBaitoru.class)
 public class ConfigCrawler {
 
 	@Id
@@ -18,6 +18,9 @@ public class ConfigCrawler {
 	private long id;
 	private String scheduler;
 	private String schedulerShopName;
+	private String schedulerAutoCrawler;
+	private String schedulerAutoInjectionJSEN;
+	private String schedulerAutoInjectionLacotto;
 
 	@PostUpdate
 	void onPostUpdate() {

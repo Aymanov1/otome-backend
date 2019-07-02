@@ -68,18 +68,18 @@ public class Job implements Serializable {
 	private String positionCategoryJapanese;
 
 	/** The salary detail. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String salaryDetail;
 
 	/** The job details. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String jobDetails;
 
 	/** The job type. */
 	private String jobType;
 
 	/** The training period. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String trainingPeriod;
 
 	/** The interview type. */
@@ -92,25 +92,25 @@ public class Job implements Serializable {
 	private String requiredDurationInJapan;
 
 	/** The hourly wage memo. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String hourlyWageMemo;
 
 	/** The hourly wage in training period. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String hourlyWageInTrainingPeriod;
 
 	/** The picture job. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String pictureJob;
 
 	/** The work time detail. */
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String workTimeDetail;
 
 	private String prefecture;
 
 	private String affiliateType;
-	@Column(length = 1337)
+	@Column(length = 15000)
 	private String tagRelationcontents;
 
 	/** The number staff needed. */

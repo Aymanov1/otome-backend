@@ -44,9 +44,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
 				.antMatchers(HttpMethod.GET, SWAGGER).permitAll()
 				.antMatchers(API_DOC, SWAGGER_RESOURCES, SWAGGER, WEBJARS, SWAGGER_JSON).permitAll()
-				.antMatchers("/actuator/**").permitAll().antMatchers("/sftp/**").permitAll().antMatchers("/api/**")
-				.permitAll().antMatchers("/test/**").permitAll().antMatchers("/fetch/**").permitAll().anyRequest()
-				.authenticated().and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
+				.antMatchers("/actuator/**").permitAll()
+				.antMatchers("/crawler/**").permitAll()
+				.antMatchers("/sftp/**").permitAll()
+				.antMatchers("/test/**").permitAll()
+				.antMatchers("/fetch/**").permitAll()
+				.anyRequest().authenticated()
+				.and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager())).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

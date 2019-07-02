@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiResponses;
 public class NearestStationOtomeController {
 
 	/** The log. */
-	private static Logger log = LoggerFactory.getLogger(JobOtomeController.class);
+	private static Logger log = LoggerFactory.getLogger(NearestStationOtomeController.class);
 
 	/** The nearest station otome service. */
 	@Autowired
@@ -92,7 +92,7 @@ public class NearestStationOtomeController {
 			NearestStationOtome nearestStationPrevious = nearestStationOtomeService
 					.getNearStationByIdLineCD(nearestStationCd - incremantId);
 			if (nearestStationPrevious != null) {
-				System.out.println(page - deliveredpage + "************nearestStationPrevious**************"
+				log.info(page - deliveredpage + "************nearestStationPrevious**************"
 						+ nearestStationPrevious.getIdNearestStation());
 				jobPagesPrevious = jobOtomeService.getJobsByStationAndJobCategory(page - deliveredpage, size,
 						nearestStationPrevious.getLatitudeStation(), nearestStationPrevious.getLongitudeStation(),
@@ -103,34 +103,32 @@ public class NearestStationOtomeController {
 				pageN = page - deliveredpage - jobPagesPrevious.getTotalPages() >= 0
 						? page - deliveredpage - jobPagesPrevious.getTotalPages()
 						: page;
-				System.out.println("************nearestStationNext**************"
-						+ nearestStationNext.getIdNearestStation() + "***" + pageN);
+				log.info("************nearestStationNext**************{} ",
+						nearestStationNext.getIdNearestStation() + "***" + pageN);
 
 				jobPagesNext = jobOtomeService.getJobsByStationAndJobCategory(pageN, size,
 						nearestStationNext.getLatitudeStation(), nearestStationNext.getLongitudeStation(), maxKm);
 			}
 			deliveredpage = deliveredpage + jobPagesPrevious.getTotalPages() + jobPagesNext.getTotalPages();
-			System.out.println(
-					"***********jobPagesPrevious.getTotalPages()**************" + jobPagesPrevious.getTotalPages());
-			System.out.println("***********jobPagesNext.getTotalPages()**************" + jobPagesNext.getTotalPages());
+			log.info("***********jobPagesPrevious.getTotalPages()**************{} ", jobPagesPrevious.getTotalPages());
+			log.info("***********jobPagesNext.getTotalPages()**************{} ", jobPagesNext.getTotalPages());
 
-			System.out.println("***********deliveredpage**************" + deliveredpage);
+			log.info("***********deliveredpage**************{} ", deliveredpage);
 
-			System.out
-					.println("***********jobPagesPrevious.hasContent()***************" + jobPagesPrevious.hasContent());
+			log.info("**********jobPagesPrevious.hasContent()***************{} ", jobPagesPrevious.hasContent());
 
-			System.out.println("***********jobPagesNext.hasContent()***************" + jobPagesNext.hasContent());
+			log.info("***********jobPagesNext.hasContent()***************{} ", jobPagesNext.hasContent());
 
 		}
-		System.out.println("************incremantId**************" + incremantId);
+		log.info("************incremantId**************{} ", incremantId);
 		int nearestStationId = 0;
 		if (incremantId < 15) {
 			if (jobPagesPrevious.hasContent()) {
-				System.out.println("************station**************" + (idNearestStation - incremantId));
+				log.info("************station**************{} ", (idNearestStation - incremantId));
 				nearestStationId = idNearestStation - incremantId;
 				jobs = jobPagesPrevious;
 			} else {
-				System.out.println("************station**************" + (idNearestStation + incremantId));
+				log.info("************station**************{} ", (idNearestStation + incremantId));
 				nearestStationId = idNearestStation + incremantId;
 
 				jobs = jobPagesNext;
