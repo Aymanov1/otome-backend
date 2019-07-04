@@ -1,7 +1,6 @@
 package com.hrdatabank.controllers;
 
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 
@@ -91,10 +90,6 @@ public class SFTPController {
 	/** The port jsen. */
 	@Value("${portJsen}")
 	private int portJsen;
-
-	private CompletableFuture<Boolean> lacottoService;
-
-	private CompletableFuture<Boolean> jsenService;
 
 	@Autowired
 	JsenLacottoServiceImple jsenLacottoService;
@@ -231,10 +226,10 @@ public class SFTPController {
 			throws InterruptedException, ExecutionException {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			try {
-				lacottoService = jsenLacottoService
+				jsenLacottoService.getStopLacotto().set(false);
+				 jsenLacottoService
 						.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
-				CompletableFuture.allOf(lacottoService).join();
-				return lacottoService.get() ? "Done" : "not Done";
+				return "Done" ;
 			} catch (Exception e) {
 				log.error("error", e);
 				return "not Done";
@@ -242,9 +237,9 @@ public class SFTPController {
 
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
 			try {
-				jsenService = jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
-				CompletableFuture.allOf(jsenService).join();
-				return jsenService.get() ? "Done" : "not Done";
+				jsenLacottoService.getStopLacotto().set(false);
+			jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
+				return "Done";
 			} catch (Exception e) {
 				log.error("error", e);
 				return "not Done";
@@ -262,11 +257,9 @@ public class SFTPController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	public String stop(@PathVariable("serverType") String serverType) throws InterruptedException, ExecutionException {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
-			lacottoService.cancel(true);
-			lacottoService.completeExceptionally(new Exception());
+			jsenLacottoService.getStopLacotto().set(true);
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
-			jsenService.cancel(true);
-			jsenService.completeExceptionally(new Exception());
+			jsenLacottoService.getStopJsen().set(true);
 		}
 		return "done";
 	}

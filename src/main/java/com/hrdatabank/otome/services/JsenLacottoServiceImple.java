@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,7 +21,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.supercsv.io.CsvListReader;
 import org.supercsv.io.ICsvListReader;
@@ -44,6 +43,9 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 	private CompanyService companyService;
 	@Autowired
 	private JobRepository jobRepository;
+	
+	public AtomicBoolean stopLacotto = new AtomicBoolean(false);
+	public AtomicBoolean stopJsen= new AtomicBoolean(false);
 
 	private int nb_skipOccupationCodeNotFound;
 	private int nb_skipOccupationCodeNull;
@@ -109,8 +111,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 	private int reason_shop_null;
 
 	@Override
-	@Async
-	public CompletableFuture<Boolean> importJsenCSV(String fileName) {
+	public void importJsenCSV(String fileName) {
 		try {
 			listReader = new CsvListReader(new FileReader(fileName), CsvPreference.STANDARD_PREFERENCE);
 
@@ -124,6 +125,9 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				writer.write("/*****************************************************************************/ \n");
 
 				while ((listReader.read()) != null) {
+					if(stopJsen.get()) {
+						return;
+					}
 					final List<Object> data = listReader.executeProcessors(JsenLacottoUtils.getProcessors(111));
 					jsen(data, writer);
 				}
@@ -135,7 +139,6 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			}
 
 		}catch (Exception e) {
-			CompletableFuture.completedFuture(false);
 		} finally {
 			if (listReader != null) {
 				try {
@@ -146,7 +149,6 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			}
 		}
 		
-		return CompletableFuture.completedFuture(true);
 	}
 
 	private void jsen(List<Object> data, Writer writer) throws ParseException, IOException {
@@ -498,8 +500,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 	}
 
 	@Override
-	@Async
-	public CompletableFuture<Boolean>  importCSVForLacottoJobsWithOpenCsv(String fileName) {
+	public void importCSVForLacottoJobsWithOpenCsv(String fileName) {
 
 		try {
 			listReader = new CsvListReader(new FileReader(fileName), CsvPreference.STANDARD_PREFERENCE);
@@ -510,6 +511,9 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			companyCheck("テスト会社");
 
 			while ((listReader.read()) != null) {
+				if(stopLacotto.get()) {
+					return;
+				}
 				final List<Object> data = listReader.executeProcessors(JsenLacottoUtils.getProcessors(20));
 				lacotto(data);
 			}
@@ -541,7 +545,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			listReader.close();
 
 		}catch (Exception e) {
-			return CompletableFuture.completedFuture(false);
+			
 		}finally {
 			if (listReader != null) {
 				try {
@@ -552,7 +556,23 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			}
 		}
 		
-		return CompletableFuture.completedFuture(true);
+
+	}
+
+	public AtomicBoolean getStopLacotto() {
+		return stopLacotto;
+	}
+
+	public void setStopLacotto(AtomicBoolean stopLacotto) {
+		this.stopLacotto = stopLacotto;
+	}
+
+	public AtomicBoolean getStopJsen() {
+		return stopJsen;
+	}
+
+	public void setStopJsen(AtomicBoolean stopJsen) {
+		this.stopJsen = stopJsen;
 	}
 
 	// テスト会社
