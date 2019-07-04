@@ -21,7 +21,7 @@ public class LacottoJsenDBController {
 	@Autowired
 	private JobService jobService;
 
-	@GetMapping
+	@GetMapping(value = "/jobs")
 	public ResponseEntity<?> findAllLacottoJsenJobs(@RequestParam String affiliateType,
 			@RequestParam String injectionDate, @RequestParam(name = "numPage", defaultValue = "0") int numPage,
 			@RequestParam(name = "size", defaultValue = "10") int size) throws ParseException {
@@ -32,6 +32,19 @@ public class LacottoJsenDBController {
 		}
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	}
+
+	@GetMapping(value = "/count")
+	public ResponseEntity<?> countAllLacottoJsenJobs(@RequestParam String affiliateType,
+			@RequestParam String injectionDate) {
+		if (affiliateType.equalsIgnoreCase("j-sen") || affiliateType.equalsIgnoreCase("jsen")
+				|| affiliateType.equalsIgnoreCase("lacotto")) {
+
+			return ResponseEntity.ok(jobService
+					.findAllJobsByAffiliateInjectionDate(affiliateType, LocalDate.parse(injectionDate)).size());
+
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(0);
 	}
 
 }

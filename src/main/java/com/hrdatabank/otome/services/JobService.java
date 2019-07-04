@@ -44,4 +44,12 @@ public class JobService {
 			Pageable pageable) {
 		return jobRepository.findAllJobsByAffiliateInjectionDate(affiliateType, injectionDate, pageable);
 	}
+
+	public List<Job> findAllJobsByAffiliateInjectionDate(String affiliateType, LocalDate injectionDate) {
+		return jobRepository.findAllJobsByAffiliateInjectionDate(affiliateType, injectionDate);
+	}
+
+	public int countAllJobsByAffiliateInjectionDate(String affiliateType, LocalDate injectionDate) {
+		return jobRepository.countAllJobsByAffiliateInjectionDate(affiliateType, injectionDate);
+	}
 }

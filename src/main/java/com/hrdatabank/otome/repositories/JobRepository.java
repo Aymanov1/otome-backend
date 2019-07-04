@@ -29,5 +29,14 @@ public interface JobRepository extends JpaRepository<Job, Serializable>, JpaSpec
 	@Query(value = "SELECT j FROM Job j where j.affiliateType like %:type% and j.injectionDate = :injectionDate")
 	public Page<Job> findAllJobsByAffiliateInjectionDate(@Param("type") String affiliateType,
 			@Param("injectionDate") LocalDate injectionDate, Pageable pageable);
+	
+	@Query(value = "SELECT j FROM Job j where j.affiliateType like %:type% and j.injectionDate = :injectionDate")
+	public List<Job> findAllJobsByAffiliateInjectionDate(@Param("type") String affiliateType,
+			@Param("injectionDate") LocalDate injectionDate);
+	
+	@Query(value = "SELECT count(j) FROM Job j where j.affiliateType like %:type% and j.injectionDate = :injectionDate")
+	public int countAllJobsByAffiliateInjectionDate(@Param("type") String affiliateType,
+			@Param("injectionDate") LocalDate injectionDate);
+
 
 }

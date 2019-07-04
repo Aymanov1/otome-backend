@@ -227,9 +227,8 @@ public class SFTPController {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			try {
 				jsenLacottoService.getStopLacotto().set(false);
-				 jsenLacottoService
-						.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
-				return "Done" ;
+				jsenLacottoService.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
+				return "Done";
 			} catch (Exception e) {
 				log.error("error", e);
 				return "not Done";
@@ -237,8 +236,9 @@ public class SFTPController {
 
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
 			try {
-				jsenLacottoService.getStopLacotto().set(false);
-			jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
+				jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
+				jsenLacottoService.getStopJsen().set(false);
+				
 				return "Done";
 			} catch (Exception e) {
 				log.error("error", e);

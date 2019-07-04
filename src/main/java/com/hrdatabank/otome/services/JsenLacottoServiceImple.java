@@ -112,6 +112,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 
 	@Override
 	public void importJsenCSV(String fileName) {
+		System.out.println("start injecting");
 		try {
 			listReader = new CsvListReader(new FileReader(fileName), CsvPreference.STANDARD_PREFERENCE);
 
@@ -121,7 +122,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			companyCheck("テスト会社");
 
 			try (Writer writer = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream("/Users/user/Downloads/file.txt"), "utf-8"))) {
+					new OutputStreamWriter(new FileOutputStream("/opt/tomcat/logs/file.txt"), "utf-8"))) {
 				writer.write("/*****************************************************************************/ \n");
 
 				while ((listReader.read()) != null) {
@@ -601,12 +602,12 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 		skippedJobs = 0;
 		savedJobs = 0;
 		j = 0;
-		urlExpired = new ArrayList<String>();
-		urlNOTExpired = new ArrayList<String>();
-		numberOfRowsSkipped = new ArrayList<Integer>();
-		reasonOfRowsSkipped = new ArrayList<String>();
+		urlExpired = new ArrayList<>();
+		urlNOTExpired = new ArrayList<>();
+		numberOfRowsSkipped = new ArrayList<>();
+		reasonOfRowsSkipped = new ArrayList<>();
 		listBatchJobs = new ArrayList<>();
-		numberOfRowsSaved = new ArrayList<Integer>();
+		numberOfRowsSaved = new ArrayList<>();
 
 		nb_skipOccupationCodeNotFound = 0;
 		nb_skipOccupationCodeNull = 0;
