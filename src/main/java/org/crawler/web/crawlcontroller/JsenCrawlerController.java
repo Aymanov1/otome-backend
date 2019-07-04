@@ -11,7 +11,6 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JsenCrawlerController.
  */
@@ -21,6 +20,8 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 
 	/** The Constant JSEN_CRAWLER_CONTROLLER. */
 	private static final JsenCrawlerController JSEN_CRAWLER_CONTROLLER = new JsenCrawlerController();
+
+	private CrawlController controller;
 
 	/**
 	 * Instantiates a new jsen crawler controller.
@@ -57,11 +58,11 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 			config.setMaxPagesToFetch(numberOfPages);
 			config.setIncludeBinaryContentInCrawling(false);
 			config.setResumableCrawling(false);
+			config.setShutdownOnEmptyQueue(true);
 
 			PageFetcher pageFetcher = new PageFetcher(config);
 			RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
 			RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-			CrawlController controller;
 
 			controller = new CrawlController(config, pageFetcher, robotstxtServer);
 
@@ -73,6 +74,10 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 			LOGGER.log(Level.SEVERE, "Exception", exception);
 		}
 
+	}
+
+	public CrawlController getController() {
+		return controller;
 	}
 
 }
