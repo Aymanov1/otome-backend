@@ -1,7 +1,8 @@
 package com.hrdatabank.controllers;
 
-import java.io.IOException;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 
 import org.crawler.web.enumeration.CrawlerTypesEnum;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hrdatabank.otome.domain.ConfigCrawler;
 import com.hrdatabank.otome.repositories.ConfigCrawlerRepository;
-import com.hrdatabank.otome.services.JsenLacottoService;
+import com.hrdatabank.otome.services.JsenLacottoServiceImple;
 import com.hrdatabank.otome.services.SFTPService;
 
 import io.swagger.annotations.ApiOperation;
@@ -91,8 +92,12 @@ public class SFTPController {
 	@Value("${portJsen}")
 	private int portJsen;
 
+	private CompletableFuture<Boolean> lacottoService;
+
+	private CompletableFuture<Boolean> jsenService;
+
 	@Autowired
-	JsenLacottoService jsenLacottoService;
+	JsenLacottoServiceImple jsenLacottoService;
 
 	@Autowired
 	ConfigCrawlerRepository configCrawlerRepository;
@@ -137,7 +142,11 @@ public class SFTPController {
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------4---------------");
 					if (downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString()).equalsIgnoreCase("Done"))
-						injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
+						try {
+							injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
+						} catch (InterruptedException | ExecutionException e) {
+							e.printStackTrace();
+						}
 				}
 			}, new CronTrigger(cronString1));
 		}
@@ -174,7 +183,11 @@ public class SFTPController {
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------5---------------");
 					if (downloadFilesToServer(CrawlerTypesEnum.JSEN.toString()).equalsIgnoreCase("Done"))
-						injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
+						try {
+							injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
+						} catch (InterruptedException | ExecutionException e) {
+							e.printStackTrace();
+						}
 				}
 			}, new CronTrigger(cronString1));
 		}
@@ -214,26 +227,48 @@ public class SFTPController {
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(path = "/inject/{serverType}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String injectFilesToServer(@PathVariable("serverType") String serverType) {
+	public String injectFilesToServer(@PathVariable("serverType") String serverType)
+			throws InterruptedException, ExecutionException {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			try {
-				jsenLacottoService.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
-				return "Done";
-			} catch (IOException e) {
+				lacottoService = jsenLacottoService
+						.importCSVForLacottoJobsWithOpenCsv("/opt/tomcat/csv/lacotto_job_offer.csv");
+				CompletableFuture.allOf(lacottoService).join();
+				return lacottoService.get() ? "Done" : "not Done";
+			} catch (Exception e) {
 				log.error("error", e);
 				return "not Done";
 			}
 
 		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
 			try {
-				jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
-				return "Done";
-			} catch (IOException e) {
+				jsenService = jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
+				CompletableFuture.allOf(jsenService).join();
+				return jsenService.get() ? "Done" : "not Done";
+			} catch (Exception e) {
 				log.error("error", e);
 				return "not Done";
 			}
 		}
 		return "it seems there is a problem, please check the log for details";
+	}
+
+	@ApiOperation(value = " stop injecting csv files from SFTP/FTP by crawler type to Database")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
+			@ApiResponse(code = 401, message = "Unauthorized Action"),
+			@ApiResponse(code = 403, message = "Forbidden Action"),
+			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
+	@GetMapping(path = "/inject/stop/{serverType}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public String stop(@PathVariable("serverType") String serverType) throws InterruptedException, ExecutionException {
+		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
+			lacottoService.cancel(true);
+			lacottoService.completeExceptionally(new Exception());
+		} else if (serverType.equalsIgnoreCase(CrawlerTypesEnum.JSEN.toString())) {
+			jsenService.cancel(true);
+			jsenService.completeExceptionally(new Exception());
+		}
+		return "done";
 	}
 
 	/**
