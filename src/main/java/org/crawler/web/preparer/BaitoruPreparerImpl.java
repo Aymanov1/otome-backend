@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import org.crawler.web.concurrent.service.BaitoruCrawlerServiceLauncherImpl;
 import org.crawler.web.concurrent.service.collector.BaitoruURLServiceCollectorImpl;
+import org.crawler.web.crawlcontroller.BaitoruCrawlerController;
 import org.crawler.web.initializer.BaitoruInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -57,7 +58,7 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 					BaitoruInitializer.getInstance().getBasicsURLWebsite().get(area),
 					BaitoruInitializer.getInstance().getJobMap().get(category));
 			CompletableFuture.allOf(completableFuture).join();
-			CompletableFuture<Boolean> done = baitoruCrawlerServiceLauncherImpl
+			done = baitoruCrawlerServiceLauncherImpl
 					.startCrawlingURLs(completableFuture.get());
 			CompletableFuture.allOf(done).join();
 		} catch (InterruptedException | ExecutionException e) {
@@ -67,8 +68,7 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 
 	@Override
 	public void stopCrawling() {
-		if (!done.isCancelled())
-			done.cancel(true);
+		BaitoruCrawlerController.getInstance().getController().shutdown();
 	}
 
 }

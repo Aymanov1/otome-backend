@@ -20,6 +20,7 @@ import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CrawlerMangerCOntroller. still yet in developmenet
  * 
@@ -88,8 +88,7 @@ public class CrawlerManagerController {
 	 * On starting full search.
 	 *
 	 * @author Hanios
-	 * @param type
-	 *            the type
+	 * @param type the type
 	 * @return the string
 	 */
 	@ApiOperation(value = " Starting Full Search by crawler type ")
@@ -114,12 +113,9 @@ public class CrawlerManagerController {
 	 * On starting part search.
 	 *
 	 * @author Hanios
-	 * @param type
-	 *            the type
-	 * @param area
-	 *            the area
-	 * @param category
-	 *            the category
+	 * @param type     the type
+	 * @param area     the area
+	 * @param category the category
 	 * @return the string
 	 */
 	@ApiOperation(value = " Starting Part Search by crawler type")
@@ -159,13 +155,22 @@ public class CrawlerManagerController {
 		return message;
 	}
 
+	@PostMapping(value = "/shutdown")
+	public ResponseEntity<?> shutdown(@RequestParam(name = "type") String type) {
+		if (type.equalsIgnoreCase(CrawlerTypesEnum.BAITORU.name())) {
+			baitoruPreparerImpl.stopCrawling();
+		} else if (type.equalsIgnoreCase(CrawlerTypesEnum.JSEN.name())) {
+			jsenPreparerImpl.stopCrawling();
+		}
+
+		return ResponseEntity.ok().build();
+	}
+
 	/**
 	 * Renew schedule.
 	 *
-	 * @param configCrawler
-	 *            the config crawler
-	 * @param id
-	 *            the id
+	 * @param configCrawler the config crawler
+	 * @param id            the id
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "Renew Schedule for 404 jobs removing")
@@ -215,10 +220,8 @@ public class CrawlerManagerController {
 	/**
 	 * Renew schedule for shop name cleaning.
 	 *
-	 * @param configCrawler
-	 *            the config crawler
-	 * @param id
-	 *            the id
+	 * @param configCrawler the config crawler
+	 * @param id            the id
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "renew Schedule For Shop Name Cleaning")
@@ -295,8 +298,7 @@ public class CrawlerManagerController {
 				@Override
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------3---------------");
-					onStartingFullSearch("Baitoru");
-					// verifiyShopNameNotBanned();
+					onStartingFullSearch(CrawlerTypesEnum.BAITORU.name());
 				}
 			}, new CronTrigger(cronString1));
 		}

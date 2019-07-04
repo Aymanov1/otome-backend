@@ -107,7 +107,7 @@ public abstract class AbstractCrawler extends WebCrawler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *  
 	 * @see
 	 * edu.uci.ics.crawler4j.crawler.WebCrawler#shouldVisit(edu.uci.ics.crawler4j.
 	 * crawler.Page, edu.uci.ics.crawler4j.url.WebURL)

@@ -40,9 +40,6 @@ public class SFTPController {
 	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(SFTPController.class);
 
-	/** The Constant ERROR. */
-	private static final String ERROR = "ERROR ";
-
 	@Autowired
 	SFTPService sftpService;
 
