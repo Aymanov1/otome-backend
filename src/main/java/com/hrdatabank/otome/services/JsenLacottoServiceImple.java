@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.supercsv.io.CsvListReader;
 import org.supercsv.io.ICsvListReader;
@@ -107,7 +109,8 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 	private int reason_shop_null;
 
 	@Override
-	public void importJsenCSV(String fileName) throws IOException {
+	@Async
+	public CompletableFuture<Boolean> importJsenCSV(String fileName) {
 		try {
 			listReader = new CsvListReader(new FileReader(fileName), CsvPreference.STANDARD_PREFERENCE);
 
@@ -131,11 +134,19 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				e.printStackTrace();
 			}
 
+		}catch (Exception e) {
+			CompletableFuture.completedFuture(false);
 		} finally {
 			if (listReader != null) {
-				listReader.close();
+				try {
+					listReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		
+		return CompletableFuture.completedFuture(true);
 	}
 
 	private void jsen(List<Object> data, Writer writer) throws ParseException, IOException {
@@ -487,7 +498,8 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 	}
 
 	@Override
-	public void importCSVForLacottoJobsWithOpenCsv(String fileName) throws IOException {
+	@Async
+	public CompletableFuture<Boolean>  importCSVForLacottoJobsWithOpenCsv(String fileName) {
 
 		try {
 			listReader = new CsvListReader(new FileReader(fileName), CsvPreference.STANDARD_PREFERENCE);
@@ -528,11 +540,19 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			listBatchJobs = null;
 			listReader.close();
 
-		} finally {
+		}catch (Exception e) {
+			return CompletableFuture.completedFuture(false);
+		}finally {
 			if (listReader != null) {
-				listReader.close();
+				try {
+					listReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		
+		return CompletableFuture.completedFuture(true);
 	}
 
 	// テスト会社
