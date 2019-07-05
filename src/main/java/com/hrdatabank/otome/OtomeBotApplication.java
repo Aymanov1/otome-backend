@@ -117,11 +117,11 @@ public class OtomeBotApplication implements CommandLineRunner {
 
 		if (configRepository.findAll().isEmpty()) {
 			ConfigCrawler configCrawler = new ConfigCrawler();
-			configCrawler.setScheduler("0 0 0 * * *");
-			configCrawler.setSchedulerShopName("0 0 0 * * *");
-			configCrawler.setSchedulerAutoCrawler("0 0 0 * * *");
-			configCrawler.setSchedulerAutoInjectionLacotto("0 0 0 * * *");
-			configCrawler.setSchedulerAutoInjectionJSEN("0 0 0 * * *");
+			configCrawler.setScheduler("0 55 23 * * *");
+			configCrawler.setSchedulerShopName("0 45 3 * * *");
+			configCrawler.setSchedulerAutoCrawler("0 30 7 * * *");
+			configCrawler.setSchedulerAutoInjectionLacotto("0 30 15 * * *");
+			configCrawler.setSchedulerAutoInjectionJSEN("0 10 20 * * *");
 			configRepository.save(configCrawler);
 
 		}

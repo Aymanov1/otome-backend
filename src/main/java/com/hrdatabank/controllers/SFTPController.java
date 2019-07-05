@@ -131,12 +131,12 @@ public class SFTPController {
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
-			String cronString1 = configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler();
+			String cronString1 = configCrawlerRepository.findById(id).get().getSchedulerAutoInjectionLacotto();
 			scheduledFuture = taskSchedulerLacotto.schedule(new Runnable() {
 				@Override
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------4---------------");
-					if (downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString()).equalsIgnoreCase("Done"))
+					downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
 						try {
 							injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
 						} catch (InterruptedException | ExecutionException e) {
@@ -177,12 +177,14 @@ public class SFTPController {
 				@Override
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------5---------------");
-					if (downloadFilesToServer(CrawlerTypesEnum.JSEN.toString()).equalsIgnoreCase("Done"))
-						try {
-							injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
-						} catch (InterruptedException | ExecutionException e) {
-							e.printStackTrace();
-						}
+					downloadFilesToServer(CrawlerTypesEnum.JSEN.toString());
+
+					try {
+						injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
+					} catch (InterruptedException|ExecutionException e) {
+						e.printStackTrace();
+					} 
+
 				}
 			}, new CronTrigger(cronString1));
 		}
@@ -238,7 +240,7 @@ public class SFTPController {
 			try {
 				jsenLacottoService.importJsenCSV("/opt/tomcat/csv/mb_works_for_joboty.csv");
 				jsenLacottoService.getStopJsen().set(false);
-				
+
 				return "Done";
 			} catch (Exception e) {
 				log.error("error", e);
