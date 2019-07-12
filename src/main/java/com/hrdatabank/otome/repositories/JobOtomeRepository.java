@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.hrdatabank.otome.domain.JobOtome;
 import com.hrdatabank.otome.model.JobDto;
@@ -22,6 +23,7 @@ import com.hrdatabank.otome.model.JobDto;
  */
 @Repository
 @RepositoryRestResource
+@CrossOrigin(origins = "**")
 public interface JobOtomeRepository extends JpaRepository<JobOtome, Long> {
 	@Query(value = "SELECT count(j) AS count FROM JobOtome j where  j.status = TRUE and j.affiliateType LIKE CONCAT('%','BAITORU','%')")
 	public long countBaitoruJobsAffiliateActivated();
@@ -38,10 +40,10 @@ public interface JobOtomeRepository extends JpaRepository<JobOtome, Long> {
 			@Param("maxKm") int maxKm, Pageable pageable);
 
 	@Query("select count(j) from JobOtome j")
-	Long findCount();
+	public Long findCount();
 	
 	@Query("select  count( distinct j.shopName) from JobOtome j")
-	int findCountShops();
+	public int findCountShops();
 
 	@Transactional
 	@Modifying
@@ -54,15 +56,15 @@ public interface JobOtomeRepository extends JpaRepository<JobOtome, Long> {
 			+ "  or j.shopname like'%アイング株式会社%' or j.shopname like'%採用受付センター%' or j.shopname like'%登録%'  or j.shopname like'%パーソル%' or j.shopname like'%スタッフ%' or j.shopname like'%セフティアシスト株式会社%'  or j.shopname like'%エムジー株式会社%'   or j.shopname like'%株式会社シーズン%' "
 			+ "  or j.shopname like'%株式会社サンエーサンクス%' or j.shopname like'%ジョブ%' or j.shopname like'%キャリア%' or j.shopname like'%ケイテム%' or j.shopname like'%HUMANIC%' or j.shopname like'%テイケイ%'  or j.shopname like'%アプリリゾート%'  or j.shopname like'%プロキャスト%' or j.shopname like'%日本ワークプレイス%' or j.shopname like'%エスケイコンサルタント%' "
 			+ "  or j.shopname like'%ティー･ピー･エス%' or j.shopname like'%TPS%' or j.shopname like'%ヒューマン%' or j.shopname like'%リソース%');", nativeQuery = true)
-	void cleanJobs();
+	public void cleanJobs();
 
 	@Query("select count(j) from JobOtome j where j.status=true")
-	Long findValidJobsCount();
+	public Long findValidJobsCount();
 
 	@Query("select count(j) from JobOtome j where j.transportation=true")
-	Long findTransportationCount();
+	public Long findTransportationCount();
 
 	@Query("select count(j) from JobOtome j where j.affiliateType = 'BAITORU'")
-	Long findBaitoruJobsCount();
+	public Long findBaitoruJobsCount();
 
 }

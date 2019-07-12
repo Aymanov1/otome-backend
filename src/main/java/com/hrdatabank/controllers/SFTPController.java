@@ -34,6 +34,7 @@ import io.swagger.annotations.ApiResponses;
  * The Class SFTPController.
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/sftp")
 public class SFTPController {
 
@@ -87,9 +88,7 @@ public class SFTPController {
 	@Value("${pathJsenDestination}")
 	private String pathJsenDestination;
 
-	/** The port jsen. */
-	@Value("${portJsen}")
-	private int portJsen;
+
 
 	@Autowired
 	JsenLacottoServiceImple jsenLacottoService;
@@ -137,11 +136,11 @@ public class SFTPController {
 				public void run() {
 					System.out.println("-----------All the scheduled tasks are here-------4---------------");
 					downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
-						try {
-							injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
-						} catch (InterruptedException | ExecutionException e) {
-							e.printStackTrace();
-						}
+					try {
+						injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
+					} catch (InterruptedException | ExecutionException e) {
+						e.printStackTrace();
+					}
 				}
 			}, new CronTrigger(cronString1));
 		}
@@ -181,9 +180,9 @@ public class SFTPController {
 
 					try {
 						injectFilesToServer(CrawlerTypesEnum.JSEN.toString());
-					} catch (InterruptedException|ExecutionException e) {
+					} catch (InterruptedException | ExecutionException e) {
 						e.printStackTrace();
-					} 
+					}
 
 				}
 			}, new CronTrigger(cronString1));
@@ -204,7 +203,6 @@ public class SFTPController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(path = "/download/{serverType}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public String downloadFilesToServer(@PathVariable("serverType") String serverType) {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			return sftpService.downloadFromServer(hostLacotto, userLacotto, passwordLacotto, portLacotto,
@@ -223,7 +221,6 @@ public class SFTPController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(path = "/inject/{serverType}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public String injectFilesToServer(@PathVariable("serverType") String serverType)
 			throws InterruptedException, ExecutionException {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
@@ -256,7 +253,6 @@ public class SFTPController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(path = "/inject/stop/{serverType}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public String stop(@PathVariable("serverType") String serverType) throws InterruptedException, ExecutionException {
 		if (serverType.equalsIgnoreCase(CrawlerTypesEnum.LACOTTO.toString())) {
 			jsenLacottoService.getStopLacotto().set(true);

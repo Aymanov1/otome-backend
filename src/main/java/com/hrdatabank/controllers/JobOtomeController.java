@@ -70,7 +70,7 @@ import reactor.core.publisher.Flux;
  */
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "**")
 @RequestMapping(path = "/api")
 public class JobOtomeController {
 
@@ -109,7 +109,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public Flux<JobDto> retrieveAllJobOtomes() {
 		return jobOtomeServiceImpl.findAllJobDTO();
 	}
@@ -127,7 +126,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/{id}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public JobOtome retrieveJob(@PathVariable long id) {
 		Optional<JobOtome> job = jobOtomeRepository.findById(id);
 		if (job.isPresent())
@@ -149,7 +147,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@DeleteMapping("/jobsOtome/{id}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public void deleteJob(@PathVariable long id) {
 		jobOtomeRepository.deleteById(id);
 	}
@@ -171,7 +168,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/getJobByStationTimeCategory")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public List<JobOtome> getJobByStationTimeCategory(@RequestParam(name = "idLineStation") long idLineStation,
 			@RequestParam(name = "positionCategoryEnglish") String positionCategoryEnglish,
 			@RequestParam(name = "workTimeEnglish") String workTimeEnglish) {
@@ -203,7 +199,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping("/jobsOtome/getJobsByTimeWorking/{start}/{finish}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public List<JobOtome> getJobsByTimeWorking(@PathVariable String start, @PathVariable String finish) {
 		Date startTime = setTime(Integer.parseInt(start.substring(0, start.indexOf(COLON))),
 				Integer.parseInt(start.substring(start.indexOf(COLON) + 1), start.length()));
@@ -279,7 +274,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PostMapping("/jobsOtome")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Object> createJobOtome(@RequestBody JobOtome job) {
 		JobOtome savedJob = jobOtomeRepository.save(job);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -302,7 +296,6 @@ public class JobOtomeController {
 			@ApiResponse(code = 403, message = "Forbidden Action"),
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@PutMapping("/jobsOtome/{id}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Object> updateJobOtome(@RequestBody JobOtome job, @PathVariable long id) {
 
 		Optional<JobOtome> jobOptional = jobOtomeRepository.findById(id);
