@@ -10,7 +10,7 @@
 
 
 <hr>
-<p>Otome(Batch server) is a  SpringBoot app to manage the autocrawlring and the auto injection processes of jobs from differents websites <h3>(Baitoru, Lacotto, JSEN)</h3>.</p>
+<p>Otome(Batch server) is a  SpringBoot app to manage the autocrawlring and the auto injection processes of jobs from differents websites <strong>(Baitoru, Lacotto, JSEN)</strong>.</p>
 
 <br><br>
 ## Tools
