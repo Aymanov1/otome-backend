@@ -20,12 +20,32 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
+/**
+ * The Class JWTAuthorizationFilter.
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JWTAuthorizationFilter.java
+	 * 
+	 * Instantiates a new JWT authorization filter.
+	 * @param authManager the auth manager
+	 */
 	public JWTAuthorizationFilter(AuthenticationManager authManager) {
 		super(authManager);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.security.web.authentication.www.BasicAuthenticationFilter#doFilterInternal(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
+	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
@@ -42,6 +62,21 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 		chain.doFilter(req, res);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JWTAuthorizationFilter.java
+	 * 
+	 * Gets the authentication.
+	 * @param request the request
+	 * @return the authentication
+	 */
 	//
 	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
 		String token = request.getHeader(HEADER_STRING);

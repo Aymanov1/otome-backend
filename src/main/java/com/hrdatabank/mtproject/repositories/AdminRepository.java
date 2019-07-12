@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hrdatabank.mtproject.entities.Admin;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface AdminRepository.
  */
@@ -22,7 +23,7 @@ public interface AdminRepository extends JpaRepository<Admin, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -41,7 +42,7 @@ public interface AdminRepository extends JpaRepository<Admin, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -60,7 +61,7 @@ public interface AdminRepository extends JpaRepository<Admin, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -81,7 +82,7 @@ public interface AdminRepository extends JpaRepository<Admin, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

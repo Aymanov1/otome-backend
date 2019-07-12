@@ -14,6 +14,7 @@ import com.hrdatabank.mtproject.entities.Candidate;
 import com.hrdatabank.mtproject.model.CandidateDto;
 import com.hrdatabank.mtproject.repositories.CandidateRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CandidateService.
  */
@@ -24,6 +25,20 @@ public class CandidateService {
 	@Autowired
 	private CandidateRepository candidateRepository;
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the all candidates.
+	 * @return the all candidates
+	 */
 	public List<Candidate> getAllCandidates() {
 		return candidateRepository.findAll();
 
@@ -32,7 +47,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -51,7 +66,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -75,7 +90,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -101,7 +116,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -118,18 +133,79 @@ public class CandidateService {
 		return candidateRepository.findById(id);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the candidate by phone number.
+	 * @param phoneNumber the phone number
+	 * @return the candidate by phone number
+	 */
 	public Candidate getCandidateByPhoneNumber(String phoneNumber) {
 		return candidateRepository.getCandidateByPhoneNumber(phoneNumber);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the candidate guest by phone number.
+	 * @param phoneNumber the phone number
+	 * @return the candidate guest by phone number
+	 */
 	public Candidate getCandidateGuestByPhoneNumber(String phoneNumber) {
 		return candidateRepository.getCandidateGuestByPhoneNumber(phoneNumber);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the candidate by phone number and source.
+	 * @param phoneNumber the phone number
+	 * @param source the source
+	 * @return the candidate by phone number and source
+	 */
 	public Candidate getCandidateByPhoneNumberAndSource(String phoneNumber, boolean source) {
 		return candidateRepository.getCandidateByPhoneNumberAndSource(phoneNumber, source);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the ats list candidate by id.
+	 * @param id the id
+	 * @return the ats list candidate by id
+	 */
 	public List<Candidate> getAtsListCandidateById(int id) {
 		return candidateRepository.getListCandidateById(id);
 	}
@@ -137,7 +213,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -157,7 +233,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -177,7 +253,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -196,7 +272,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -218,7 +294,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -244,7 +320,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -266,7 +342,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -293,7 +369,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -317,7 +393,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -341,7 +417,7 @@ public class CandidateService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -360,37 +436,146 @@ public class CandidateService {
 		return candidateRepository.checkPhoneCandidate(phone, idUser);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Find FB candidate by id user FB.
+	 * @param idUserFB the id user FB
+	 * @return the candidate
+	 */
 	public Candidate findFBCandidateByIdUserFB(String idUserFB) {
 		return candidateRepository.findFBCandidateByIdUserFB(idUserFB);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Find candidates by register date.
+	 * @param registerDate the register date
+	 * @param pageable the pageable
+	 * @return the page
+	 */
 	public Page<CandidateDto> findCandidatesByRegisterDate(Date registerDate, Pageable pageable) {
 		return candidateRepository.findCandidatesByRegisterDate(registerDate, pageable);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the all facebook user ids.
+	 * @return the all facebook user ids
+	 */
 	public List<String> getAllFacebookUserIds() {
 		return candidateRepository.getAllFacebookUserIds();
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the candidate list having bot information.
+	 * @param botInfos the bot infos
+	 * @return the candidate list having bot information
+	 */
 	public List<Candidate> getCandidateListHavingBotInformation(List<Integer> botInfos) {
 		return candidateRepository.getCandidateListHavingBotInformation(botInfos);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the line or FB candidate list having bot information.
+	 * @param botInfos the bot infos
+	 * @param candidateFB the candidate FB
+	 * @return the line or FB candidate list having bot information
+	 */
 	public List<Candidate> getLineOrFBCandidateListHavingBotInformation(List<Integer> botInfos, boolean candidateFB) {
 		return candidateRepository.getLineOrFBCandidateListHavingBotInformation(botInfos, candidateFB);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Gets the job canidate relation by id candidate limit.
+	 * @param idCandidateStart the id candidate start
+	 * @param idCandidateEnd the id candidate end
+	 * @return the job canidate relation by id candidate limit
+	 */
 	public List<Candidate> getJobCanidateRelationByIdCandidateLimit(int idCandidateStart, int idCandidateEnd) {
 		return candidateRepository.getJobCanidateRelationByIdCandidateLimit(idCandidateStart, idCandidateEnd);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateService.java
+	 * 
+	 * Find candidate by id bot information.
+	 * @param idBotInformation the id bot information
+	 * @return the candidate
+	 */
 	public Candidate findCandidateByIdBotInformation(int idBotInformation) {
 		return candidateRepository.findCandidateByIdBotInformation(idBotInformation);
 	}
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author Awatef Houaoui
-	 * 
+	 * @return the candidates missing informations
 	 */
 	public List<Candidate> getCandidatesMissingInformations() {
 		return candidateRepository.getCandidatesMissingInformations();

@@ -42,11 +42,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import reactor.core.publisher.Flux;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JobOtomeController.
+ */
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
+
 /* (non-Javadoc)
  * @see java.lang.Object#toString()
  */
 @Data
 /**
+ * Instantiates a new job otome controller.
+ */
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: JobOtomeController.java
+ * 
  * Instantiates a new job otome controller.
  */
 @NoArgsConstructor
@@ -63,6 +85,24 @@ import reactor.core.publisher.Flux;
 /**
  * Instantiates a new job otome controller.
  *
+ * @param jobOtomeRepository the job otome repository
+ * @param jobOtomeService the job otome service
+ * @param jobOtomeServiceImpl the job otome service impl
+ * @param lineStationOtomeRepository the line station otome repository
+ */
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: JobOtomeController.java
+ * 
+ * Instantiates a new job otome controller.
  * @param jobOtomeRepository the job otome repository
  * @param jobOtomeService the job otome service
  * @param jobOtomeServiceImpl the job otome service impl
@@ -101,6 +141,15 @@ public class JobOtomeController {
 	/**
 	 * Retrieve all job otomes.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Retrieve all job otomes.
 	 * @return the list
 	 */
 	@ApiOperation(value = "get Jobs in reactive way")
@@ -116,8 +165,16 @@ public class JobOtomeController {
 	/**
 	 * Retrieve job.
 	 *
-	 * @param id
-	 *            the id
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Retrieve job.
+	 * @param id            the id
 	 * @return the job otome
 	 */
 	@ApiOperation(value = "Retrieve Job")
@@ -138,8 +195,16 @@ public class JobOtomeController {
 	/**
 	 * Delete job.
 	 *
-	 * @param id
-	 *            the id
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * this method Delete job.
+	 * @param id            the id
 	 */
 	@ApiOperation(value = "Delete Job")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
@@ -154,12 +219,18 @@ public class JobOtomeController {
 	/**
 	 * Gets the job by station time category.
 	 *
-	 * @param idLineStation
-	 *            the id line station
-	 * @param positionCategoryEnglish
-	 *            the position category english
-	 * @param workTimeEnglish
-	 *            the work time english
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Gets the job by station time category.
+	 * @param idLineStation            the id line station
+	 * @param positionCategoryEnglish            the position category english
+	 * @param workTimeEnglish            the work time english
 	 * @return the job by station time category
 	 */
 	@ApiOperation(value = "get Jobs By Station, Time and Category")
@@ -189,6 +260,15 @@ public class JobOtomeController {
 	/**
 	 * Gets the jobs by time working.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Gets the jobs by time working.
 	 * @param start the start
 	 * @param finish the finish
 	 * @return the jobs by time working
@@ -215,6 +295,15 @@ public class JobOtomeController {
 	/**
 	 * Convert time.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Convert time.
 	 * @param time the time
 	 * @return the string
 	 */
@@ -226,6 +315,15 @@ public class JobOtomeController {
 	/**
 	 * Sets the time.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Sets the time.
 	 * @param hourOfDay the hour of day
 	 * @param minute the minute
 	 * @return the date
@@ -242,12 +340,18 @@ public class JobOtomeController {
 	/**
 	 * Compare station to shop address.
 	 *
-	 * @param latitudeTocompare
-	 *            the latitude tocompare
-	 * @param longitudeTocompare
-	 *            the longitude tocompare
-	 * @param lineStation
-	 *            the line station
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Compare station to shop address.
+	 * @param latitudeTocompare            the latitude tocompare
+	 * @param longitudeTocompare            the longitude tocompare
+	 * @param lineStation            the line station
 	 * @return true, if successful
 	 */
 	public boolean compareStationToShopAddress(double latitudeTocompare, double longitudeTocompare,
@@ -264,8 +368,16 @@ public class JobOtomeController {
 	/**
 	 * Creates the student.
 	 *
-	 * @param job
-	 *            the job
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Creates the job otome.
+	 * @param job            the job
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "Create new Job")
@@ -284,10 +396,17 @@ public class JobOtomeController {
 	/**
 	 * Update student.
 	 *
-	 * @param job
-	 *            the job
-	 * @param id
-	 *            the id
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeController.java
+	 * 
+	 * Update job otome.
+	 * @param job            the job
+	 * @param id            the id
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "Updating Job")

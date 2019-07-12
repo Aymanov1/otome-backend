@@ -10,6 +10,7 @@ import com.hrdatabank.mtproject.entities.CandidateAdminRelation;
 import com.hrdatabank.mtproject.entities.Memo;
 import com.hrdatabank.mtproject.repositories.MemoRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class MemoService.
  */
@@ -23,7 +24,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -42,7 +43,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -60,7 +61,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -80,7 +81,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -100,7 +101,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -120,7 +121,7 @@ public class MemoService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

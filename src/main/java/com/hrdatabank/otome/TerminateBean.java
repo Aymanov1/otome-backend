@@ -16,9 +16,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * The Class TerminateBean.
+ */
 @Component
 public class TerminateBean {
 
+	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(TerminateBean.class);
 	/** The description. */
 	@Value("${spring.datasource1.username}")
@@ -36,6 +40,20 @@ public class TerminateBean {
 	@Value("${path.backup}")
 	String pathBackup;
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: TerminateBean.java
+	 * 
+	 * this method On destroy.
+	 * @throws Exception the exception
+	 */
 	@PreDestroy
 	public void onDestroy() throws Exception {
 		log.info("Spring Container is destroyed!");
@@ -51,10 +69,17 @@ public class TerminateBean {
 	/**
 	 * Execute commands using bash. execude a temporary script from java interface
 	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws InterruptedException
-	 *             the interrupted exception
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: TerminateBean.java
+	 * 
+	 * this method Execute commands.
+	 * @throws IOException             Signals that an I/O exception has occurred.
+	 * @throws InterruptedException             the interrupted exception
 	 */
 	public void executeCommands() throws IOException, InterruptedException {
 
@@ -73,9 +98,17 @@ public class TerminateBean {
 	 * Creates the temp script. the temp script is used to create a backup of
 	 * database in case of accident; using pg_dump for postgresql database
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: TerminateBean.java
+	 * 
+	 * Creates the temp script.
 	 * @return the file
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException             Signals that an I/O exception has occurred.
 	 */
 	public File createTempScript() throws IOException {
 		File tempScript = File.createTempFile("script", null);

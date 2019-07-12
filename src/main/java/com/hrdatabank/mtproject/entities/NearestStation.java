@@ -21,15 +21,70 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class NearestStation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: NearestStation.java
+ * 
+ * Instantiates a new nearest station.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: NearestStation.java
+ * 
+ * Instantiates a new nearest station.
+ * @param idNearestStation the id nearest station
+ * @param idNearestStationCD the id nearest station CD
+ * @param japaneseStation the japanese station
+ * @param japaneseKatakanaStation the japanese katakana station
+ * @param japaneseHiraganaStation the japanese hiragana station
+ * @param japaneseRomajiStation the japanese romaji station
+ * @param addressStation the address station
+ * @param longitudeStation the longitude station
+ * @param latitudeStation the latitude station
+ * @param openYmd the open ymd
+ * @param closeYmd the close ymd
+ * @param nearestStationDetail the nearest station detail
+ * @param prefectureCd the prefecture cd
+ * @param lineStation the line station
+ * @param nearestStationBotInformationRelations the nearest station bot information relations
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "nearest_station")
 public class NearestStation implements Serializable {
@@ -77,7 +132,7 @@ public class NearestStation implements Serializable {
 	/** The nearest station detail. */
 	private String nearestStationDetail;
 
-	/** The prefecture cd **/
+	/**  The prefecture cd *. */
 	private String prefectureCd;
 
 	/** The line station. */
@@ -85,6 +140,7 @@ public class NearestStation implements Serializable {
 	@JoinColumn(name = "idLineStation", referencedColumnName = "idLineStation")
 	private LineStation lineStation;
 
+	/** The nearest station bot information relations. */
 	@OneToMany(mappedBy = "nearestStation")
 	@JsonIgnoreProperties({ "nearestStation" })
 	private List<NearestStationBotInformationRelation> nearestStationBotInformationRelations;

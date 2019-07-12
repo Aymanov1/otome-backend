@@ -14,7 +14,6 @@ import org.crawler.web.initializer.JsenInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JsenPreparerImpl.
  */
@@ -66,6 +65,11 @@ public class JsenPreparerImpl implements IAbstractPreparer {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.crawler.web.preparer.IAbstractPreparer#stopCrawling()
+	 */
 	@Override
 	public void stopCrawling() {
 		JsenCrawlerController.getInstance().getController().shutdown();

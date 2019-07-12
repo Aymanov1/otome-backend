@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.hrdatabank.mtproject.entities.StaffShopRelation;
 import com.hrdatabank.mtproject.model.ShopObject;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface StaffShopRelationRepository.
  */
@@ -24,7 +25,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -46,7 +47,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -65,7 +66,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -87,7 +88,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -111,7 +112,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -133,7 +134,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -155,7 +156,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -177,7 +178,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -199,7 +200,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -222,7 +223,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -241,7 +242,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -263,7 +264,7 @@ public interface StaffShopRelationRepository extends JpaRepository<StaffShopRela
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

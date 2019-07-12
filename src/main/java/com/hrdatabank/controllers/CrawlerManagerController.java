@@ -78,6 +78,7 @@ public class CrawlerManagerController {
 	/** The task scheduler shop name. */
 	private ConcurrentTaskScheduler taskSchedulerShopName;
 
+	/** The task scheduler auto crawler. */
 	private ConcurrentTaskScheduler taskSchedulerAutoCrawler;
 	/** The scheduled future. */
 	@SuppressWarnings("rawtypes")
@@ -90,7 +91,8 @@ public class CrawlerManagerController {
 	 * On starting full search.
 	 *
 	 * @author Hanios
-	 * @param type the type
+	 * @param type
+	 *            the type
 	 * @return the string
 	 */
 	@ApiOperation(value = " Starting Full Search by crawler type ")
@@ -100,7 +102,7 @@ public class CrawlerManagerController {
 			@ApiResponse(code = 500, message = "Internal Server ERROR ") })
 	@GetMapping(value = "/startFullSearch")
 	public String onStartingFullSearch(@RequestParam(name = "type") String type) {
-		System.out.println("startFullSearch");
+		logger.info("startFullSearch{}", "");
 		Optional<CrawlerTypesEnum> crawlerTypesEnum = Optional.ofNullable(Arrays.asList(CrawlerTypesEnum.values())
 				.stream().filter(x -> type.equalsIgnoreCase(x.name())).findAny().orElse(null));
 		crawlerTypesEnum.ifPresent(target -> {
@@ -115,9 +117,12 @@ public class CrawlerManagerController {
 	 * On starting part search.
 	 *
 	 * @author Hanios
-	 * @param type     the type
-	 * @param area     the area
-	 * @param category the category
+	 * @param type
+	 *            the type
+	 * @param area
+	 *            the area
+	 * @param category
+	 *            the category
 	 * @return the string
 	 */
 	@ApiOperation(value = " Starting Part Search by crawler type")
@@ -157,6 +162,22 @@ public class CrawlerManagerController {
 		return message;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Shutdown.
+	 * @param type
+	 *            the type
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/shutdown")
 	public ResponseEntity<?> shutdown(@RequestParam(name = "type") String type) {
 		if (type.equalsIgnoreCase(CrawlerTypesEnum.BAITORU.name())) {
@@ -171,8 +192,19 @@ public class CrawlerManagerController {
 	/**
 	 * Renew schedule.
 	 *
-	 * @param configCrawler the config crawler
-	 * @param id            the id
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Renew schedule.
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "Renew Schedule for 404 jobs removing")
@@ -191,10 +223,10 @@ public class CrawlerManagerController {
 
 		if (taskScheduler == null) {
 			this.taskScheduler = new ConcurrentTaskScheduler();
-			System.out.println("---------CREATE----------ConcurrentTaskScheduler----1------------");
+			logger.info("---------CREATE----------ConcurrentTaskScheduler----1------------{}", "");
 		}
 		if (this.scheduledFuture() != null) {
-			System.out.println("---------CANCEL----------scheduledFuture------1----------");
+			logger.info("---------CANCEL----------scheduledFuture------1----------{}", "");
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getScheduler() != null) {
@@ -202,7 +234,7 @@ public class CrawlerManagerController {
 			scheduledFuture = taskScheduler.schedule(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("-----------All the scheduled tasks are here-------1---------------");
+					logger.info("-----------All the scheduled tasks are here-------1---------------{}", "");
 					verifiyJobBaitoru();
 				}
 			}, new CronTrigger(cronString1));
@@ -213,6 +245,15 @@ public class CrawlerManagerController {
 	/**
 	 * Scheduled future.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Scheduled future.
 	 * @return the scheduled future
 	 */
 	private ScheduledFuture<?> scheduledFuture() {
@@ -222,8 +263,19 @@ public class CrawlerManagerController {
 	/**
 	 * Renew schedule for shop name cleaning.
 	 *
-	 * @param configCrawler the config crawler
-	 * @param id            the id
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Renew schedule for shop name cleaning.
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
 	 * @return the response entity
 	 */
 	@ApiOperation(value = "renew Schedule For Shop Name Cleaning")
@@ -243,10 +295,10 @@ public class CrawlerManagerController {
 
 		if (taskSchedulerShopName == null) {
 			this.taskSchedulerShopName = new ConcurrentTaskScheduler();
-			System.out.println("---------CREATE----------ConcurrentTaskScheduler2----2------------");
+			logger.info("---------CREATE----------ConcurrentTaskScheduler2----2------------ {}", "");
 		}
 		if (this.scheduledFuture() != null) {
-			System.out.println("---------CANCEL----------scheduledFuture2------2----------");
+			logger.info("---------CANCEL----------scheduledFuture2------2----------{}", "");
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getSchedulerShopName() != null) {
@@ -254,7 +306,7 @@ public class CrawlerManagerController {
 			scheduledFuture = taskSchedulerShopName.schedule(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("-----------All the scheduled tasks are here-------2---------------");
+					logger.info("-----------All the scheduled tasks are here-------2---------------{}", "");
 					verifiyShopNameNotBanned();
 				}
 			}, new CronTrigger(cronString1));
@@ -265,6 +317,15 @@ public class CrawlerManagerController {
 	/**
 	 * Renew schedule for shop name cleaning.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Renew schedule auto crawling.
 	 * @param configCrawler
 	 *            the config crawler
 	 * @param id
@@ -288,10 +349,10 @@ public class CrawlerManagerController {
 
 		if (taskSchedulerAutoCrawler == null) {
 			this.taskSchedulerAutoCrawler = new ConcurrentTaskScheduler();
-			System.out.println("---------CREATE----------ConcurrentTaskScheduler3----3------------");
+			logger.info("---------CREATE----------ConcurrentTaskScheduler3----3------------{}", "");
 		}
 		if (this.scheduledFuture() != null) {
-			System.out.println("---------CANCEL----------scheduledFuture3-----3----------");
+			logger.info("---------CANCEL----------scheduledFuture3-----3----------{}", "");
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
@@ -299,7 +360,7 @@ public class CrawlerManagerController {
 			scheduledFuture = taskSchedulerAutoCrawler.schedule(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("-----------All the scheduled tasks are here-------3---------------");
+					logger.info("-----------All the scheduled tasks are here-------3---------------{}", "");
 					onStartingFullSearch(CrawlerTypesEnum.BAITORU.name());
 				}
 			}, new CronTrigger(cronString1));
@@ -307,10 +368,18 @@ public class CrawlerManagerController {
 		return ResponseEntity.noContent().build();
 	}
 
-	
-	
 	/**
 	 * Verifiy shop name not banned.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         this method Verifiy shop name not banned.
 	 */
 	@ApiOperation(value = "verifiy Shop Name Not Banned")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
@@ -320,13 +389,21 @@ public class CrawlerManagerController {
 	@GetMapping("/clean")
 	public void verifiyShopNameNotBanned() {
 		jobOtomeRepository.cleanJobs();
-		System.out.println("jobs cleaned");
+		logger.info("jobs cleaned{}", "");
 	}
-
 
 	/**
 	 * Find count shops.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         Find count shops.
 	 * @return the int
 	 */
 	@ApiOperation(value = "Get Count Shops")
@@ -342,6 +419,16 @@ public class CrawlerManagerController {
 
 	/**
 	 * Verifiy job baitoru.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: CrawlerManagerController.java
+	 * 
+	 *         this method Verifiy job baitoru.
 	 */
 	public void verifiyJobBaitoru() {
 

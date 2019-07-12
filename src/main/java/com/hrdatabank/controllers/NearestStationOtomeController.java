@@ -48,6 +48,15 @@ public class NearestStationOtomeController {
 	/**
 	 * Gets the job nearest station.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeController.java
+	 * 
+	 *         Gets the job nearest station.
 	 * @param idNearestStation
 	 *            the id nearest station
 	 * @param maxKm
@@ -92,19 +101,15 @@ public class NearestStationOtomeController {
 			NearestStationOtome nearestStationPrevious = nearestStationOtomeService
 					.getNearStationByIdLineCD(nearestStationCd - incremantId);
 			if (nearestStationPrevious != null) {
-				log.info(page - deliveredpage + "************nearestStationPrevious**************"
-						+ nearestStationPrevious.getIdNearestStation());
 				jobPagesPrevious = jobOtomeService.getJobsByStationAndJobCategory(page - deliveredpage, size,
 						nearestStationPrevious.getLatitudeStation(), nearestStationPrevious.getLongitudeStation(),
 						maxKm);
 			}
 
-			if (nearestStationNext != null) {
+			 if (nearestStationNext != null) {
 				pageN = page - deliveredpage - jobPagesPrevious.getTotalPages() >= 0
 						? page - deliveredpage - jobPagesPrevious.getTotalPages()
 						: page;
-				log.info("************nearestStationNext**************{} ",
-						nearestStationNext.getIdNearestStation() + "***" + pageN);
 
 				jobPagesNext = jobOtomeService.getJobsByStationAndJobCategory(pageN, size,
 						nearestStationNext.getLatitudeStation(), nearestStationNext.getLongitudeStation(), maxKm);

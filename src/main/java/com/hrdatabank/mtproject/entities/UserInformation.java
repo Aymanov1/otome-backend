@@ -22,14 +22,62 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class UserInformation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: UserInformation.java
+ * 
+ * Instantiates a new user information.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: UserInformation.java
+ * 
+ * Instantiates a new user information.
+ * @param idUser the id user
+ * @param userName the user name
+ * @param userNameKatakana the user name katakana
+ * @param email the email
+ * @param password the password
+ * @param profilePicture the profile picture
+ * @param roles the roles
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "user_information")
 public class UserInformation implements Serializable {
@@ -67,7 +115,7 @@ public class UserInformation implements Serializable {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

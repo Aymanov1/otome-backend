@@ -3,6 +3,9 @@ package org.crawler.web.concurrent.service.collector;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * The Interface IURLServiceCollector.
+ */
 public interface IURLServiceCollector {
 
 	/**

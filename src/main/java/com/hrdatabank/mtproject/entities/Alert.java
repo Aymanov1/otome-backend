@@ -19,13 +19,55 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Alert.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Alert.java
+ * 
+ * Instantiates a new alert.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Alert.java
+ * 
+ * Instantiates a new alert.
+ * @param idNotification the id notification
+ * @param notificationDate the notification date
+ * @param checked the checked
+ * @param personInCharge the person in charge
+ * @param candidate the candidate
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 public class Alert implements Serializable {
 

@@ -21,6 +21,9 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
 
+/**
+ * The Class SFTPService.
+ */
 @Service
 public class SFTPService {
 	/** The Constant LOGGER. */
@@ -32,6 +35,15 @@ public class SFTPService {
 	/**
 	 * Download from FTP server.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPService.java
+	 * 
+	 *         Download from FTP server.
 	 * @param host
 	 *            the host of sftp server
 	 * @param user
@@ -84,12 +96,23 @@ public class SFTPService {
 	/**
 	 * Download from server.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPService.java
+	 * 
+	 *         Download from server.
 	 * @param host
 	 *            the host of sftp server
 	 * @param user
 	 *            the user of sftp server
 	 * @param password
 	 *            the password of sftp server
+	 * @param port
+	 *            the port
 	 * @param pathRemote
 	 *            the path remote of the downloaded file
 	 * @param pathLocal
@@ -124,6 +147,23 @@ public class SFTPService {
 		return "It seems there is a problem, please check the log for details";
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPService.java
+	 * 
+	 *         this method Unzip.
+	 * @param zipFilePath
+	 *            the zip file path
+	 * @param destDir
+	 *            the dest dir
+	 */
 	private static void unzip(String zipFilePath, String destDir) {
 		File dir = new File(destDir);
 		// create output directory if it doesn't exist

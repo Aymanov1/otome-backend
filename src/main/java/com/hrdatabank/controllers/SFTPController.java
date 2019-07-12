@@ -41,6 +41,7 @@ public class SFTPController {
 	/** The log. */
 	private static Logger log = LoggerFactory.getLogger(SFTPController.class);
 
+	/** The sftp service. */
 	@Autowired
 	SFTPService sftpService;
 
@@ -88,11 +89,11 @@ public class SFTPController {
 	@Value("${pathJsenDestination}")
 	private String pathJsenDestination;
 
-
-
+	/** The jsen lacotto service. */
 	@Autowired
 	JsenLacottoServiceImple jsenLacottoService;
 
+	/** The config crawler repository. */
 	@Autowired
 	ConfigCrawlerRepository configCrawlerRepository;
 
@@ -106,6 +107,24 @@ public class SFTPController {
 	@SuppressWarnings("rawtypes")
 	private ScheduledFuture scheduledFuture;
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Renew schedule lacotto injection.
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
+	 * @return the response entity
+	 */
 	@ApiOperation(value = "renew Schedule For Auto crawling")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
 			@ApiResponse(code = 401, message = "Unauthorized Action"),
@@ -123,10 +142,10 @@ public class SFTPController {
 
 		if (taskSchedulerLacotto == null) {
 			this.taskSchedulerLacotto = new ConcurrentTaskScheduler();
-			System.out.println("---------CREATE----------ConcurrentTaskScheduler4----4------------");
+			log.info("---------CREATE----------ConcurrentTaskScheduler4----4------------{}", "");
 		}
 		if (this.scheduledFuture() != null) {
-			System.out.println("---------CANCEL----------scheduledFuture4-----4----------");
+			log.info("---------CANCEL----------scheduledFuture4-----4----------{}", "");
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
@@ -134,7 +153,7 @@ public class SFTPController {
 			scheduledFuture = taskSchedulerLacotto.schedule(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("-----------All the scheduled tasks are here-------4---------------");
+					log.info("-----------All the scheduled tasks are here-------4---------------{}", "");
 					downloadFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
 					try {
 						injectFilesToServer(CrawlerTypesEnum.LACOTTO.toString());
@@ -147,6 +166,24 @@ public class SFTPController {
 		return ResponseEntity.noContent().build();
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Renew schedule JSEN injection.
+	 * @param configCrawler
+	 *            the config crawler
+	 * @param id
+	 *            the id
+	 * @return the response entity
+	 */
 	@ApiOperation(value = "renew Schedule For Auto crawling")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
 			@ApiResponse(code = 401, message = "Unauthorized Action"),
@@ -164,10 +201,10 @@ public class SFTPController {
 
 		if (taskSchedulerJSEN == null) {
 			this.taskSchedulerJSEN = new ConcurrentTaskScheduler();
-			System.out.println("---------CREATE----------ConcurrentTaskScheduler5----5------------");
+			log.info("---------CREATE----------ConcurrentTaskScheduler5----5------------{}", "");
 		}
 		if (this.scheduledFuture() != null) {
-			System.out.println("---------CANCEL----------scheduledFuture5----5----------");
+			log.info("---------CANCEL----------scheduledFuture5----5----------{}", "");
 			this.scheduledFuture().cancel(true);
 		}
 		if (configCrawlerRepository.findById(id).get().getSchedulerAutoCrawler() != null) {
@@ -175,7 +212,7 @@ public class SFTPController {
 			scheduledFuture = taskSchedulerJSEN.schedule(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("-----------All the scheduled tasks are here-------5---------------");
+					log.info("-----------All the scheduled tasks are here-------5---------------{}", "");
 					downloadFilesToServer(CrawlerTypesEnum.JSEN.toString());
 
 					try {
@@ -193,6 +230,15 @@ public class SFTPController {
 	/**
 	 * Download files to server.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Download files to server.
 	 * @param serverType
 	 *            the server type (LACOTTO-JSEN)
 	 * @return the status of downloading from the SFTP/FTP server
@@ -215,6 +261,26 @@ public class SFTPController {
 		return "it seems there is a problem, please check the log for details";
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Inject files to server.
+	 * @param serverType
+	 *            the server type
+	 * @return the string
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @throws ExecutionException
+	 *             the execution exception
+	 */
 	@ApiOperation(value = " Start injecting csv files from SFTP/FTP by crawler type to Database")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
 			@ApiResponse(code = 401, message = "Unauthorized Action"),
@@ -247,6 +313,26 @@ public class SFTPController {
 		return "it seems there is a problem, please check the log for details";
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Stop.
+	 * @param serverType
+	 *            the server type
+	 * @return the string
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @throws ExecutionException
+	 *             the execution exception
+	 */
 	@ApiOperation(value = " stop injecting csv files from SFTP/FTP by crawler type to Database")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),
 			@ApiResponse(code = 401, message = "Unauthorized Action"),
@@ -265,6 +351,15 @@ public class SFTPController {
 	/**
 	 * Scheduled future.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: SFTPController.java
+	 * 
+	 *         Scheduled future.
 	 * @return the scheduled future
 	 */
 	private ScheduledFuture<?> scheduledFuture() {

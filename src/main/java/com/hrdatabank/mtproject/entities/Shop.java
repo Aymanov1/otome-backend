@@ -23,14 +23,80 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Shop.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Shop.java
+ * 
+ * Instantiates a new shop.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Shop.java
+ * 
+ * Instantiates a new shop.
+ * @param idShop the id shop
+ * @param idShopCSV the id shop CSV
+ * @param nameShop the name shop
+ * @param addressShop the address shop
+ * @param descriptionShop the description shop
+ * @param category the category
+ * @param openTime the open time
+ * @param logoShop the logo shop
+ * @param userIdLine the user id line
+ * @param channelToken the channel token
+ * @param emailShop the email shop
+ * @param phoneNumber the phone number
+ * @param applyPhoneNumber the apply phone number
+ * @param reference the reference
+ * @param requirement the requirement
+ * @param interviewVenue the interview venue
+ * @param possiblePhoneTime the possible phone time
+ * @param longitude the longitude
+ * @param latitude the latitude
+ * @param transportationAllowance the transportation allowance
+ * @param company the company
+ * @param jobs the jobs
+ * @param shopCandidateRelations the shop candidate relations
+ * @param staffShopRelations the staff shop relations
+ * @param nearestStation the nearest station
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 public class Shop implements Serializable {
 

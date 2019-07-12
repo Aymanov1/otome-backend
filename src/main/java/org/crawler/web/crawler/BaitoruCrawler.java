@@ -18,7 +18,6 @@ import org.crawler.web.domain.LogEvents;
 import org.crawler.web.enumeration.CrawlerTypesEnum;
 import org.crawler.web.initializer.BaitoruInitializer;
 import org.joda.time.LocalTime;
-import org.json.JSONException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -98,6 +97,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Transportation extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void transportationExtractor(String url, Document docJobDetail) {
 		try {
 			Element jobTransportationElem = docJobDetail.selectFirst("div.detail-recruitInfo").select("dl.dl06").first()
@@ -111,6 +127,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Job description extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void jobDescriptionExtractor(String url, Document docJobDetail) {
 		try {
 			Element jobDetailElem = docJobDetail.selectFirst("div.detail-recruitInfo").select("dl.dl01").first()
@@ -124,17 +157,29 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Street address extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void streetAddressExtractor(String url, Document docJobDetail) {
 		try {
 			jobAddress = "";
-			if (docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl04").select("dd").first().select("dl")
-					.get(0).select("dt").first().ownText().equalsIgnoreCase("住所"))
-				jobAddress = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl04").select("dd").first()
-						.select("dl").get(0).select("dd").first().ownText();
-			else if (docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl04").select("dd").first()
-					.select("dl").get(1).select("dt").first().ownText().equalsIgnoreCase("住所"))
-				jobAddress = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl04").select("dd").first()
-						.select("dl").get(1).select("dd").first().ownText();
+			jobAddress = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl04.js-detailAccordion")
+					.select("dd").first().select("dl.js-da-target").select("dd").select("ul").select("li").first()
+					.ownText();
 
 		} catch (NullPointerException ex) {
 			BaitoruInitializer.getInstance().getLogExceptions()
@@ -144,6 +189,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Work shifts extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void workShiftsExtractor(String url, Document docJobDetail) {
 		try {
 			Element shiftElem = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl03").first()
@@ -157,6 +219,25 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Wage extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 * @param wageElem
+	 *            the wage elem
+	 */
 	private void wageExtractor(String url, Document docJobDetail, Element wageElem) {
 		try {
 			wageElem = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl02").first().selectFirst("em");
@@ -171,6 +252,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Position name extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void positionNameExtractor(String url, Document docJobDetail) {
 		try {
 			Element positionNameElem = docJobDetail.selectFirst("div.detail-basicInfo").select("dl.dl01").first()
@@ -184,6 +282,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Shop name extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void shopNameExtractor(String url, Document docJobDetail) {
 		try {
 			Element shopNameElem = docJobDetail.selectFirst("div.detail-entryInfo").select("dl.dl01").first()
@@ -197,6 +312,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Job detail ID extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void jobDetailIDExtractor(String url, Document docJobDetail) {
 		try {
 			Element typeElem = docJobDetail.getElementById("link_job_entry_pc_detail_all_1").select("a").first();
@@ -210,6 +342,23 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Job type extractor.
+	 * @param url
+	 *            the url
+	 * @param docJobDetail
+	 *            the doc job detail
+	 */
 	private void jobTypeExtractor(String url, Document docJobDetail) {
 		try {
 			Element typeElem = docJobDetail.selectFirst("div.detail-basicInfo").select("dd").first()
@@ -227,6 +376,22 @@ public class BaitoruCrawler extends AbstractCrawler {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         Job URL extractor.
+	 * @param e
+	 *            the e
+	 * @return the element
+	 */
 	private Element jobURLExtractor(Element e) {
 		Element jobLink = e.select("a").first();
 		jobUrl = jobLink.attr("href");
@@ -234,14 +399,30 @@ public class BaitoruCrawler extends AbstractCrawler {
 		return jobLink;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         this method Image URL extractor.
+	 * @param e
+	 *            the e
+	 */
 	private void imageURLExtractor(Element e) {
 		try {
 			jobImgUrl = "";
-			Element imagediv = e.select("div.pt02a").first();
-			Element jobImg = imagediv.select("img").first();
-			jobImgUrl = jobImg.attr("data-replaceimage").contains("image-cdn.baitoru.com")
-					? jobImg.attr("data-replaceimage").substring(23, jobImg.attr("data-replaceimage").length())
-					: jobImg.attr("data-replaceimage");
+			Element Imagediv = e.selectFirst("p");
+			System.out.println("Imagediv" + Imagediv);
+			Element jobImg = Imagediv.select("img").first();
+			String jobImgUrl1 = jobImg.attr("data-replaceimage");
+			jobImgUrl = jobImgUrl1.replaceAll("//image-cdn.baitoru.com", "");
+
 		} catch (NullPointerException ex) {
 			logger.error("image url does not exist in job url {}", jobUrl);
 			jobImgUrl = "";
@@ -283,6 +464,15 @@ public class BaitoruCrawler extends AbstractCrawler {
 	/**
 	 * This method return jobId from a given url.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         Gets the job id.
 	 * @param url
 	 *            the url
 	 * @return the job id
@@ -297,6 +487,15 @@ public class BaitoruCrawler extends AbstractCrawler {
 	/**
 	 * This method return smallest wage from collection of wages given.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: BaitoruCrawler.java
+	 * 
+	 *         Gets the smallest wage.
 	 * @param wage
 	 *            the wage
 	 * @return the smallest wage

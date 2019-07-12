@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class LineStationOtome.
  */
@@ -21,9 +22,27 @@ import lombok.NoArgsConstructor;
 /* (non-Javadoc)
  * @see java.lang.Object#toString()
  */
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 
 /**
+ * Instantiates a new line station otome.
+ */
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineStationOtome.java
+ * 
  * Instantiates a new line station otome.
  */
 @NoArgsConstructor
@@ -43,7 +62,36 @@ import lombok.NoArgsConstructor;
  * @param latitude the latitude
  * @param lineZoom the line zoom
  */
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineStationOtome.java
+ * 
+ * Instantiates a new line station otome.
+ * @param idLineStation the id line station
+ * @param lineCD the line CD
+ * @param lineNameJapanese the line name japanese
+ * @param lineNameKatakana the line name katakana
+ * @param lineNameHiragana the line name hiragana
+ * @param lineColorCode the line color code
+ * @param lineColor the line color
+ * @param lineType the line type
+ * @param longitude the longitude
+ * @param latitude the latitude
+ * @param lineZoom the line zoom
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 
 /* (non-Javadoc)
  * @see java.lang.Object#toString()

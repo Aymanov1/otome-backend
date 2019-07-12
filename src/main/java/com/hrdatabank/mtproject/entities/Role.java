@@ -17,14 +17,58 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Role.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Role.java
+ * 
+ * Instantiates a new role.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Role.java
+ * 
+ * Instantiates a new role.
+ * @param id the id
+ * @param name the name
+ * @param users the users
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 public class Role implements GrantedAuthority {
 

@@ -20,14 +20,68 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ShopCandidateRelation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: ShopCandidateRelation.java
+ * 
+ * Instantiates a new shop candidate relation.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: ShopCandidateRelation.java
+ * 
+ * Instantiates a new shop candidate relation.
+ * @param shopCandidateRelationPK the shop candidate relation PK
+ * @param askInterviewCounter the ask interview counter
+ * @param passedInterviewMessageCounter the passed interview message counter
+ * @param remindInterviewCounter the remind interview counter
+ * @param askForReasonCounter the ask for reason counter
+ * @param progress the progress
+ * @param interviewPlace the interview place
+ * @param confirmedInterview the confirmed interview
+ * @param askInterviewDate the ask interview date
+ * @param passedInterviewMessageDate the passed interview message date
+ * @param interviewDateShop the interview date shop
+ * @param candidate the candidate
+ * @param shop the shop
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "shop_candidate_relation")
 public class ShopCandidateRelation implements Serializable {

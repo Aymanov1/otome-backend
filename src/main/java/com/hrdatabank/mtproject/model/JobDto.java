@@ -82,6 +82,7 @@ public class JobDto {
 	/** The idjob details. */
 	private String idjobDetails;
 
+	/** The id job list. */
 	private int idJobList;
 
 	/** The id job detail. */
@@ -204,7 +205,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -222,7 +223,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -241,7 +242,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -250,54 +251,31 @@ public class JobDto {
 	 *         Class Name: JobDto.java
 	 * 
 	 *         Instantiates a new job dto.
-	 * @param idJob
-	 *            the id job
-	 * @param idShop
-	 *            the id shop
-	 * @param idCompany
-	 *            the id company
-	 * @param nameShop
-	 *            the name shop
-	 * @param positionName
-	 *            the position name
-	 * @param hourlyWage
-	 *            the hourly wage
-	 * @param transportationAllowance
-	 *            the transportation allowance
-	 * @param possibleWorkingDaysPerWeek
-	 *            the possible working days per week
-	 * @param possibleWorkingHoursPerDay
-	 *            the possible working hours per day
-	 * @param pictureJob
-	 *            the picture job
-	 * @param requiredJLPT
-	 *            the required JLPT
-	 * @param requiredDurationInJapan
-	 *            the required duration in japan
-	 * @param interviewType
-	 *            the interview type
-	 * @param interviewVenue
-	 *            the interview venue
-	 * @param addressShop
-	 *            the address shop
-	 * @param phoneShop
-	 *            the phone shop
-	 * @param interviewDateJob
-	 *            the interview date job
-	 * @param nearestStationDetail
-	 *            the nearest station detail
-	 * @param latitude
-	 *            the latitude
-	 * @param longitude
-	 *            the longitude
-	 * @param jobDetails
-	 *            the job details
-	 * @param finishWorkingTime
-	 *            the finish working time
-	 * @param startWorkingTime
-	 *            the start working time
-	 * @param idobDetails
-	 *            the idob details
+	 * @param idJob            the id job
+	 * @param idShop            the id shop
+	 * @param idCompany            the id company
+	 * @param nameShop            the name shop
+	 * @param positionName            the position name
+	 * @param hourlyWage            the hourly wage
+	 * @param transportationAllowance            the transportation allowance
+	 * @param possibleWorkingDaysPerWeek            the possible working days per week
+	 * @param possibleWorkingHoursPerDay            the possible working hours per day
+	 * @param pictureJob            the picture job
+	 * @param requiredJLPT            the required JLPT
+	 * @param requiredDurationInJapan            the required duration in japan
+	 * @param interviewType            the interview type
+	 * @param interviewVenue            the interview venue
+	 * @param addressShop            the address shop
+	 * @param phoneShop            the phone shop
+	 * @param interviewDateJob            the interview date job
+	 * @param nearestStationDetail            the nearest station detail
+	 * @param latitude            the latitude
+	 * @param longitude            the longitude
+	 * @param jobDetails            the job details
+	 * @param finishWorkingTime            the finish working time
+	 * @param startWorkingTime            the start working time
+	 * @param idobDetails            the idob details
+	 * @param jobURL the job URL
 	 */
 	public JobDto(int idJob, int idShop, int idCompany, String nameShop, String positionName, Double hourlyWage,
 			boolean transportationAllowance, int possibleWorkingDaysPerWeek, int possibleWorkingHoursPerDay,
@@ -334,74 +312,71 @@ public class JobDto {
 	}
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author rihabkallel
 	 * 
 	 * 
 	 *         constructor for recommendation
-	 * @param idJob
-	 * @param idShop
-	 * @param idCompany
-	 * @param nameShop
-	 * @param positionName
-	 * @param phoneShop
-	 * @param transportationAllowance
-	 * @param possibleWorkingDaysPerWeek
-	 * @param possibleWorkingHoursPerDay
-	 * @param hourlyWage
-	 * @param pictureJob
-	 * @param requiredJLPT
-	 * @param requiredDurationInJapan
-	 * @param interviewType
-	 * @param interviewVenue
-	 * @param addressShop
-	 * @param interviewDateJob
-	 * @param nearestStationDetail
-	 * @param latitude
-	 * @param longitude
-	 * @param jobDetails
-	 * @param finishWorkingTime
-	 * @param startWorkingTime
-	 * @param idobDetails
-	 * @param idJobList
-	 * @param idJobDetail
-	 * @param jobURL
-	 * @param workTimeEnglish
-	 * @param workTimeJapanese
-	 * @param positionCategoryEnglish
-	 * @param positionCategoryJapanese
-	 * @param salaryDetail
-	 * @param jobType
-	 * @param trainingPeriod
-	 * @param hourlyWageMemo
-	 * @param hourlyWageInTrainingPeriod
-	 * @param workTimeDetail
-	 * @param numberStaffNeeded
-	 * @param salary
-	 * @param andRequirement
-	 * @param status
-	 * @param openJobDate
-	 * @param validJobDate
-	 * @param descriptionShop
-	 * @param category
-	 * @param openTime
-	 * @param logoShop
-	 * @param userIdLine
-	 * @param emailShop
-	 * @param phoneNumber
-	 * @param applyPhoneNumber
-	 * @param reference
-	 * @param requirement
-	 * @param interviewVenueShop
-	 * @param possiblePhoneTime
-	 * @param longitudeShop
-	 * @param latitudeShop
-	 * @param transportationAllowanceShop
-	 * @param nameCompany
-	 * @param logoCompany
-	 * @param description
-	 * @param phoneNumberCompany
-	 * @param addressCompany
-	 * @param emailCompany
+	 * @param idJob the id job
+	 * @param idShop the id shop
+	 * @param idCompany the id company
+	 * @param nameShop the name shop
+	 * @param positionName the position name
+	 * @param phoneShop the phone shop
+	 * @param possibleWorkingDaysPerWeek the possible working days per week
+	 * @param possibleWorkingHoursPerDay the possible working hours per day
+	 * @param hourlyWage the hourly wage
+	 * @param pictureJob the picture job
+	 * @param requiredJLPT the required JLPT
+	 * @param requiredDurationInJapan the required duration in japan
+	 * @param interviewType the interview type
+	 * @param interviewVenue the interview venue
+	 * @param addressShop the address shop
+	 * @param interviewDateJob the interview date job
+	 * @param latitude the latitude
+	 * @param longitude the longitude
+	 * @param jobDetails the job details
+	 * @param finishWorkingTime the finish working time
+	 * @param startWorkingTime the start working time
+	 * @param idjobDetails the idjob details
+	 * @param idJobList the id job list
+	 * @param idJobDetail the id job detail
+	 * @param jobURL the job URL
+	 * @param workTimeEnglish the work time english
+	 * @param workTimeJapanese the work time japanese
+	 * @param positionCategoryEnglish the position category english
+	 * @param positionCategoryJapanese the position category japanese
+	 * @param salaryDetail the salary detail
+	 * @param jobType the job type
+	 * @param trainingPeriod the training period
+	 * @param hourlyWageMemo the hourly wage memo
+	 * @param hourlyWageInTrainingPeriod the hourly wage in training period
+	 * @param workTimeDetail the work time detail
+	 * @param numberStaffNeeded the number staff needed
+	 * @param salary the salary
+	 * @param status the status
+	 * @param openJobDate the open job date
+	 * @param validJobDate the valid job date
+	 * @param descriptionShop the description shop
+	 * @param category the category
+	 * @param openTime the open time
+	 * @param logoShop the logo shop
+	 * @param userIdLine the user id line
+	 * @param emailShop the email shop
+	 * @param phoneNumber the phone number
+	 * @param applyPhoneNumber the apply phone number
+	 * @param reference the reference
+	 * @param requirement the requirement
+	 * @param interviewVenueShop the interview venue shop
+	 * @param possiblePhoneTime the possible phone time
+	 * @param transportationAllowanceShop the transportation allowance shop
+	 * @param nameCompany the name company
+	 * @param logoCompany the logo company
+	 * @param description the description
+	 * @param phoneNumberCompany the phone number company
+	 * @param addressCompany the address company
+	 * @param emailCompany the email company
 	 */
 	public JobDto(int idJob, int idShop, int idCompany, String nameShop, String positionName, String phoneShop,
 			int possibleWorkingDaysPerWeek, int possibleWorkingHoursPerDay, Double hourlyWage, String pictureJob,
@@ -481,7 +456,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -499,7 +474,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -518,7 +493,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -536,7 +511,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -555,7 +530,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -573,7 +548,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -592,7 +567,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -610,7 +585,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -629,7 +604,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -647,7 +622,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -666,7 +641,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -684,7 +659,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -703,7 +678,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -721,7 +696,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -740,7 +715,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -758,7 +733,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -777,7 +752,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -795,7 +770,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -814,7 +789,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -832,7 +807,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -851,7 +826,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -869,7 +844,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -888,7 +863,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -906,7 +881,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -925,7 +900,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -943,7 +918,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -962,7 +937,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -980,7 +955,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -999,7 +974,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1017,7 +992,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1036,7 +1011,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1054,7 +1029,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1073,7 +1048,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1091,7 +1066,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1110,7 +1085,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1128,7 +1103,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1147,7 +1122,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1165,7 +1140,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1184,7 +1159,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1202,7 +1177,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1221,7 +1196,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1239,7 +1214,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1258,7 +1233,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1276,7 +1251,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1295,7 +1270,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1313,7 +1288,7 @@ public class JobDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -1329,330 +1304,1478 @@ public class JobDto {
 		this.idobDetails = idobDetails;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the idjob details.
+	 * @return the idjob details
+	 */
 	public String getIdjobDetails() {
 		return idjobDetails;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the idjob details.
+	 * @param idjobDetails the new idjob details
+	 */
 	public void setIdjobDetails(String idjobDetails) {
 		this.idjobDetails = idjobDetails;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the id job list.
+	 * @return the id job list
+	 */
 	public int getIdJobList() {
 		return idJobList;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the id job list.
+	 * @param idJobList the new id job list
+	 */
 	public void setIdJobList(int idJobList) {
 		this.idJobList = idJobList;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the id job detail.
+	 * @return the id job detail
+	 */
 	public String getIdJobDetail() {
 		return idJobDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the id job detail.
+	 * @param idJobDetail the new id job detail
+	 */
 	public void setIdJobDetail(String idJobDetail) {
 		this.idJobDetail = idJobDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the job URL.
+	 * @return the job URL
+	 */
 	public String getJobURL() {
 		return jobURL;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the job URL.
+	 * @param jobURL the new job URL
+	 */
 	public void setJobURL(String jobURL) {
 		this.jobURL = jobURL;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the work time english.
+	 * @return the work time english
+	 */
 	public String getWorkTimeEnglish() {
 		return workTimeEnglish;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the work time english.
+	 * @param workTimeEnglish the new work time english
+	 */
 	public void setWorkTimeEnglish(String workTimeEnglish) {
 		this.workTimeEnglish = workTimeEnglish;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the work time japanese.
+	 * @return the work time japanese
+	 */
 	public String getWorkTimeJapanese() {
 		return workTimeJapanese;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the work time japanese.
+	 * @param workTimeJapanese the new work time japanese
+	 */
 	public void setWorkTimeJapanese(String workTimeJapanese) {
 		this.workTimeJapanese = workTimeJapanese;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the position category english.
+	 * @return the position category english
+	 */
 	public String getPositionCategoryEnglish() {
 		return positionCategoryEnglish;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the position category english.
+	 * @param positionCategoryEnglish the new position category english
+	 */
 	public void setPositionCategoryEnglish(String positionCategoryEnglish) {
 		this.positionCategoryEnglish = positionCategoryEnglish;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the position category japanese.
+	 * @return the position category japanese
+	 */
 	public String getPositionCategoryJapanese() {
 		return positionCategoryJapanese;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the position category japanese.
+	 * @param positionCategoryJapanese the new position category japanese
+	 */
 	public void setPositionCategoryJapanese(String positionCategoryJapanese) {
 		this.positionCategoryJapanese = positionCategoryJapanese;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the salary detail.
+	 * @return the salary detail
+	 */
 	public String getSalaryDetail() {
 		return salaryDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the salary detail.
+	 * @param salaryDetail the new salary detail
+	 */
 	public void setSalaryDetail(String salaryDetail) {
 		this.salaryDetail = salaryDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the job type.
+	 * @return the job type
+	 */
 	public String getJobType() {
 		return jobType;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the job type.
+	 * @param jobType the new job type
+	 */
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the training period.
+	 * @return the training period
+	 */
 	public String getTrainingPeriod() {
 		return trainingPeriod;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the training period.
+	 * @param trainingPeriod the new training period
+	 */
 	public void setTrainingPeriod(String trainingPeriod) {
 		this.trainingPeriod = trainingPeriod;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the hourly wage memo.
+	 * @return the hourly wage memo
+	 */
 	public String getHourlyWageMemo() {
 		return hourlyWageMemo;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the hourly wage memo.
+	 * @param hourlyWageMemo the new hourly wage memo
+	 */
 	public void setHourlyWageMemo(String hourlyWageMemo) {
 		this.hourlyWageMemo = hourlyWageMemo;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the hourly wage in training period.
+	 * @return the hourly wage in training period
+	 */
 	public String getHourlyWageInTrainingPeriod() {
 		return hourlyWageInTrainingPeriod;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the hourly wage in training period.
+	 * @param hourlyWageInTrainingPeriod the new hourly wage in training period
+	 */
 	public void setHourlyWageInTrainingPeriod(String hourlyWageInTrainingPeriod) {
 		this.hourlyWageInTrainingPeriod = hourlyWageInTrainingPeriod;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the work time detail.
+	 * @return the work time detail
+	 */
 	public String getWorkTimeDetail() {
 		return workTimeDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the work time detail.
+	 * @param workTimeDetail the new work time detail
+	 */
 	public void setWorkTimeDetail(String workTimeDetail) {
 		this.workTimeDetail = workTimeDetail;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the number staff needed.
+	 * @return the number staff needed
+	 */
 	public int getNumberStaffNeeded() {
 		return numberStaffNeeded;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the number staff needed.
+	 * @param numberStaffNeeded the new number staff needed
+	 */
 	public void setNumberStaffNeeded(int numberStaffNeeded) {
 		this.numberStaffNeeded = numberStaffNeeded;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the salary.
+	 * @return the salary
+	 */
 	public double getSalary() {
 		return salary;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the salary.
+	 * @param salary the new salary
+	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Checks if is and requirement.
+	 * @return true, if is and requirement
+	 */
 	public boolean isAndRequirement() {
 		return andRequirement;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the and requirement.
+	 * @param andRequirement the new and requirement
+	 */
 	public void setAndRequirement(boolean andRequirement) {
 		this.andRequirement = andRequirement;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Checks if is status.
+	 * @return true, if is status
+	 */
 	public boolean isStatus() {
 		return status;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the status.
+	 * @param status the new status
+	 */
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the open job date.
+	 * @return the open job date
+	 */
 	public Date getOpenJobDate() {
 		return openJobDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the open job date.
+	 * @param openJobDate the new open job date
+	 */
 	public void setOpenJobDate(Date openJobDate) {
 		this.openJobDate = openJobDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the valid job date.
+	 * @return the valid job date
+	 */
 	public Date getValidJobDate() {
 		return validJobDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the valid job date.
+	 * @param validJobDate the new valid job date
+	 */
 	public void setValidJobDate(Date validJobDate) {
 		this.validJobDate = validJobDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the description shop.
+	 * @return the description shop
+	 */
 	public String getDescriptionShop() {
 		return descriptionShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the description shop.
+	 * @param descriptionShop the new description shop
+	 */
 	public void setDescriptionShop(String descriptionShop) {
 		this.descriptionShop = descriptionShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the category.
+	 * @return the category
+	 */
 	public String getCategory() {
 		return category;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the category.
+	 * @param category the new category
+	 */
 	public void setCategory(String category) {
 		this.category = category;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the open time.
+	 * @return the open time
+	 */
 	public String getOpenTime() {
 		return openTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the open time.
+	 * @param openTime the new open time
+	 */
 	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the logo shop.
+	 * @return the logo shop
+	 */
 	public String getLogoShop() {
 		return logoShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the logo shop.
+	 * @param logoShop the new logo shop
+	 */
 	public void setLogoShop(String logoShop) {
 		this.logoShop = logoShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the user id line.
+	 * @return the user id line
+	 */
 	public String getUserIdLine() {
 		return userIdLine;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the user id line.
+	 * @param userIdLine the new user id line
+	 */
 	public void setUserIdLine(String userIdLine) {
 		this.userIdLine = userIdLine;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the email shop.
+	 * @return the email shop
+	 */
 	public String getEmailShop() {
 		return emailShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the email shop.
+	 * @param emailShop the new email shop
+	 */
 	public void setEmailShop(String emailShop) {
 		this.emailShop = emailShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the phone number.
+	 * @return the phone number
+	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the phone number.
+	 * @param phoneNumber the new phone number
+	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the apply phone number.
+	 * @return the apply phone number
+	 */
 	public String getApplyPhoneNumber() {
 		return applyPhoneNumber;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the apply phone number.
+	 * @param applyPhoneNumber the new apply phone number
+	 */
 	public void setApplyPhoneNumber(String applyPhoneNumber) {
 		this.applyPhoneNumber = applyPhoneNumber;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the reference.
+	 * @return the reference
+	 */
 	public String getReference() {
 		return reference;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the reference.
+	 * @param reference the new reference
+	 */
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the requirement.
+	 * @return the requirement
+	 */
 	public String getRequirement() {
 		return requirement;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the requirement.
+	 * @param requirement the new requirement
+	 */
 	public void setRequirement(String requirement) {
 		this.requirement = requirement;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the interview venue shop.
+	 * @return the interview venue shop
+	 */
 	public String getInterviewVenueShop() {
 		return interviewVenueShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the interview venue shop.
+	 * @param interviewVenueShop the new interview venue shop
+	 */
 	public void setInterviewVenueShop(String interviewVenueShop) {
 		this.interviewVenueShop = interviewVenueShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the possible phone time.
+	 * @return the possible phone time
+	 */
 	public String getPossiblePhoneTime() {
 		return possiblePhoneTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the possible phone time.
+	 * @param possiblePhoneTime the new possible phone time
+	 */
 	public void setPossiblePhoneTime(String possiblePhoneTime) {
 		this.possiblePhoneTime = possiblePhoneTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the longitude shop.
+	 * @return the longitude shop
+	 */
 	public Double getLongitudeShop() {
 		return longitudeShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the longitude shop.
+	 * @param longitudeShop the new longitude shop
+	 */
 	public void setLongitudeShop(Double longitudeShop) {
 		this.longitudeShop = longitudeShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the latitude shop.
+	 * @return the latitude shop
+	 */
 	public Double getLatitudeShop() {
 		return latitudeShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the latitude shop.
+	 * @param latitudeShop the new latitude shop
+	 */
 	public void setLatitudeShop(Double latitudeShop) {
 		this.latitudeShop = latitudeShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Checks if is transportation allowance shop.
+	 * @return true, if is transportation allowance shop
+	 */
 	public boolean isTransportationAllowanceShop() {
 		return transportationAllowanceShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the transportation allowance shop.
+	 * @param transportationAllowanceShop the new transportation allowance shop
+	 */
 	public void setTransportationAllowanceShop(boolean transportationAllowanceShop) {
 		this.transportationAllowanceShop = transportationAllowanceShop;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the name company.
+	 * @return the name company
+	 */
 	public String getNameCompany() {
 		return nameCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the name company.
+	 * @param nameCompany the new name company
+	 */
 	public void setNameCompany(String nameCompany) {
 		this.nameCompany = nameCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the logo company.
+	 * @return the logo company
+	 */
 	public String getLogoCompany() {
 		return logoCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the logo company.
+	 * @param logoCompany the new logo company
+	 */
 	public void setLogoCompany(String logoCompany) {
 		this.logoCompany = logoCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the description.
+	 * @return the description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the description.
+	 * @param description the new description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the phone number company.
+	 * @return the phone number company
+	 */
 	public String getPhoneNumberCompany() {
 		return phoneNumberCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the phone number company.
+	 * @param phoneNumberCompany the new phone number company
+	 */
 	public void setPhoneNumberCompany(String phoneNumberCompany) {
 		this.phoneNumberCompany = phoneNumberCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the address company.
+	 * @return the address company
+	 */
 	public String getAddressCompany() {
 		return addressCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the address company.
+	 * @param addressCompany the new address company
+	 */
 	public void setAddressCompany(String addressCompany) {
 		this.addressCompany = addressCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Gets the email company.
+	 * @return the email company
+	 */
 	public String getEmailCompany() {
 		return emailCompany;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobDto.java
+	 * 
+	 * Sets the email company.
+	 * @param emailCompany the new email company
+	 */
 	public void setEmailCompany(String emailCompany) {
 		this.emailCompany = emailCompany;
 	}

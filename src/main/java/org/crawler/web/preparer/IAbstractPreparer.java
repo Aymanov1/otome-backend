@@ -18,10 +18,25 @@ public interface IAbstractPreparer {
 	 * Start part crawling.
 	 * 
 	 * @author Hanios
-	 * @param area     the area
-	 * @param category the category
+	 * @param area
+	 *            the area
+	 * @param category
+	 *            the category
 	 */
 	void startPartCrawling(String area, String category);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: IAbstractPreparer.java
+	 * 
+	 *         this method Stop crawling.
+	 */
 	void stopCrawling();
 }

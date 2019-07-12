@@ -26,7 +26,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -45,7 +45,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -64,7 +64,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -85,7 +85,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -102,7 +102,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -121,7 +121,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -149,7 +149,7 @@ public interface CompanyRepository extends JpaRepository<Company, Serializable> 
 	 *         Class Name: CompanyRepository.java
 	 * 
 	 *         Gets list comapany name.
-	 * 
+	 * @return the all company
 	 */
 	@Query(value = "select  NEW com.hrdatabank.mtproject.model.AtsDetail(c.loginId,c.password,c.atsStatus) from Company c where c.idCompany =:idCompany")
 	public AtsDetail getAllCompany();

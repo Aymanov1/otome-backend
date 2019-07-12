@@ -15,7 +15,6 @@ import com.hrdatabank.otome.repositories.JobOtomeRepository;
 
 import reactor.core.publisher.Flux;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JobOtomeService.
  */
@@ -33,8 +32,16 @@ public class JobOtomeService {
 	/**
 	 * Find job by id.
 	 *
-	 * @param idJobOtome
-	 *            the id job otome
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Find job by id.
+	 * @param idJobOtome            the id job otome
 	 * @return the optional
 	 */
 	public Optional<JobOtome> findJobById(long idJobOtome) {
@@ -44,6 +51,15 @@ public class JobOtomeService {
 	/**
 	 * Find all jobs.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Find all jobs.
 	 * @return the list
 	 */
 	public List<JobDto> findAllJobs() {
@@ -53,6 +69,15 @@ public class JobOtomeService {
 	/**
 	 * Find all jobs reactive.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Find all jobs reactive.
 	 * @return the flux
 	 */
 	@SuppressWarnings("unchecked")
@@ -63,8 +88,16 @@ public class JobOtomeService {
 	/**
 	 * Delete job.
 	 *
-	 * @param jobOtome
-	 *            the job otome
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * this method Delete job.
+	 * @param jobOtome            the job otome
 	 */
 	public void deleteJob(JobOtome jobOtome) {
 		jobOtomeRepository.delete(jobOtome);
@@ -73,8 +106,16 @@ public class JobOtomeService {
 	/**
 	 * Save job.
 	 *
-	 * @param job
-	 *            the job
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Save job.
+	 * @param job            the job
 	 * @return the job otome
 	 */
 	public JobOtome saveJob(JobOtome job) {
@@ -84,6 +125,15 @@ public class JobOtomeService {
 	/**
 	 * Count baitoru jobs affiliate activated.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Count baitoru jobs affiliate activated.
 	 * @return the long
 	 */
 	public long countBaitoruJobsAffiliateActivated() {
@@ -93,10 +143,17 @@ public class JobOtomeService {
 	/**
 	 * Gets the baitoru jobs affiliate activated.
 	 *
-	 * @param page
-	 *            the page
-	 * @param size
-	 *            the size
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Gets the baitoru jobs affiliate activated.
+	 * @param page            the page
+	 * @param size            the size
 	 * @return the baitoru jobs affiliate activated
 	 */
 	public Page<JobOtome> getBaitoruJobsAffiliateActivated(int page, int size) {
@@ -106,6 +163,15 @@ public class JobOtomeService {
 	/**
 	 * Gets the jobs by station and job category.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobOtomeService.java
+	 * 
+	 * Gets the jobs by station and job category.
 	 * @param page the page
 	 * @param size the size
 	 * @param latitudeStation the latitude station

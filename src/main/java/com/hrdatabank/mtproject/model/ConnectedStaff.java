@@ -18,7 +18,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -41,7 +41,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -59,7 +59,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -77,7 +77,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -95,7 +95,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -113,7 +113,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 
@@ -131,7 +131,7 @@ public class ConnectedStaff {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 * Using JRE: 1.8
 	 * 

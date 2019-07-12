@@ -15,14 +15,66 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class LineStation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineStation.java
+ * 
+ * Instantiates a new line station.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineStation.java
+ * 
+ * Instantiates a new line station.
+ * @param idLineStation the id line station
+ * @param lineCD the line CD
+ * @param lineNameJapanese the line name japanese
+ * @param lineNameKatakana the line name katakana
+ * @param lineNameHiragana the line name hiragana
+ * @param lineColorCode the line color code
+ * @param lineColor the line color
+ * @param lineType the line type
+ * @param longitude the longitude
+ * @param latitude the latitude
+ * @param lineZoom the line zoom
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "line_station")
 public class LineStation implements Serializable {

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.hrdatabank.mtproject.entities.Candidate;
 import com.hrdatabank.mtproject.model.CandidateDto;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface CandidateRepository.
  */
@@ -25,7 +26,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -49,7 +50,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -67,13 +68,28 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	@Query(value = "select NEW com.hrdatabank.mtproject.model.CandidateDto(s.idUser,s.botInformation.idBotInformation,s.botInformation.languageBot,s.userName,s.phone,s.jLPT,s.durationInJapan,s.email,s.profilePicture,s.birthday,s.candidateFB,s.userNameKatakana)  from Candidate s where s.botInformation.pendingBot = true and (lower(CONCAT('%',s.userName,'%')) like lower(CONCAT('%',:candName,'%')) or lower(CONCAT('%',s.idUser,'%')) like lower(CONCAT('%',:candName,'%'))) ORDER BY s.botInformation.lastActionDate DESC", countQuery = "select count(*) from Candidate s where s.botInformation.pendingBot = true and (lower(CONCAT('%',s.userName,'%')) like lower(CONCAT('%',:candName,'%')) or lower(CONCAT('%',s.idUser,'%')) like lower(CONCAT('%',:candName,'%')))")
 	public Page<CandidateDto> getCandidateListPaginated(@Param("candName") String candName, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the list candidate by id.
+	 * @param idCand the id cand
+	 * @return the list candidate by id
+	 */
 	@Query(value = "select s from Candidate s where idUser>= :idCand")
 	public List<Candidate> getListCandidateById(@Param("idCand") int idCand);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -94,7 +110,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -113,7 +129,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -132,7 +148,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -156,7 +172,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -175,7 +191,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -199,7 +215,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -220,7 +236,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -241,7 +257,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -262,7 +278,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -278,43 +294,229 @@ public interface CandidateRepository extends JpaRepository<Candidate, Serializab
 	@Query(value = "select NEW com.hrdatabank.mtproject.model.CandidateDto(s.idUser,s.botInformation.idBotInformation,s.botInformation.languageBot,s.userName,s.phone,s.jLPT,s.durationInJapan,s.email,s.profilePicture,s.birthday,s.candidateFB,s.userNameKatakana,s.guest) from Candidate s where s.idUser=:idUser ")
 	public CandidateDto getCandidateDtoByid(@Param("idUser") int idUser);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Find FB candidate by id user FB.
+	 * @param idUserFB the id user FB
+	 * @return the candidate
+	 */
 	@Query(value = "select s from Candidate s where s.idUserFB =:idUserFB")
 	public Candidate findFBCandidateByIdUserFB(@Param("idUserFB") String idUserFB);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Find candidates by register date.
+	 * @param registerDate the register date
+	 * @param page the page
+	 * @return the page
+	 */
 	@Query(value = "select NEW com.hrdatabank.mtproject.model.CandidateDto(c.idUser, c.botInformation.idBotInformation, c.botInformation.languageBot, c.userName, c.phone, c.jLPT, c.durationInJapan, c.email, c.profilePicture, c.userLineId, c.firstNameFB, c.lastNameFB, c.timeZoneFB, c.localFB, c.idUserFB, c.birthday, c.registerDate, c.candidateFB, c.botInformation) from Candidate c where c.registerDate >=:registerDate", countName = "select count(*) from Candidate c where c.registerDate >=:registerDate")
 	public Page<CandidateDto> findCandidatesByRegisterDate(@Param("registerDate") Date registerDate, Pageable page);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the all facebook user ids.
+	 * @return the all facebook user ids
+	 */
 	@Query(value = "select c.idUserFB from Candidate c where c.idUserFB IS NOT NULL")
 	public List<String> getAllFacebookUserIds();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the candidate by phone number.
+	 * @param phone the phone
+	 * @return the candidate by phone number
+	 */
 	@Query(value = "select s from Candidate s where s.phone =:phone and s.guest=false")
 	public Candidate getCandidateByPhoneNumber(@Param("phone") String phone);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the candidate guest by phone number.
+	 * @param phone the phone
+	 * @return the candidate guest by phone number
+	 */
 	@Query(value = "select s from Candidate s where s.phone =:phone and s.guest=true")
 	public Candidate getCandidateGuestByPhoneNumber(@Param("phone") String phone);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the candidate by phone number and source.
+	 * @param phone the phone
+	 * @param source the source
+	 * @return the candidate by phone number and source
+	 */
 	@Query(value = "select s from Candidate s where s.phone =:phone and s.candidateFB =:source and  s.guest=false")
 	public Candidate getCandidateByPhoneNumberAndSource(@Param("phone") String phone, @Param("source") boolean source);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Find near station by station name.
+	 * @param stationEn the station en
+	 * @param stationJp the station jp
+	 * @param stationEnF the station en F
+	 * @param stationJpF the station jp F
+	 * @return the list
+	 */
 	@Query("SELECT c FROM Candidate c where  c.botInformation.addressToSearch = :stationJp OR  c.botInformation.addressToSearch = :stationEng OR c.botInformation.addressToSearch = :stationJpF OR  c.botInformation.addressToSearch = :stationEngF")
 	public List<Candidate> findNearStationByStationName(@Param("stationEng") String stationEn,
 			@Param("stationJp") String stationJp, @Param("stationEngF") String stationEnF,
 			@Param("stationJpF") String stationJpF);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the candidate list having bot information.
+	 * @param ids the ids
+	 * @return the candidate list having bot information
+	 */
 	@Query("SELECT c FROM Candidate c where c.botInformation.idBotInformation IN :ids ")
 	public List<Candidate> getCandidateListHavingBotInformation(@Param("ids") List<Integer> ids);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the line or FB candidate list having bot information.
+	 * @param ids the ids
+	 * @param candidateFB the candidate FB
+	 * @return the line or FB candidate list having bot information
+	 */
 	@Query("SELECT c FROM Candidate c where c.botInformation.idBotInformation IN :ids and c.candidateFB=:candidateFB")
 	public List<Candidate> getLineOrFBCandidateListHavingBotInformation(@Param("ids") List<Integer> ids,
 			@Param("candidateFB") boolean candidateFB);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the job canidate relation by id candidate limit.
+	 * @param idCandidateStart the id candidate start
+	 * @param idCandidateEnd the id candidate end
+	 * @return the job canidate relation by id candidate limit
+	 */
 	@Query("SELECT c FROM Candidate c where c.idUser>=:idCandidateStart and  c.idUser<=:idCandidateEnd")
 	public List<Candidate> getJobCanidateRelationByIdCandidateLimit(@Param("idCandidateStart") int idCandidateStart,
 			@Param("idCandidateEnd") int idCandidateEnd);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Checks if is staff account exist by email.
+	 * @param email the email
+	 * @return true, if is staff account exist by email
+	 */
 	@Query("SELECT Count(c)>0 FROM Staff c where c.email=:email")
 	public boolean isStaffAccountExistByEmail(@Param("email") String email);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateRepository.java
+	 * 
+	 * Gets the id bot information by id candidate.
+	 * @param idCandidate the id candidate
+	 * @return the id bot information by id candidate
+	 */
 	@Query(value = "SELECT u.id_bot_information FROM user_information u where u.id_user=:idCandidate", nativeQuery = true)
 	public int getIdBotInformationByIdCandidate(@Param("idCandidate") int idCandidate);
 

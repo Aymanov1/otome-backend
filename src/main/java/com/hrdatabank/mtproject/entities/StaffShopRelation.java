@@ -17,14 +17,63 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class StaffShopRelation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: StaffShopRelation.java
+ * 
+ * Instantiates a new staff shop relation.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: StaffShopRelation.java
+ * 
+ * Instantiates a new staff shop relation.
+ * @param staffShopRelationPK the staff shop relation PK
+ * @param manageProgress the manage progress
+ * @param manageJob the manage job
+ * @param manageShop the manage shop
+ * @param manageAuthority the manage authority
+ * @param authorizedShop the authorized shop
+ * @param staff the staff
+ * @param shop the shop
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "staff_shop_relation")
 public class StaffShopRelation implements Serializable {

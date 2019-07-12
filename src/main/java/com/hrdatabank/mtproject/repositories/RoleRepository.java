@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hrdatabank.mtproject.entities.Role;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface RoleRepository.
  */
@@ -20,7 +21,7 @@ public interface RoleRepository extends JpaRepository<Role, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

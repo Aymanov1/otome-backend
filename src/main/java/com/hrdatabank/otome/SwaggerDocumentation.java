@@ -12,10 +12,27 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * The Class SwaggerDocumentation.
+ */
 @EnableSwagger2
 @Configuration
 public class SwaggerDocumentation {
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: SwaggerDocumentation.java
+	 * 
+	 * Product api.
+	 * @return the docket
+	 */
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
@@ -23,6 +40,20 @@ public class SwaggerDocumentation {
 				.apiInfo(metaInfo());
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: SwaggerDocumentation.java
+	 * 
+	 * Meta info.
+	 * @return the api info
+	 */
 	private ApiInfo metaInfo() {
 
 		ApiInfo apiInfo = new ApiInfo("Otome Bot Documentation API", "", "1.0", "Terms of Service",

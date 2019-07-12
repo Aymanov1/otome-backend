@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.hrdatabank.mtproject.entities.Staff;
 import com.hrdatabank.mtproject.model.ConnectedStaff;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface StaffRepository.
  */
@@ -24,7 +25,7 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -43,7 +44,7 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -62,7 +63,7 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -84,7 +85,7 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -105,7 +106,7 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -133,10 +134,9 @@ public interface StaffRepository extends JpaRepository<Staff, Serializable> {
 	 *         Class Name: StaffRepository.java
 	 * 
 	 *         Gets the all staffs by keyword paginated.
-	 * @param pageable
-	 *            the pageable
-	 * @param keyword
-	 *            the keyword * @param idCompany the idCompany
+	 * @param pageable            the pageable
+	 * @param keyword            the keyword * @param idCompany the idCompany
+	 * @param idCompany the id company
 	 * @return the all staffs by keyword paginated
 	 */
 	@Query(value = "SELECT s from Staff s where (lower(s.staffName) like lower(CONCAT('%',:keyword,'%'))) and (s.company.idCompany=:idCompany)", countQuery = "SELECT COUNT(*) from  Staff s where (lower(s.staffName) like lower(CONCAT('%',:keyword,'%'))) and (s.company.idCompany=:idCompany)")

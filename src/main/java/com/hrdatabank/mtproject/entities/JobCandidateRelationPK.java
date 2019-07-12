@@ -14,9 +14,47 @@ import lombok.NoArgsConstructor;
  * The Class JobCandidateRelationPK.
  */
 @Embeddable
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: JobCandidateRelationPK.java
+ * 
+ * Instantiates a new job candidate relation PK.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: JobCandidateRelationPK.java
+ * 
+ * Instantiates a new job candidate relation PK.
+ * @param idJob the id job
+ * @param idCandidate the id candidate
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 
 public class JobCandidateRelationPK implements Serializable {

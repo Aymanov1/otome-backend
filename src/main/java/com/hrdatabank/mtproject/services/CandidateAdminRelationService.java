@@ -9,6 +9,7 @@ import com.hrdatabank.mtproject.entities.CandidateAdminRelation;
 import com.hrdatabank.mtproject.entities.CandidateAdminRelationPK;
 import com.hrdatabank.mtproject.repositories.CandidateAdminRelationRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CandidateAdminRelationService.
  */
@@ -22,7 +23,7 @@ public class CandidateAdminRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -41,7 +42,7 @@ public class CandidateAdminRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -59,7 +60,7 @@ public class CandidateAdminRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -80,7 +81,7 @@ public class CandidateAdminRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

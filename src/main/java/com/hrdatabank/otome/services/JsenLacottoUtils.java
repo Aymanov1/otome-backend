@@ -25,24 +25,72 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import com.hrdatabank.otome.domain.Job;
 
+/**
+ * The Class JsenLacottoUtils.
+ */
 public class JsenLacottoUtils {
+
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(JsenLacottoUtils.class);
 
+	/** The six oclock. */
 	private static String SIX_OCLOCK = "06:00";
+
+	/** The seven oclock. */
 	private static String SEVEN_OCLOCK = "07:00";
+
+	/** The twelve oclock. */
 	private static String TWELVE_OCLOCK = "12:00";
+
+	/** The ten oclock pm. */
 	private static String TEN_OCLOCK_PM = "22:00";
+
+	/** The one oclock pm. */
 	private static String ONE_OCLOCK_PM = "13:00";
+
+	/** The midnight am. */
 	private static String MIDNIGHT_AM = "00:00";
+
+	/** The midnight pm. */
 	private static String MIDNIGHT_PM = "24:00";
+
+	/** The hh mm. */
 	private static String HH_MM = "HH:mm";
+
+	/** The night shift. */
 	private static String NIGHT_SHIFT = "Night Shift";
+
+	/** The before school. */
 	private static String BEFORE_SCHOOL = "Before School";
+
+	/** The after school. */
 	private static String AFTER_SCHOOL = "After School";
+
+	/** The beforeschool nightshift afterschool en. */
 	private static String BEFORESCHOOL_NIGHTSHIFT_AFTERSCHOOL_EN = "Before School and Night Shift and After School";
+
+	/** The beforeschool nightshift afterschool jp. */
 	private static String BEFORESCHOOL_NIGHTSHIFT_AFTERSCHOOL_JP = "学校前 and 夜勤 and 学校後";
+
+	/** The night school. */
 	private static String NIGHT_SCHOOL = "Night School";
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoUtils.java
+	 * 
+	 *         Convert full width to half width.
+	 * @param str
+	 *            the str
+	 * @return the string
+	 */
 	public static String convertFullWidthToHalfWidth(String str) {
 		str = str.replace('０', '0');
 		str = str.replace('１', '1');
@@ -57,6 +105,24 @@ public class JsenLacottoUtils {
 		return str;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoUtils.java
+	 * 
+	 *         Check jobs URL.
+	 * @param jobURL
+	 *            the job URL
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	public static boolean checkJobsURL(String jobURL) throws IOException {
 		boolean jobExpired = false;
 
@@ -85,9 +151,11 @@ public class JsenLacottoUtils {
 	 *         Class Name: ShopController.java
 	 *
 	 *         Gets the langitude and latitude.
-	 * @param address the address
+	 * @param address
+	 *            the address
 	 * @return the langitude and latitude
-	 * @throws JSONException the JSON exception
+	 * @throws JSONException
+	 *             the JSON exception
 	 */
 	/**************************************************/
 	/**************************************************/
@@ -117,6 +185,28 @@ public class JsenLacottoUtils {
 		return null;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoUtils.java
+	 * 
+	 *         Sets the work time english japanese.
+	 * @param job
+	 *            the job
+	 * @param startWorkingTime
+	 *            the start working time
+	 * @param finishWorkingTime
+	 *            the finish working time
+	 * @return the job
+	 * @throws ParseException
+	 *             the parse exception
+	 */
 	public static Job setWorkTimeEnglishJapanese(Job job, String startWorkingTime, String finishWorkingTime)
 			throws ParseException {
 
@@ -311,8 +401,24 @@ public class JsenLacottoUtils {
 		return job;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoUtils.java
+	 * 
+	 *         Gets the processors.
+	 * @param nbrColumns
+	 *            the nbr columns
+	 * @return the processors
+	 */
 	public static CellProcessor[] getProcessors(int nbrColumns) {
-		
+
 		List<CellProcessor> lacottoProcessors = new ArrayList<>();
 
 		for (int i = 0; i <= nbrColumns; i++) {

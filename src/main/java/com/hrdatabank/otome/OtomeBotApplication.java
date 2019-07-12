@@ -46,7 +46,7 @@ import reactor.core.scheduler.Schedulers;
 // scan joboty parts after migration to spring 2
 @ComponentScan(basePackages = { "com.hrdatabank.mtproject.repositories", "com.hrdatabank.mtproject.entities",
 		"com.hrdatabank.mtproject.model", "com.hrdatabank.mtproject.services",
-		"com.hrdatabank.mtproject.specifications", })
+		"com.hrdatabank.mtproject.specifications" })
 @EnableAsync(proxyTargetClass = true)
 @EntityScan(basePackages = { "com.hrdatabank.mtproject.entities", "com.hrdatabank.otome.domain" })
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
@@ -66,6 +66,7 @@ public class OtomeBotApplication implements CommandLineRunner {
 	@Autowired
 	ApplicationUserRepository applicationUserRepository;
 
+	/** The user repository. */
 	@Autowired
 	UserRepository userRepository;
 
@@ -75,6 +76,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * The main method.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         The main method.
 	 * @param args
 	 *            the arguments
 	 */
@@ -86,6 +96,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Randomize number.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Randomize number.
 	 * @return the int
 	 */
 	public int randomizeNumber() {
@@ -108,6 +127,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Inits the.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Inits the.
 	 * @param configRepository
 	 *            the config repository
 	 * @return the application runner
@@ -131,6 +159,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Sets the time.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Sets the time.
 	 * @param hourOfDay
 	 *            the hour of day
 	 * @param minute
@@ -149,6 +186,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Task executor.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Task executor.
 	 * @return the executor for crawling process
 	 */
 	@Bean
@@ -165,6 +211,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * B crypt password encoder.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         B crypt password encoder.
 	 * @return the bcrypt password encoder for registration
 	 */
 	@Bean
@@ -175,6 +230,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Jdbc scheduler.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Jdbc scheduler.
 	 * @return the scheduler of database in order to prepare JPA connection to be
 	 *         reactive
 	 */
@@ -186,6 +250,15 @@ public class OtomeBotApplication implements CommandLineRunner {
 	/**
 	 * Transaction template.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: OtomeBotApplication.java
+	 * 
+	 *         Transaction template.
 	 * @param transactionManager
 	 *            the transaction manager
 	 * @return the transaction template in order to prepare JPA connection to be

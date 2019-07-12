@@ -26,17 +26,101 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Candidate.
  */
 @Entity
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Candidate.java
+ * 
+ * Instantiates a new candidate.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Candidate.java
+ * 
+ * Instantiates a new candidate.
+ * @param idPersonInCharge the id person in charge
+ * @param searchCounter the search counter
+ * @param suggestedCounter the suggested counter
+ * @param failedCounter the failed counter
+ * @param applyCounter the apply counter
+ * @param userLineId the user line id
+ * @param phone the phone
+ * @param birthday the birthday
+ * @param jLPT the j LPT
+ * @param nearestStation the nearest station
+ * @param workableTime the workable time
+ * @param durationInJapan the duration in japan
+ * @param memo the memo
+ * @param progress the progress
+ * @param categoryTypeToAdd the category type to add
+ * @param reasonToAdd the reason to add
+ * @param email the email
+ * @param firstNameFB the first name FB
+ * @param lastNameFB the last name FB
+ * @param timeZoneFB the time zone FB
+ * @param localFB the local FB
+ * @param idUserFB the id user FB
+ * @param candidateFB the candidate FB
+ * @param guest the guest
+ * @param registerDate the register date
+ * @param startWorkingTime the start working time
+ * @param finishWorkingTime the finish working time
+ * @param chatLineAdmin the chat line admin
+ * @param jobCandidateRelations the job candidate relations
+ * @param alerts the alerts
+ * @param candidateAdminRelations the candidate admin relations
+ * @param shopCandidateRelations the shop candidate relations
+ * @param botInformation the bot information
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see com.hrdatabank.mtproject.entities.UserInformation#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see com.hrdatabank.mtproject.entities.UserInformation#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Candidate extends UserInformation implements Serializable {
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: Candidate.java
+	 * 
+	 * Instantiates a new candidate.
+	 * @param candidate the candidate
+	 */
 	public Candidate(HashMap<String, Object> candidate) {
 		super();
 		this.guest = (boolean) candidate.get("guest");
@@ -57,6 +141,21 @@ public class Candidate extends UserInformation implements Serializable {
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: Candidate.java
+	 * 
+	 * Instantiates a new candidate.
+	 * @param candidate the candidate
+	 * @param candidateDetails the candidate details
+	 */
 	public Candidate(HashMap<String, Object> candidate, HashMap<String, Object> candidateDetails) {
 		super();
 		this.guest = (boolean) candidate.get("guest");
@@ -105,15 +204,19 @@ public class Candidate extends UserInformation implements Serializable {
 	@Column(columnDefinition = "int default 0")
 	private int idPersonInCharge;
 
+	/** The search counter. */
 	@Column(columnDefinition = "int default 0")
 	private int searchCounter;
 
+	/** The suggested counter. */
 	@Column(columnDefinition = "int default 0")
 	private int suggestedCounter;
 
+	/** The failed counter. */
 	@Column(columnDefinition = "int default 0")
 	private int failedCounter;
 
+	/** The apply counter. */
 	@Column(columnDefinition = "int default 0")
 	private int applyCounter;
 
@@ -154,15 +257,26 @@ public class Candidate extends UserInformation implements Serializable {
 	/** The email. */
 	private String email;
 
+	/** The first name FB. */
 	private String firstNameFB;
+	
+	/** The last name FB. */
 	private String lastNameFB;
+	
+	/** The time zone FB. */
 	private String timeZoneFB;
+	
+	/** The local FB. */
 	private String localFB;
+	
+	/** The id user FB. */
 	private String idUserFB;
 
+	/** The candidate FB. */
 	@Column(columnDefinition = "boolean default false")
 	private boolean candidateFB;
 
+	/** The guest. */
 	@Column(columnDefinition = "boolean default false")
 	private boolean guest;
 

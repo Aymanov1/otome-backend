@@ -34,10 +34,17 @@ public class UserController {
 	/**
 	 * Instantiates a new user controller.
 	 *
-	 * @param applicationUserRepository
-	 *            the application user repository
-	 * @param bCryptPasswordEncoder
-	 *            the b crypt password encoder
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: UserController.java
+	 * 
+	 * Instantiates a new user controller.
+	 * @param applicationUserRepository            the application user repository
+	 * @param bCryptPasswordEncoder            the b crypt password encoder
 	 */
 	public UserController(ApplicationUserRepository applicationUserRepository,
 			BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -48,8 +55,16 @@ public class UserController {
 	/**
 	 * Sign up.
 	 *
-	 * @param user
-	 *            the user
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: UserController.java
+	 * 
+	 * this method Sign up.
+	 * @param user            the user
 	 */
 	@ApiOperation(value = "sign Up")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success/ OK response"),

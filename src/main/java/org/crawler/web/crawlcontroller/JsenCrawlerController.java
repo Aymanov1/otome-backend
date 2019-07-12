@@ -11,6 +11,7 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JsenCrawlerController.
  */
@@ -21,9 +22,20 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 	/** The Constant JSEN_CRAWLER_CONTROLLER. */
 	private static final JsenCrawlerController JSEN_CRAWLER_CONTROLLER = new JsenCrawlerController();
 
+	/** The controller. */
 	private CrawlController controller;
 
 	/**
+	 * Instantiates a new jsen crawler controller.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JsenCrawlerController.java
+	 * 
 	 * Instantiates a new jsen crawler controller.
 	 */
 	private JsenCrawlerController() {
@@ -33,6 +45,15 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 	/**
 	 * Gets the single instance of JsenCrawlerController.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JsenCrawlerController.java
+	 * 
+	 * Gets the single instance of JsenCrawlerController.
 	 * @return single instance of JsenCrawlerController
 	 */
 	public static JsenCrawlerController getInstance() {
@@ -76,6 +97,20 @@ public class JsenCrawlerController extends AbstractCrawlerController {
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JsenCrawlerController.java
+	 * 
+	 * Gets the controller.
+	 * @return the controller
+	 */
 	public CrawlController getController() {
 		return controller;
 	}

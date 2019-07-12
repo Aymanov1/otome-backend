@@ -1,11 +1,12 @@
 package com.hrdatabank.mtproject.entities;
 
+// TODO: Auto-generated Javadoc
 /**
  * Enumerated {@link User} roles.
  * 
  * @author vladimir.stankovic
  *
- * Aug 16, 2016
+ * Aug 16, 2019
  */
 public enum Role2 {
     
@@ -19,7 +20,7 @@ public enum Role2 {
     /**
      * Copyright (c) 2018 by HRDatabank. All rights reserved.
      *
-     * @author yassine amira
+     * @author Hanios
      * 
      * Using JRE: 1.8
      * 

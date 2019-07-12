@@ -18,12 +18,20 @@ import com.hrdatabank.mtproject.entities.Job_;
 import com.hrdatabank.mtproject.entities.NearestStation_;
 import com.hrdatabank.mtproject.entities.Shop_;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JobSpecifications.
+ */
 public class JobSpecifications {
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author wala ben Amor
 	 * 
 	 *         Method to get find Jobs By idCompany Critiria Filter
+	 * @param companiesIds the companies ids
+	 * @return the specification
 	 */
 	public static Specification<Job> findJobsByCritiriaCompanyIdWithOr(List<Integer> companiesIds) {
 		return new Specification<Job>() {
@@ -55,7 +63,21 @@ public class JobSpecifications {
 		};
 	}
 
-	/****************************************/
+	/**
+	 * *************************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobSpecifications.java
+	 * 
+	 * Gets the contains like pattern.
+	 * @param searchTerm the search term
+	 * @return the contains like pattern
+	 */
 	private static String getContainsLikePattern(String searchTerm) {
 		if (searchTerm == null || searchTerm.isEmpty()) {
 			return "%";
@@ -64,7 +86,21 @@ public class JobSpecifications {
 		}
 	}
 
-	/***************************************/
+	/**
+	 * ************************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobSpecifications.java
+	 * 
+	 * Find jobs by critiria shop id with or.
+	 * @param shopsIds the shops ids
+	 * @return the specification
+	 */
 	/**
 	 * @author wala ben Amor
 	 * 
@@ -89,7 +125,21 @@ public class JobSpecifications {
 		};
 	}
 
-	/***************************************/
+	/**
+	 * ************************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobSpecifications.java
+	 * 
+	 * Find jobs by critiria position name with or.
+	 * @param jobPositionsList the job positions list
+	 * @return the specification
+	 */
 	/**
 	 * @author wala ben Amor
 	 * 
@@ -121,7 +171,30 @@ public class JobSpecifications {
 		};
 	}
 
-	/***************************************/
+	/**
+	 * ************************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobSpecifications.java
+	 * 
+	 * Find jobs by critiria with and.
+	 * @param nearStation the near station
+	 * @param wageMin the wage min
+	 * @param wageMax the wage max
+	 * @param category the category
+	 * @param interviewType the interview type
+	 * @param jlpt the jlpt
+	 * @param duration the duration
+	 * @param freeText the free text
+	 * @param checkedJobsStatus the checked jobs status
+	 * @param publicPrivateJobsStatus the public private jobs status
+	 * @return the specification
+	 */
 	/**
 	 * @author wala ben Amor
 	 * 

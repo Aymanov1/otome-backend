@@ -12,10 +12,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+/**
+ * The Class JsenURLServiceCollectorImpl.
+ */
 @Service
 public class JsenURLServiceCollectorImpl implements IURLServiceCollector {
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = Logger.getLogger(JsenURLServiceCollectorImpl.class.getName());
+
+	/** The max pages. */
 	private int maxPages = 0;
 
 	/*
@@ -28,7 +33,6 @@ public class JsenURLServiceCollectorImpl implements IURLServiceCollector {
 	@Override
 	public CompletableFuture<List<String>> findURLs(String baseUrl, String enCategory) {
 		String url = enCategory + baseUrl;
-		System.out.println("URLLLLLLLLLLLLLLLLLLL = " + url);
 		List<String> urls = new ArrayList<>();
 		List<String> finalListURLs = new ArrayList<>();
 		try {
@@ -72,6 +76,15 @@ public class JsenURLServiceCollectorImpl implements IURLServiceCollector {
 	/**
 	 * Divide and round up.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenURLServiceCollectorImpl.java
+	 * 
+	 *         Divide and round up.
 	 * @param num
 	 *            the num
 	 * @param divisor
@@ -95,6 +108,15 @@ public class JsenURLServiceCollectorImpl implements IURLServiceCollector {
 	/**
 	 * Safe long to int.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenURLServiceCollectorImpl.java
+	 * 
+	 *         Safe long to int.
 	 * @param l
 	 *            the l
 	 * @return the int

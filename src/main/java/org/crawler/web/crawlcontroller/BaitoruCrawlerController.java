@@ -11,6 +11,7 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class BaitoruCrawlerController.
  * 
@@ -23,6 +24,7 @@ public class BaitoruCrawlerController extends AbstractCrawlerController {
 	/** The Constant BAITORU_CRAWLER_CONTROLLER. */
 	private static final BaitoruCrawlerController BAITORU_CRAWLER_CONTROLLER = new BaitoruCrawlerController();
 
+	/** The controller. */
 	private CrawlController controller;
 
 	/**
@@ -81,6 +83,20 @@ public class BaitoruCrawlerController extends AbstractCrawlerController {
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: BaitoruCrawlerController.java
+	 * 
+	 * Gets the controller.
+	 * @return the controller
+	 */
 	public CrawlController getController() {
 		return controller;
 	}

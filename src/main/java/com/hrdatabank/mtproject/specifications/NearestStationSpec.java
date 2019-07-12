@@ -12,14 +12,21 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.hrdatabank.mtproject.entities.NearestStation;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NearestStationSpec.
+ */
 public class NearestStationSpec implements Specification<NearestStation> {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The criteria. */
 	private SearchCriteria criteria;
 
+	/* (non-Javadoc)
+	 * @see org.springframework.data.jpa.domain.Specification#toPredicate(javax.persistence.criteria.Root, javax.persistence.criteria.CriteriaQuery, javax.persistence.criteria.CriteriaBuilder)
+	 */
 	@Override
 	public Predicate toPredicate(Root<NearestStation> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
 
@@ -72,6 +79,20 @@ public class NearestStationSpec implements Specification<NearestStation> {
 		return null;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: NearestStationSpec.java
+	 * 
+	 * Instantiates a new nearest station spec.
+	 * @param criteria the criteria
+	 */
 	public NearestStationSpec(SearchCriteria criteria) {
 		super();
 		this.criteria = criteria;

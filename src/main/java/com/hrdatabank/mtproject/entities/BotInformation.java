@@ -26,13 +26,106 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class BotInformation.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: BotInformation.java
+ * 
+ * Instantiates a new bot information.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: BotInformation.java
+ * 
+ * Instantiates a new bot information.
+ * @param idBotInformation the id bot information
+ * @param idRelatedJob the id related job
+ * @param noCallOrForgotReason the no call or forgot reason
+ * @param status the status
+ * @param pageMoreJob the page more job
+ * @param wrongDateCounter the wrong date counter
+ * @param stationIncrementor the station incrementor
+ * @param endStationCD the end station CD
+ * @param startStationCD the start station CD
+ * @param stationIDAfterIncrement the station ID after increment
+ * @param idFirstSimilarStation the id first similar station
+ * @param randomSearchSeed the random search seed
+ * @param searchCriteria the search criteria
+ * @param addressToSearch the address to search
+ * @param addressToSearchLat the address to search lat
+ * @param addressToSearchLong the address to search long
+ * @param languageBot the language bot
+ * @param preferCategory the prefer category
+ * @param WorkTime the work time
+ * @param jobType the job type
+ * @param SearchCriteriaForHowWasIt the search criteria for how was it
+ * @param listNumber the list number
+ * @param shopSearch the shop search
+ * @param sourceOfSearch the source of search
+ * @param jobSearchList the job search list
+ * @param searchLog the search log
+ * @param newlyAddedCandidate the newly added candidate
+ * @param ignored the ignored
+ * @param pendingBot the pending bot
+ * @param chooseStationDate the choose station date
+ * @param chooseTimeDate the choose time date
+ * @param askForNotFixingDate the ask for not fixing date
+ * @param youStartWorkingTodayDate the you start working today date
+ * @param askForStationDate the ask for station date
+ * @param lastActionDate the last action date
+ * @param askForLanguageDate the ask for language date
+ * @param askHowWasItDate the ask how was it date
+ * @param askForJobTypeDate the ask for job type date
+ * @param askShopHowWasInterviewDate the ask shop how was interview date
+ * @param askCandidateHowWasInterviewDate the ask candidate how was interview date
+ * @param askForReasonDate the ask for reason date
+ * @param askForApplyingOtherJobsDate the ask for applying other jobs date
+ * @param startWorkingTime the start working time
+ * @param howWasTheWorkDate the how was the work date
+ * @param finishWorkingTime the finish working time
+ * @param askForWhenStartWorking the ask for when start working
+ * @param askForResultDateCandidate the ask for result date candidate
+ * @param askForWhenIsTheResultDate the ask for when is the result date
+ * @param noCallOrForgotDate the no call or forgot date
+ * @param askForSetInterview the ask for set interview
+ * @param askForWhenInterviewDate the ask for when interview date
+ * @param askForApplyAgainDate the ask for apply again date
+ * @param askForHelpMenuDate the ask for help menu date
+ * @param similarStationDate the similar station date
+ * @param nearestStationBotInformationRelations the nearest station bot information relations
+ * @param tagToSearch the tag to search
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 @Table(name = "bot_information")
 public class BotInformation implements Serializable {
@@ -79,9 +172,11 @@ public class BotInformation implements Serializable {
 	@Column(columnDefinition = "int default 0")
 	private int stationIDAfterIncrement;
 
+	/** The id first similar station. */
 	@Column(columnDefinition = "int default 0")
 	private int idFirstSimilarStation;
 
+	/** The random search seed. */
 	@Column(columnDefinition = "Decimal(10,10) default '0.5'")
 	private double randomSearchSeed;
 
@@ -91,7 +186,11 @@ public class BotInformation implements Serializable {
 
 	/** The address to search. */
 	private String addressToSearch;
+	
+	/** The address to search lat. */
 	private Double addressToSearchLat;
+	
+	/** The address to search long. */
 	private Double addressToSearchLong;
 
 	/** The language bot. */
@@ -107,6 +206,7 @@ public class BotInformation implements Serializable {
 	/** The job type. */
 	private String jobType;
 
+	/** The Search criteria for how was it. */
 	private String SearchCriteriaForHowWasIt;
 
 	/** The list number. */
@@ -124,6 +224,7 @@ public class BotInformation implements Serializable {
 	@CollectionTable(name = "bot_information_job_search_list")
 	private List<Integer> jobSearchList;
 
+	/** The search log. */
 	@Column
 	@ElementCollection(fetch = FetchType.EAGER)
 	@MapKeyColumn(name = "idJob")
@@ -134,6 +235,7 @@ public class BotInformation implements Serializable {
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean newlyAddedCandidate;
 
+	/** The ignored. */
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean ignored;
 
@@ -141,9 +243,11 @@ public class BotInformation implements Serializable {
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean pendingBot;
 
+	/** The choose station date. */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date chooseStationDate;
 
+	/** The choose time date. */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date chooseTimeDate;
 
@@ -235,6 +339,7 @@ public class BotInformation implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date askForHelpMenuDate;
 
+	/** The similar station date. */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date similarStationDate;
 
@@ -243,6 +348,7 @@ public class BotInformation implements Serializable {
 	@JsonIgnoreProperties({ "botInformation" })
 	private List<NearestStationBotInformationRelation> nearestStationBotInformationRelations;
 
+	/** The tag to search. */
 	private String tagToSearch;
 
 }

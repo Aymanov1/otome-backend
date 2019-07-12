@@ -34,9 +34,11 @@ public class BaitoruCrawlerServiceLauncherImpl implements ICrawlerServiceLaunche
 	@Autowired
 	protected JobOtomeRepository jobOtomeRepository;
 
+	/** The job otome service. */
 	@Autowired
 	protected JobOtomeService jobOtomeService;
 
+	/** The config crawler repository. */
 	@Autowired
 	ConfigCrawlerRepository configCrawlerRepository;
 
@@ -52,8 +54,6 @@ public class BaitoruCrawlerServiceLauncherImpl implements ICrawlerServiceLaunche
 	public CompletableFuture<Boolean> startCrawlingURLs(List<String> urls) {
 		try {
 			BaitoruCrawlerController.getInstance().createController(urls, 50, BaitoruCrawler.class);
-			// BaitoruCrawlerController.getInstance().createController(urls, urls.size(),
-			// BaitoruCrawler.class);
 
 			BaitoruInitializer.getInstance().getJobDetails().forEach(j -> {
 				try {

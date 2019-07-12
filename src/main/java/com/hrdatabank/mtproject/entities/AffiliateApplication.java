@@ -17,17 +17,63 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AffiliateApplication.
+ */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: AffiliateApplication.java
+ * 
+ * Instantiates a new affiliate application.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: AffiliateApplication.java
+ * 
+ * Instantiates a new affiliate application.
+ * @param idAffiliateApplication the id affiliate application
+ * @param programName the program name
+ * @param affilPayment the affil payment
+ * @param referrer the referrer
+ * @param device the device
+ * @param clickDate the click date
+ * @param orderDate the order date
+ * @param approvalDate the approval date
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
 @Table(name = "affiliate_application")
 public class AffiliateApplication implements Serializable {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The id AffiliateApplication. */

@@ -3,6 +3,9 @@ package org.crawler.web.concurrent.service;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * The Interface ICrawlerServiceLauncher.
+ */
 public interface ICrawlerServiceLauncher {
 
 	/**

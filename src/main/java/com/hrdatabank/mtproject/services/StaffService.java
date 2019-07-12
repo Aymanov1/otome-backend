@@ -11,6 +11,7 @@ import com.hrdatabank.mtproject.entities.Staff;
 import com.hrdatabank.mtproject.model.ConnectedStaff;
 import com.hrdatabank.mtproject.repositories.StaffRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class StaffService.
  */
@@ -24,7 +25,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -43,7 +44,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -65,7 +66,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -85,7 +86,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -105,7 +106,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -124,7 +125,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -144,7 +145,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -164,7 +165,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -188,7 +189,7 @@ public class StaffService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -221,12 +222,10 @@ public class StaffService {
 	 *         Class Name: StaffService.java
 	 * 
 	 *         Gets the all staffs by keyword paginated.
-	 * @param page
-	 *            the page
-	 * @param size
-	 *            the size
-	 * @param keyword
-	 *            the keyword * @param idCompany the idCompany
+	 * @param page            the page
+	 * @param size            the size
+	 * @param keyword            the keyword * @param idCompany the idCompany
+	 * @param idCompany the id company
 	 * @return the all staffs by keyword paginated
 	 */
 

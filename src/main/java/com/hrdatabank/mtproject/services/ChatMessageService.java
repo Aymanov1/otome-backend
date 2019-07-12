@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.ChatMessage;
 import com.hrdatabank.mtproject.repositories.ChatMessageRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ChatMessageService.
  */
@@ -23,7 +24,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -42,7 +43,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -64,7 +65,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -84,7 +85,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -104,7 +105,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -124,7 +125,7 @@ public class ChatMessageService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

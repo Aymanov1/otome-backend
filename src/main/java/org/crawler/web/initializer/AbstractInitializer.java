@@ -12,9 +12,17 @@ import com.hrdatabank.otome.domain.JobOtome;
 import lombok.Data;
 
 /**
- * The Class AbstractInitializer.
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
  * 
- * @author Hanios
+ *         Using JRE: 1.8
+ * 
+ *         Project Name: otome-backend
+ * 
+ *         Class Name: AbstractInitializer.java
+ * 
+ *         Instantiates a new abstract initializer.
  */
 @Data
 public abstract class AbstractInitializer {

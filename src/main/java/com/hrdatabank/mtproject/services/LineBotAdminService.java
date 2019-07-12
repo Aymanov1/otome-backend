@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.LineBotAdmin;
 import com.hrdatabank.mtproject.repositories.LineBotAdminRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class LineBotAdminService.
  */
@@ -21,7 +22,7 @@ public class LineBotAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -42,7 +43,7 @@ public class LineBotAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

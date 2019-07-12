@@ -18,13 +18,54 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Admin.
  */
 @Entity
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Admin.java
+ * 
+ * Instantiates a new admin.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Admin.java
+ * 
+ * Instantiates a new admin.
+ * @param lineBotAdmin the line bot admin
+ * @param candidateAdminRelations the candidate admin relations
+ * @param notifications the notifications
+ * @param alerts the alerts
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see com.hrdatabank.mtproject.entities.UserInformation#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see com.hrdatabank.mtproject.entities.UserInformation#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Admin extends UserInformation implements Serializable {

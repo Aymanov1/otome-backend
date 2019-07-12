@@ -25,11 +25,20 @@ import com.hrdatabank.otome.domain.JobOtome;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsenCrawler.
+ */
 public class JsenCrawler extends AbstractCrawler {
 	/** The Constant logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(BaitoruCrawler.class);
+	
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("hh:mm");
 
+	/* (non-Javadoc)
+	 * @see org.crawler.web.crawler.AbstractCrawler#visit(edu.uci.ics.crawler4j.crawler.Page)
+	 */
 	@Override
 	public void visit(Page page) {
 		String url = page.getWebURL().getURL();
@@ -312,6 +321,9 @@ public class JsenCrawler extends AbstractCrawler {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.crawler.web.crawler.AbstractCrawler#save()
+	 */
 	@Override
 	public void save() {
 		if (startTime != null && finishTime != null && !jobAddress.equals("")) {
@@ -322,7 +334,19 @@ public class JsenCrawler extends AbstractCrawler {
 	}
 
 	/**
-	 * This method return smallest wage from collection of wages given
+	 * This method return smallest wage from collection of wages given.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JsenCrawler.java
+	 * 
+	 * Gets the smallest wage.
+	 * @param wage the wage
+	 * @return the smallest wage
 	 */
 	private String getSmallestWage(String wage) {
 		List<Integer> numbers = new ArrayList<>();

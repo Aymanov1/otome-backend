@@ -23,6 +23,15 @@ public class LineStationOtomeService {
 	/**
 	 * Find line station by id.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: LineStationOtomeService.java
+	 * 
+	 * Find line station by id.
 	 * @param idLineStationOtome the id line station otome
 	 * @return the optional
 	 */
@@ -33,6 +42,15 @@ public class LineStationOtomeService {
 	/**
 	 * Find all line stations.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: LineStationOtomeService.java
+	 * 
+	 * Find all line stations.
 	 * @return the list
 	 */
 	public List<LineStationOtome> findAllLineStations() {
@@ -42,6 +60,15 @@ public class LineStationOtomeService {
 	/**
 	 * Delete line station.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: LineStationOtomeService.java
+	 * 
+	 * this method Delete line station.
 	 * @param lineStationOtome the line station otome
 	 */
 	public void deleteLineStation(LineStationOtome lineStationOtome) {
@@ -51,6 +78,15 @@ public class LineStationOtomeService {
 	/**
 	 * Save line station.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: LineStationOtomeService.java
+	 * 
+	 * Save line station.
 	 * @param lineStation the line station
 	 * @return the line station otome
 	 */

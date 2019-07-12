@@ -11,14 +11,36 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.otome.services.JsenLacottoService;
 import com.hrdatabank.otome.services.JsenLacottoServiceImple;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LacottoJsenCSVManager.
+ */
 @Service
 public class LacottoJsenCSVManager {
 
+	/** The jsen lacotto service. */
 	@Autowired
 	private JsenLacottoService jsenLacottoService;
+	
+	/** The jsen lacotto service imple. */
 	@Autowired
 	private JsenLacottoServiceImple jsenLacottoServiceImple;
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: LacottoJsenCSVManager.java
+	 * 
+	 * this method Import csv stream lacotto.
+	 * @param csvDirectoryLacotto the csv directory lacotto
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void importCsvStreamLacotto(String csvDirectoryLacotto) throws IOException {
 		jsenLacottoServiceImple.importCSVForLacottoJobsWithOpenCsv(csvDirectoryLacotto);
 		// int[] numArr = { 0 };
@@ -47,11 +69,14 @@ public class LacottoJsenCSVManager {
 	}
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author mahdi
 	 * 
 	 *         method to read all csvs from one directory and import them for J-sen
 	 *         jobs
-	 * @throws IOException
+	 * @param csvDirectoryJsen the csv directory jsen
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void importCsvStreamJsen(String csvDirectoryJsen) throws IOException {
 		jsenLacottoServiceImple.importJsenCSV(csvDirectoryJsen);

@@ -21,7 +21,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JobOtomeServiceImpl.
  */
@@ -95,6 +94,11 @@ public class JobOtomeServiceImpl implements JobReactiveService {
 		return Mono.empty();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.hrdatabank.otome.services.JobReactiveService#findAllJobDTO()
+	 */
 	@Override
 	@Cacheable
 	public Flux<JobDto> findAllJobDTO() {

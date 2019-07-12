@@ -29,6 +29,15 @@ public class OtomeDBConfiguration {
 	/**
 	 * Otome DS properties.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: OtomeDBConfiguration.java
+	 * 
+	 * Otome DS properties.
 	 * @return the data source properties
 	 */
 	@Primary
@@ -41,8 +50,16 @@ public class OtomeDBConfiguration {
 	/**
 	 * Otome DS.
 	 *
-	 * @param otomeDSProperties
-	 *            the otome DS properties
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: OtomeDBConfiguration.java
+	 * 
+	 * Otome DS.
+	 * @param otomeDSProperties            the otome DS properties
 	 * @return the data source
 	 */
 	@Primary
@@ -54,10 +71,17 @@ public class OtomeDBConfiguration {
 	/**
 	 * Otome DS em factory.
 	 *
-	 * @param otomeDS
-	 *            the otome DS
-	 * @param builder
-	 *            the builder
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: OtomeDBConfiguration.java
+	 * 
+	 * Otome DS em factory.
+	 * @param otomeDS            the otome DS
+	 * @param builder            the builder
 	 * @return the local container entity manager factory bean
 	 */
 	@Primary
@@ -70,8 +94,16 @@ public class OtomeDBConfiguration {
 	/**
 	 * Otome DS transaction manager.
 	 *
-	 * @param otomeDSEmFactory
-	 *            the otome DS em factory
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: OtomeDBConfiguration.java
+	 * 
+	 * Otome DS transaction manager.
+	 * @param otomeDSEmFactory            the otome DS em factory
 	 * @return the platform transaction manager
 	 */
 	@Primary

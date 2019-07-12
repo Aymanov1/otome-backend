@@ -1,7 +1,21 @@
 package org.crawler.web.enumeration;
 
+/**
+ * The Enum CrawlerTypesEnum.
+ */
 public enum CrawlerTypesEnum {
 
-	BAITORU, JSEN, LINEBOT, LACOTTO, FROMA, TOMOROWWORK
+	/** The baitoru. */
+	BAITORU,
+	/** The jsen. */
+	JSEN,
+	/** The linebot. */
+	LINEBOT,
+	/** The lacotto. */
+	LACOTTO,
+	/** The froma. */
+	FROMA,
+	/** The tomorowwork. */
+	TOMOROWWORK
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hrdatabank.mtproject.entities.LineStation;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface LineStationRepository.
  */
@@ -20,7 +21,7 @@ public interface LineStationRepository extends JpaRepository<LineStation, Serial
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

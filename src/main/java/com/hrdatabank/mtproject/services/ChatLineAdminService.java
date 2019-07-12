@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.ChatLineAdmin;
 import com.hrdatabank.mtproject.repositories.ChatLineAdminRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ChatLineAdminService.
  */
@@ -22,7 +23,7 @@ public class ChatLineAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -41,7 +42,7 @@ public class ChatLineAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -59,7 +60,7 @@ public class ChatLineAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -79,7 +80,7 @@ public class ChatLineAdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

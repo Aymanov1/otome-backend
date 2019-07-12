@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.Notification;
 import com.hrdatabank.mtproject.repositories.NotificationRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class NotificationService.
  */
@@ -21,7 +22,7 @@ public class NotificationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -41,7 +42,7 @@ public class NotificationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -65,7 +66,7 @@ public class NotificationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

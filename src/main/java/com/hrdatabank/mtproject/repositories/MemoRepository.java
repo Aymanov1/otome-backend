@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.hrdatabank.mtproject.entities.CandidateAdminRelation;
 import com.hrdatabank.mtproject.entities.Memo;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface MemoRepository.
  */
@@ -22,7 +23,7 @@ public interface MemoRepository extends JpaRepository<Memo, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -42,7 +43,7 @@ public interface MemoRepository extends JpaRepository<Memo, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.Admin;
 import com.hrdatabank.mtproject.repositories.AdminRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class AdminService.
  */
@@ -24,7 +25,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -43,7 +44,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -61,7 +62,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -81,7 +82,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -90,8 +91,7 @@ public class AdminService {
 	 *         Class Name: AdminService.java
 	 * 
 	 *         this method Delete admin.
-	 * @param idAdmin
-	 *            the id admin
+	 * @param admin the admin
 	 */
 	public void deleteAdmin(Admin admin) {
 		adminRepository.delete(admin);
@@ -100,7 +100,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -120,7 +120,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -140,7 +140,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -160,7 +160,7 @@ public class AdminService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -181,6 +181,20 @@ public class AdminService {
 		return adminRepository.findAllAdminsByKeywordPaginated(PageRequest.of(page, size), keyword);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: AdminService.java
+	 * 
+	 * Gets the all admins.
+	 * @return the all admins
+	 */
 	public List<Admin> getAllAdmins() {
 		return adminRepository.findAll();
 	}

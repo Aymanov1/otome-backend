@@ -21,14 +21,76 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Company.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Company.java
+ * 
+ * Instantiates a new company.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Company.java
+ * 
+ * Instantiates a new company.
+ * @param idCompany the id company
+ * @param nameCompany the name company
+ * @param loginId the login id
+ * @param password the password
+ * @param authorizedKey the authorized key
+ * @param token the token
+ * @param logoCompany the logo company
+ * @param description the description
+ * @param phoneNumber the phone number
+ * @param addressCompany the address company
+ * @param emailCompany the email company
+ * @param interviewType the interview type
+ * @param emailRequirementStatus the email requirement status
+ * @param atsStatus the ats status
+ * @param shops the shops
+ * @param paymentCycle the payment cycle
+ * @param companyFax the company fax
+ * @param responsiblePerson the responsible person
+ * @param companyContractPeriod the company contract period
+ * @param traningPeriod the traning period
+ * @param educationHistory the education history
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 public class Company implements Serializable {
 
@@ -86,9 +148,11 @@ public class Company implements Serializable {
 	@JsonIgnore
 	private List<Shop> shops;
 
+	/** The payment cycle. */
 	@Column(columnDefinition = "int default 0")
 	private int paymentCycle;
-	/************************ Fake attributes ***/
+	
+	/** ********************** Fake attributes **. */
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
@@ -103,9 +167,17 @@ public class Company implements Serializable {
 	 *
 	 */
 	private String companyFax;
+	
+	/** The responsible person. */
 	private String responsiblePerson;
+	
+	/** The company contract period. */
 	private String companyContractPeriod;
+	
+	/** The traning period. */
 	private String traningPeriod;
+	
+	/** The education history. */
 	private String educationHistory;
 	/************/
 }

@@ -27,6 +27,15 @@ public class MtprojectDBConfiguration {
 	/**
 	 * Mtproject DS properties.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: MtprojectDBConfiguration.java
+	 * 
+	 * Mtproject DS properties.
 	 * @return the data source properties
 	 */
 	@Bean
@@ -38,6 +47,15 @@ public class MtprojectDBConfiguration {
 	/**
 	 * Mtproject DS.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: MtprojectDBConfiguration.java
+	 * 
+	 * Mtproject DS.
 	 * @param mtprojectDSProperties the mtproject DS properties
 	 * @return the data source
 	 */
@@ -49,6 +67,15 @@ public class MtprojectDBConfiguration {
 	/**
 	 * Mtproject DS em factory.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: MtprojectDBConfiguration.java
+	 * 
+	 * Mtproject DS em factory.
 	 * @param mtprojectDS the mtproject DS
 	 * @param builder the builder
 	 * @return the local container entity manager factory bean
@@ -62,6 +89,15 @@ public class MtprojectDBConfiguration {
 	/**
 	 * Mtproject DS transaction manager.
 	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: MtprojectDBConfiguration.java
+	 * 
+	 * Mtproject DS transaction manager.
 	 * @param mtprojectDSEmFactory the mtproject DS em factory
 	 * @return the platform transaction manager
 	 */

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hrdatabank.mtproject.entities.Alert;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface AlertRepository.
  */
@@ -21,7 +22,7 @@ public interface AlertRepository extends JpaRepository<Alert, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -40,7 +41,7 @@ public interface AlertRepository extends JpaRepository<Alert, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

@@ -18,14 +18,62 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class LineBotAdmin.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineBotAdmin.java
+ * 
+ * Instantiates a new line bot admin.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: LineBotAdmin.java
+ * 
+ * Instantiates a new line bot admin.
+ * @param idLineBotAdmin the id line bot admin
+ * @param userIdLine the user id line
+ * @param channelToken the channel token
+ * @param searchAlgorithm the search algorithm
+ * @param affiliateType the affiliate type
+ * @param hiddenAffiliateType the hidden affiliate type
+ * @param admins the admins
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "line_bot_admin")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -56,8 +104,10 @@ public class LineBotAdmin implements Serializable {
 	 */
 	private String searchAlgorithm;
 
+	/** The affiliate type. */
 	private String affiliateType;
 
+	/** The hidden affiliate type. */
 	private String hiddenAffiliateType;
 
 	/** The admins. */

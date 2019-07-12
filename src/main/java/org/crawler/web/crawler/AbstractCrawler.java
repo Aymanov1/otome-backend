@@ -22,7 +22,6 @@ import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.url.WebURL;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AbstractCralwer.
  * 
@@ -98,6 +97,16 @@ public abstract class AbstractCrawler extends WebCrawler {
 
 	/**
 	 * Instantiates a new abstract cralwer.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: AbstractCrawler.java
+	 * 
+	 *         Instantiates a new abstract crawler.
 	 */
 	public AbstractCrawler() {
 		shifts = new ArrayList<>();
@@ -107,7 +116,7 @@ public abstract class AbstractCrawler extends WebCrawler {
 
 	/*
 	 * (non-Javadoc)
-	 *  
+	 * 
 	 * @see
 	 * edu.uci.ics.crawler4j.crawler.WebCrawler#shouldVisit(edu.uci.ics.crawler4j.
 	 * crawler.Page, edu.uci.ics.crawler4j.url.WebURL)

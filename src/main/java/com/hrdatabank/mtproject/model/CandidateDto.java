@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.hrdatabank.mtproject.entities.BotInformation;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CandidateDto.
  */
@@ -38,29 +39,53 @@ public class CandidateDto {
 
 	/** The profile picture. */
 	private String profilePicture;
+	
+	/** The user line id. */
 	private String userLineId;
+	
+	/** The first name FB. */
 	private String firstNameFB;
+	
+	/** The last name FB. */
 	private String lastNameFB;
+	
+	/** The time zone FB. */
 	private String timeZoneFB;
+	
+	/** The local FB. */
 	private String localFB;
+	
+	/** The id user FB. */
 	private String idUserFB;
+	
+	/** The candidate FB. */
 	private boolean candidateFB;
+	
+	/** The pending bot. */
 	private boolean pendingBot;
+	
+	/** The register date. */
 	private Date registerDate;
+	
+	/** The guest. */
 	private boolean guest;
 
 	/** The birthday. */
 	private Date birthday;
+	
+	/** The bot information. */
 	private BotInformation botInformation;
 
-	/*****************/
+	/** **************. */
 	private String nearestStation;
+	
+	/** The workable time. */
 	private String workableTime;
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -69,26 +94,18 @@ public class CandidateDto {
 	 *         Class Name: CandidateDto.java
 	 * 
 	 *         Instantiates a new candidate dto.
-	 * @param idCandidate
-	 *            the id candidate
-	 * @param idBotInformation
-	 *            the id bot information
-	 * @param languageBot
-	 *            the language bot
-	 * @param userName
-	 *            the user name
-	 * @param phone
-	 *            the phone
-	 * @param jLPT
-	 *            the j LPT
-	 * @param durationInJapan
-	 *            the duration in japan
-	 * @param email
-	 *            the email
-	 * @param profilePicture
-	 *            the profile picture
-	 * @param birthday
-	 *            the birthday
+	 * @param idCandidate            the id candidate
+	 * @param idBotInformation            the id bot information
+	 * @param languageBot            the language bot
+	 * @param userName            the user name
+	 * @param phone            the phone
+	 * @param jLPT            the j LPT
+	 * @param durationInJapan            the duration in japan
+	 * @param email            the email
+	 * @param profilePicture            the profile picture
+	 * @param birthday            the birthday
+	 * @param candidateFB the candidate FB
+	 * @param userNameKatakana the user name katakana
 	 */
 	public CandidateDto(int idCandidate, int idBotInformation, String languageBot, String userName, String phone,
 			String jLPT, String durationInJapan, String email, String profilePicture, Date birthday,
@@ -117,6 +134,33 @@ public class CandidateDto {
 		this.candidateFB = candidateFB;
 		this.userNameKatakana = userNameKatakana;
 	}
+	
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Instantiates a new candidate dto.
+	 * @param idCandidate the id candidate
+	 * @param idBotInformation the id bot information
+	 * @param languageBot the language bot
+	 * @param userName the user name
+	 * @param phone the phone
+	 * @param jLPT the j LPT
+	 * @param durationInJapan the duration in japan
+	 * @param email the email
+	 * @param profilePicture the profile picture
+	 * @param birthday the birthday
+	 * @param candidateFB the candidate FB
+	 * @param userNameKatakana the user name katakana
+	 * @param guest the guest
+	 */
 	public CandidateDto(int idCandidate, int idBotInformation, String languageBot, String userName, String phone,
 			String jLPT, String durationInJapan, String email, String profilePicture, Date birthday,
 			boolean candidateFB, String userNameKatakana,boolean guest) {
@@ -145,30 +189,32 @@ public class CandidateDto {
 		this.userNameKatakana = userNameKatakana;
 		this.guest=guest;
 	}
+	
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author rihabkallel
 	 * 
 	 *         constructor for recommendation
-	 * 
-	 * @param idUser
-	 * @param idBotInformation
-	 * @param languageBot
-	 * @param userName
-	 * @param phone
-	 * @param jLPT
-	 * @param durationInJapan
-	 * @param email
-	 * @param profilePicture
-	 * @param userLineId
-	 * @param firstNameFB
-	 * @param lastNameFB
-	 * @param timeZoneFB
-	 * @param localFB
-	 * @param idUserFB
-	 * @param birthday
-	 * @param registerDate
-	 * @param candidateFB
-	 * @param botInformation
+	 * @param idUser the id user
+	 * @param idBotInformation the id bot information
+	 * @param languageBot the language bot
+	 * @param userName the user name
+	 * @param phone the phone
+	 * @param jLPT the j LPT
+	 * @param durationInJapan the duration in japan
+	 * @param email the email
+	 * @param profilePicture the profile picture
+	 * @param userLineId the user line id
+	 * @param firstNameFB the first name FB
+	 * @param lastNameFB the last name FB
+	 * @param timeZoneFB the time zone FB
+	 * @param localFB the local FB
+	 * @param idUserFB the id user FB
+	 * @param birthday the birthday
+	 * @param registerDate the register date
+	 * @param candidateFB the candidate FB
+	 * @param botInformation the bot information
 	 */
 	public CandidateDto(int idUser, int idBotInformation, String languageBot, String userName, String phone,
 			String jLPT, String durationInJapan, String email, String profilePicture, String userLineId,
@@ -197,6 +243,24 @@ public class CandidateDto {
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Instantiates a new candidate dto.
+	 * @param idUser the id user
+	 * @param userLineId the user line id
+	 * @param idUserFB the id user FB
+	 * @param isCandidateFB the is candidate FB
+	 * @param language the language
+	 */
 	public CandidateDto(int idUser, String userLineId, String idUserFB, boolean isCandidateFB, String language) {
 
 		this.idUser = idUser;
@@ -210,7 +274,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -228,7 +292,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -247,7 +311,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -265,7 +329,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -284,7 +348,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -302,7 +366,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -321,7 +385,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -339,7 +403,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -358,7 +422,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -376,7 +440,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -395,7 +459,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -413,7 +477,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -432,7 +496,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -450,7 +514,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -469,7 +533,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -487,7 +551,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -506,7 +570,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -524,7 +588,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -543,7 +607,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -561,7 +625,7 @@ public class CandidateDto {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -577,102 +641,471 @@ public class CandidateDto {
 		this.profilePicture = profilePicture;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Checks if is candidate FB.
+	 * @return true, if is candidate FB
+	 */
 	public boolean isCandidateFB() {
 		return candidateFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the candidate FB.
+	 * @param candidateFB the new candidate FB
+	 */
 	public void setCandidateFB(boolean candidateFB) {
 		this.candidateFB = candidateFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the bot information.
+	 * @return the bot information
+	 */
 	public BotInformation getBotInformation() {
 		return botInformation;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the bot information.
+	 * @param botInformation the new bot information
+	 */
 	public void setBotInformation(BotInformation botInformation) {
 		this.botInformation = botInformation;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the register date.
+	 * @return the register date
+	 */
 	public Date getRegisterDate() {
 		return registerDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the register date.
+	 * @param registerDate the new register date
+	 */
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the user line id.
+	 * @return the user line id
+	 */
 	public String getUserLineId() {
 		return userLineId;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the user line id.
+	 * @param userLineId the new user line id
+	 */
 	public void setUserLineId(String userLineId) {
 		this.userLineId = userLineId;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the first name FB.
+	 * @return the first name FB
+	 */
 	public String getFirstNameFB() {
 		return firstNameFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the first name FB.
+	 * @param firstNameFB the new first name FB
+	 */
 	public void setFirstNameFB(String firstNameFB) {
 		this.firstNameFB = firstNameFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the last name FB.
+	 * @return the last name FB
+	 */
 	public String getLastNameFB() {
 		return lastNameFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the last name FB.
+	 * @param lastNameFB the new last name FB
+	 */
 	public void setLastNameFB(String lastNameFB) {
 		this.lastNameFB = lastNameFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the time zone FB.
+	 * @return the time zone FB
+	 */
 	public String getTimeZoneFB() {
 		return timeZoneFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the time zone FB.
+	 * @param timeZoneFB the new time zone FB
+	 */
 	public void setTimeZoneFB(String timeZoneFB) {
 		this.timeZoneFB = timeZoneFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the local FB.
+	 * @return the local FB
+	 */
 	public String getLocalFB() {
 		return localFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the local FB.
+	 * @param localFB the new local FB
+	 */
 	public void setLocalFB(String localFB) {
 		this.localFB = localFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the id user FB.
+	 * @return the id user FB
+	 */
 	public String getIdUserFB() {
 		return idUserFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the id user FB.
+	 * @param idUserFB the new id user FB
+	 */
 	public void setIdUserFB(String idUserFB) {
 		this.idUserFB = idUserFB;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the user name katakana.
+	 * @return the user name katakana
+	 */
 	public String getUserNameKatakana() {
 		return userNameKatakana;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the user name katakana.
+	 * @param userNameKatakana the new user name katakana
+	 */
 	public void setUserNameKatakana(String userNameKatakana) {
 		this.userNameKatakana = userNameKatakana;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the nearest station.
+	 * @return the nearest station
+	 */
 	public String getNearestStation() {
 		return nearestStation;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the nearest station.
+	 * @param nearestStation the new nearest station
+	 */
 	public void setNearestStation(String nearestStation) {
 		this.nearestStation = nearestStation;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Gets the workable time.
+	 * @return the workable time
+	 */
 	public String getWorkableTime() {
 		return workableTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the workable time.
+	 * @param workableTime the new workable time
+	 */
 	public void setWorkableTime(String workableTime) {
 		this.workableTime = workableTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Instantiates a new candidate dto.
+	 * @param idUser the id user
+	 * @param userName the user name
+	 * @param userNameKatakana the user name katakana
+	 * @param phone the phone
+	 * @param jLPT the j LPT
+	 * @param durationInJapan the duration in japan
+	 * @param email the email
+	 * @param profilePicture the profile picture
+	 * @param userLineId the user line id
+	 * @param firstNameFB the first name FB
+	 * @param lastNameFB the last name FB
+	 * @param timeZoneFB the time zone FB
+	 * @param localFB the local FB
+	 * @param idUserFB the id user FB
+	 * @param candidateFB the candidate FB
+	 * @param registerDate the register date
+	 * @param birthday the birthday
+	 * @param pendingBot the pending bot
+	 * @param nearestStation the nearest station
+	 * @param workableTime the workable time
+	 */
 	public CandidateDto(int idUser, String userName, String userNameKatakana, String phone, String jLPT,
 			String durationInJapan, String email, String profilePicture, String userLineId, String firstNameFB,
 			String lastNameFB, String timeZoneFB, String localFB, String idUserFB, boolean candidateFB,
@@ -700,14 +1133,78 @@ public class CandidateDto {
 		this.workableTime = workableTime;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Checks if is pending bot.
+	 * @return true, if is pending bot
+	 */
 	public boolean isPendingBot() {
 		return pendingBot;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the pending bot.
+	 * @param pendingBot the new pending bot
+	 */
 	public void setPendingBot(boolean pendingBot) {
 		this.pendingBot = pendingBot;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Instantiates a new candidate dto.
+	 * @param idUser the id user
+	 * @param idBotInformation the id bot information
+	 * @param languageBot the language bot
+	 * @param userName the user name
+	 * @param userNameKatakana the user name katakana
+	 * @param phone the phone
+	 * @param jLPT the j LPT
+	 * @param durationInJapan the duration in japan
+	 * @param email the email
+	 * @param profilePicture the profile picture
+	 * @param userLineId the user line id
+	 * @param firstNameFB the first name FB
+	 * @param lastNameFB the last name FB
+	 * @param timeZoneFB the time zone FB
+	 * @param localFB the local FB
+	 * @param idUserFB the id user FB
+	 * @param candidateFB the candidate FB
+	 * @param pendingBot the pending bot
+	 * @param registerDate the register date
+	 * @param birthday the birthday
+	 * @param botInformation the bot information
+	 * @param nearestStation the nearest station
+	 * @param workableTime the workable time
+	 */
 	public CandidateDto(int idUser, int idBotInformation, String languageBot, String userName, String userNameKatakana,
 			String phone, String jLPT, String durationInJapan, String email, String profilePicture, String userLineId,
 			String firstNameFB, String lastNameFB, String timeZoneFB, String localFB, String idUserFB,
@@ -738,9 +1235,39 @@ public class CandidateDto {
 		this.nearestStation = nearestStation;
 		this.workableTime = workableTime;
 	}
+	
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Checks if is guest.
+	 * @return true, if is guest
+	 */
 	public boolean isGuest() {
 		return guest;
 	}
+	
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: CandidateDto.java
+	 * 
+	 * Sets the guest.
+	 * @param guest the new guest
+	 */
 	public void setGuest(boolean guest) {
 		this.guest = guest;
 	}

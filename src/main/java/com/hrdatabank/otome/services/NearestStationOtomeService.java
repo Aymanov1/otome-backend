@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.otome.domain.NearestStationOtome;
 import com.hrdatabank.otome.repositories.NearestStationOtomeRepository;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class NearestStationOtomeService.
  */
@@ -23,6 +22,15 @@ public class NearestStationOtomeService {
 	/**
 	 * Find nearest station by id.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeService.java
+	 * 
+	 *         Find nearest station by id.
 	 * @param idNearestStationOtome
 	 *            the id nearest station otome
 	 * @return the optional
@@ -34,6 +42,15 @@ public class NearestStationOtomeService {
 	/**
 	 * Find all nearest stations.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeService.java
+	 * 
+	 *         Find all nearest stations.
 	 * @return the list
 	 */
 	public List<NearestStationOtome> findAllNearestStations() {
@@ -43,6 +60,15 @@ public class NearestStationOtomeService {
 	/**
 	 * Delete nearest station.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeService.java
+	 * 
+	 *         this method Delete nearest station.
 	 * @param nearestStationOtome
 	 *            the nearest station otome
 	 */
@@ -53,6 +79,15 @@ public class NearestStationOtomeService {
 	/**
 	 * Save nearest station.
 	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeService.java
+	 * 
+	 *         Save nearest station.
 	 * @param nearestStationOtome
 	 *            the nearest station otome
 	 * @return the nearest station otome
@@ -64,7 +99,17 @@ public class NearestStationOtomeService {
 	/**
 	 * Gets the near station by id line CD.
 	 *
-	 * @param i the i
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: NearestStationOtomeService.java
+	 * 
+	 *         Gets the near station by id line CD.
+	 * @param i
+	 *            the i
 	 * @return the near station by id line CD
 	 */
 	public NearestStationOtome getNearStationByIdLineCD(int i) {

@@ -10,6 +10,7 @@ import com.hrdatabank.mtproject.entities.ShopCandidateRelation;
 import com.hrdatabank.mtproject.entities.ShopCandidateRelationPK;
 import com.hrdatabank.mtproject.repositories.ShopCandidateRelationRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ShopCandidateRelationService.
  */
@@ -23,7 +24,7 @@ public class ShopCandidateRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -42,7 +43,7 @@ public class ShopCandidateRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -60,7 +61,7 @@ public class ShopCandidateRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -80,7 +81,7 @@ public class ShopCandidateRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -101,7 +102,7 @@ public class ShopCandidateRelationService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

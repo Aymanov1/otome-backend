@@ -16,18 +16,61 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * UserRole.
  *
  * @author vladimir.stankovic
  * 
- *         Aug 18, 2016
+ *         Aug 18, 2019
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: UserRole.java
+ * 
+ * Instantiates a new user role.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: UserRole.java
+ * 
+ * Instantiates a new user role.
+ * @param id the id
+ * @param role the role
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "USER_ROLE")
 public class UserRole {
@@ -53,7 +96,7 @@ public class UserRole {
 		/**
 		 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 		 *
-		 * @author yassine amira
+		 * @author Hanios
 		 * 
 		 *         Using JRE: 1.8
 		 * 
@@ -69,7 +112,7 @@ public class UserRole {
 		/**
 		 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 		 *
-		 * @author yassine amira
+		 * @author Hanios
 		 * 
 		 *         Using JRE: 1.8
 		 * 
@@ -102,7 +145,7 @@ public class UserRole {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

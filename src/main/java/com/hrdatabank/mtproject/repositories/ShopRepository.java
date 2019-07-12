@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.hrdatabank.mtproject.entities.Shop;
 import com.hrdatabank.mtproject.model.ShopObject;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface ShopRepository.
  */
@@ -24,7 +25,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -43,7 +44,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -66,7 +67,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -84,13 +85,28 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	@Query(value = "SELECT s from Shop s where ((lower(s.company.nameCompany) NOT like lower('テスト会社')) and (lower(s.nameShop) like lower(CONCAT('%',:keyword,'%')) or (lower(s.company.nameCompany) like lower(CONCAT('%',:keyword,'%'))) or (lower(s.addressShop) like lower(CONCAT('%',:keyword,'%'))))) ORDER BY s.company.idCompany ASC, s.idShop ASC ", countQuery = "SELECT COUNT(*) from Shop s where (lower(s.company.nameCompany) NOT like lower('テスト会社')) and  (lower(s.nameShop) like lower(CONCAT('%',:keyword,'%')) or (lower(s.company.nameCompany) like lower(CONCAT('%',:keyword,'%')))  or (lower(s.addressShop) like lower(CONCAT('%',:keyword,'%'))))")
 	public Page<Shop> findAllShopsByKeywordPaginated(Pageable pageable, @Param("keyword") String keyword);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ShopRepository.java
+	 * 
+	 * Find all shops by keyword.
+	 * @param keyword the keyword
+	 * @return the list
+	 */
 	@Query(value = "SELECT s from Shop s where ((lower(s.company.nameCompany) NOT like lower('テスト会社')) and (lower(s.nameShop) like lower(CONCAT('%',:keyword,'%')) or (lower(s.company.nameCompany) like lower(CONCAT('%',:keyword,'%'))) or (lower(s.addressShop) like lower(CONCAT('%',:keyword,'%'))))) ORDER BY s.company.idCompany ASC, s.idShop ASC ", countQuery = "SELECT COUNT(*) from Shop s where (lower(s.company.nameCompany) NOT like lower('テスト会社')) and  (lower(s.nameShop) like lower(CONCAT('%',:keyword,'%')) or (lower(s.company.nameCompany) like lower(CONCAT('%',:keyword,'%')))  or (lower(s.addressShop) like lower(CONCAT('%',:keyword,'%'))))")
 	public List<Shop> findAllShopsByKeyword(@Param("keyword") String keyword);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -109,7 +125,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -128,7 +144,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -145,7 +161,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -164,7 +180,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -185,7 +201,7 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -206,10 +222,41 @@ public interface ShopRepository extends JpaRepository<Shop, Serializable> {
 	public Page<Shop> getAllShopsByIdCompanyByNamePaginated(Pageable pageable, @Param("idCompany") int idCompany,
 			@Param("name") String name);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ShopRepository.java
+	 * 
+	 * Find list shop by name shop and by address.
+	 * @param nameShop the name shop
+	 * @param addressShop the address shop
+	 * @return the list
+	 */
 	@Query(value = "select * from shop s where position (lower(:nameShop) in lower(s.name_shop)) > 0 and position (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
 	public List<Shop> findListShopByNameShopAndByAddress(@Param("nameShop") String nameShop,
 			@Param("addressShop") String addressShop);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ShopRepository.java
+	 * 
+	 * Find list shop by address.
+	 * @param addressShop the address shop
+	 * @return the list
+	 */
 	@Query(value = "select * from shop s where (lower(:addressShop) in lower(s.address_shop)) > 0 ", nativeQuery = true)
 	public List<Shop> findListShopByAddress(@Param("addressShop") String addressShop);
 	

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hrdatabank.mtproject.entities.ChatMessageLine;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface ChatMessageLineRepository.
  */
@@ -24,7 +25,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -40,9 +41,40 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	@Query("Select cm from ChatMessageLine cm where cm.chatLineAdmin.idChatLineAdmin=:idChatLineAdmin ORDER BY cm.messageDate ASC")
 	public List<ChatMessageLine> listAllChatMessagesByIdChatAdmin(@Param("idChatLineAdmin") int idChatLineAdmin);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ChatMessageLineRepository.java
+	 * 
+	 * Count all chat messages by id chat admin.
+	 * @param idChatLineAdmin the id chat line admin
+	 * @return the long
+	 */
 	@Query("Select count(cm) from ChatMessageLine cm where cm.chatLineAdmin.idChatLineAdmin=:idChatLineAdmin")
 	public long countAllChatMessagesByIdChatAdmin(@Param("idChatLineAdmin") int idChatLineAdmin);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ChatMessageLineRepository.java
+	 * 
+	 * Gets the paginatedhat messages by id chat admin.
+	 * @param idChatLineAdmin the id chat line admin
+	 * @param pageable the pageable
+	 * @return the paginatedhat messages by id chat admin
+	 */
 	@Query("Select cm from ChatMessageLine cm where cm.chatLineAdmin.idChatLineAdmin=:idChatLineAdmin ORDER BY cm.messageDate DESC")
 	public List<ChatMessageLine> getPaginatedhatMessagesByIdChatAdmin(@Param("idChatLineAdmin") int idChatLineAdmin,
 			Pageable pageable);
@@ -50,7 +82,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -69,7 +101,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -88,7 +120,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -112,7 +144,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -135,7 +167,7 @@ public interface ChatMessageLineRepository extends JpaRepository<ChatMessageLine
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 

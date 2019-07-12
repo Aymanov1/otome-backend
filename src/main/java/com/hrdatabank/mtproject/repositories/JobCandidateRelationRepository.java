@@ -21,6 +21,7 @@ import com.hrdatabank.mtproject.model.PaymentCycleAdminDto;
 import com.hrdatabank.mtproject.model.PaymentCycleDto;
 import com.hrdatabank.mtproject.model.ReportDto;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface JobCandidateRelationRepository.
  */
@@ -31,7 +32,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -50,16 +51,46 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	public List<JobCandidateRelation> getAppliedJobsByShopAndByCandidate(@Param("idShop") int idShop,
 			@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidaterelation by id candidate.
+	 * @param idCandidate the id candidate
+	 * @return the job candidaterelation by id candidate
+	 */
 	@Query("Select jc from JobCandidateRelation jc where   jc.jobCandidateRelationPK.idCandidate=:idCandidate ")
 	public List<JobCandidateRelation> getJobCandidaterelationByIdCandidate(@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the applied jobs by id candidate for ats.
+	 * @param idCand the id cand
+	 * @return the applied jobs by id candidate for ats
+	 */
 	@Query("Select jc from JobCandidateRelation jc where jc.candidate.idUser>:idCand and jc.candidate.idUser<39179")
 	public List<JobCandidateRelation> getAppliedJobsByIdCandidateForAts(@Param("idCand") int idCand);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -76,7 +107,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -98,7 +129,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -121,7 +152,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -140,13 +171,28 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	public JobCandidateRelation getJobCandidateRelationByIdJobIdCandidate(@Param("idCandidate") int idCandidate,
 			@Param("idJob") int idJob);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relation by id job.
+	 * @param idJob the id job
+	 * @return the job candidate relation by id job
+	 */
 	@Query("Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob")
 	public List<JobCandidateRelation> getJobCandidateRelationByIdJob(@Param("idJob") int idJob);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -162,16 +208,76 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	@Query("Select jc from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true and jc.privacyPolicyChecked = TRUE")
 	public List<JobCandidateRelation> getAppliedJobsByCandidate(@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the applied jobs by candidate order by apply date.
+	 * @param idCandidate the id candidate
+	 * @return the applied jobs by candidate order by apply date
+	 */
 	@Query("Select jc from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true  ORDER BY jc.appliedDate DESC")
 	public List<JobCandidateRelation> getAppliedJobsByCandidateOrderByApplyDate(@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the applied jobs by candidate dto order by apply date.
+	 * @param idCandidate the id candidate
+	 * @return the applied jobs by candidate dto order by apply date
+	 */
 	@Query("Select NEW com.hrdatabank.mtproject.model.JobCandidateRelationDto(jc.jobCandidateRelationPK.idJob, jc.jobCandidateRelationPK.idCandidate, jc.job.shop.idShop, jc.job.shop.nameShop, jc.job.positionName,jc.progress, jc.interviewDate) from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true  ORDER BY jc.appliedDate DESC")
 	public List<JobCandidateRelationDto> getAppliedJobsByCandidateDtoOrderByApplyDate(
 			@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Count applied jobs by candidate dto order by apply date.
+	 * @param idCandidate the id candidate
+	 * @return the long
+	 */
 	@Query("Select count(jc) from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true  ORDER BY jc.appliedDate DESC")
 	public long countAppliedJobsByCandidateDtoOrderByApplyDate(@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the last application by candidate dto order by apply date.
+	 * @param idCandidate the id candidate
+	 * @return the last application by candidate dto order by apply date
+	 */
 	@Query("Select NEW com.hrdatabank.mtproject.model.JobCandidateRelationDto(jc.jobCandidateRelationPK.idJob, jc.jobCandidateRelationPK.idCandidate, jc.candidateName, jc.candidateNameKatakana, jc.candidatePhone,jc.candidateJLPT, jc.candidateDurationInJapan, jc.candidateBirthday) from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true  ORDER BY jc.appliedDate DESC")
 	public List<JobCandidateRelationDto> getLastApplicationByCandidateDtoOrderByApplyDate(
 			@Param("idCandidate") int idCandidate);
@@ -179,7 +285,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -201,7 +307,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -223,7 +329,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -247,7 +353,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -272,7 +378,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -291,7 +397,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -310,7 +416,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -329,7 +435,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -345,43 +451,199 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	@Query("Select count(jc) from JobCandidateRelation jc where jc.job.idJob=:idJob and jc.applied = true")
 	public long countAllApplicationsByIdJob(@Param("idJob") int idJob);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all applications by id job.
+	 * @param idJob the id job
+	 * @return the all applications by id job
+	 */
 	@Query("Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob and jc.applied = true  ORDER BY jc.appliedDate DESC")
 	public List<JobCandidateRelation> getAllApplicationsByIdJob(@Param("idJob") int idJob);
 
-	/************ candidate list for manage job page *****************/
+	/**
+	 * ********** candidate list for manage job page ****************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all applications by id job.
+	 * @param idJob the id job
+	 * @param pageable the pageable
+	 * @return the all applications by id job
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob and jc.applied = true  ORDER BY jc.appliedDate DESC", countQuery = "select count(jc) from JobCandidateRelation jc where jc.job.idJob=:idJob and jc.applied = true")
 	public Page<JobCandidateRelation> getAllApplicationsByIdJob(@Param("idJob") int idJob, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all interviews by id job.
+	 * @param idJob the id job
+	 * @param pageable the pageable
+	 * @return the all interviews by id job
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob  and lower(jc.progress) like 'waiting for result'  ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.idJob=:idJob  and lower(jc.progress) like 'waiting for result'")
 	public Page<JobCandidateRelation> getAllInterviewsByIdJob(@Param("idJob") int idJob, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all hired by id job.
+	 * @param idJob the id job
+	 * @param pageable the pageable
+	 * @return the all hired by id job
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.idJob=:idJob and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社') ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.idJob=:idJob and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社')")
 	public Page<JobCandidateRelation> getAllHiredByIdJob(@Param("idJob") int idJob, Pageable pageable);
 
-	/************ candidate list for manage shop page *****************/
+	/**
+	 * ********** candidate list for manage shop page ****************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all applications by id shop.
+	 * @param idShop the id shop
+	 * @param pageable the pageable
+	 * @return the all applications by id shop
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and jc.applied = true  ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and jc.applied = true")
 	public Page<JobCandidateRelation> getAllApplicationsByIdShop(@Param("idShop") int idShop, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all interviews by id shop.
+	 * @param idShop the id shop
+	 * @param pageable the pageable
+	 * @return the all interviews by id shop
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and jc.interviewDate IS NOT NULL ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and jc.interviewDate IS NOT NULL")
 	public Page<JobCandidateRelation> getAllInterviewsByIdShop(@Param("idShop") int idShop, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all hired by id shop.
+	 * @param idShop the id shop
+	 * @param pageable the pageable
+	 * @return the all hired by id shop
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社') ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.idShop=:idShop and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社')")
 	public Page<JobCandidateRelation> getAllHiredByIdShop(@Param("idShop") int idShop, Pageable pageable);
 
-	/************ candidate list for manage company page *****************/
+	/**
+	 * ********** candidate list for manage company page ****************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all applications by id company.
+	 * @param idComp the id comp
+	 * @param pageable the pageable
+	 * @return the all applications by id company
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idComp and jc.applied = true ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idComp and jc.applied = true")
 	public Page<JobCandidateRelation> getAllApplicationsByIdCompany(@Param("idComp") int idComp, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all interviews by id company.
+	 * @param idCompany the id company
+	 * @param pageable the pageable
+	 * @return the all interviews by id company
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idCompany and lower(jc.progress) like 'waiting for result'  ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idCompany and lower(jc.progress) like 'waiting for result'")
 	public Page<JobCandidateRelation> getAllInterviewsByIdCompany(@Param("idCompany") int idCompany, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all hired by id company.
+	 * @param idCompany the id company
+	 * @param pageable the pageable
+	 * @return the all hired by id company
+	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idCompany and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社') ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idCompany and (lower(jc.shopProgress) like 'hired' or lower(jc.shopProgress) like '入社')")
 	public Page<JobCandidateRelation> getAllHiredByIdCompany(@Param("idCompany") int idCompany, Pageable pageable);
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -400,7 +662,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -419,7 +681,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -438,7 +700,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -457,7 +719,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -476,7 +738,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -495,7 +757,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -514,7 +776,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -533,7 +795,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -552,7 +814,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -571,7 +833,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -590,7 +852,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -609,7 +871,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -628,7 +890,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -647,7 +909,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -668,7 +930,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	 * *************************************** COMPANY SIDE
 	 * *************************************************.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -691,7 +953,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -714,7 +976,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -735,7 +997,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -756,7 +1018,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -777,7 +1039,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -798,7 +1060,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -820,7 +1082,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -842,7 +1104,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -874,7 +1136,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -926,7 +1188,7 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -944,12 +1206,69 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	@Query(value = "Select jc from JobCandidateRelation  jc where jc.job.shop.company.idCompany =:idCompany", countQuery = "Select count(jc) from  JobCandidateRelation jc where jc.job.shop.company.idCompany =:idCompany")
 	public Page<JobCandidateRelation> getAllApplicationByCompany(@Param("idCompany") int idComp, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all job candidate relations for recommendation.
+	 * @return the all job candidate relations for recommendation
+	 */
 	@Query("Select NEW com.hrdatabank.mtproject.model.JobCandidateRelationDto(jc.jobCandidateRelationPK.idJob, jc.jobCandidateRelationPK.idCandidate, jc.callShopMessageCounter, jc.noCallOrForgotReason, jc.noTalkWithShop, jc.askTalkWithShop, jc.progress, jc.shopProgress, jc.botChekProgress, jc.offered, jc.applied, jc.matched, jc.offerDate, jc.appliedDate, jc.matchDate, jc.postedDate, jc.noTalkWithShopDate, jc.noCallOrForgotDate, jc.callShopMessageDate, jc.interviewDate, jc.remindInterviewDate, jc.remindInterviewDayDate, jc.askForWhenInterviewDate, jc.askCandidateHowWasInterviewDate, jc.resultInterviewDate, jc.startWorkingDate, jc.youStartWorkingTodayDate, jc.askForResultDateCandidate, jc.askForSetInterview, jc.askShopHowWasInterviewDate) from JobCandidateRelation jc")
 	public List<JobCandidateRelationDto> getAllJobCandidateRelationsForRecommendation();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all job candidate relations for recommendation paginated.
+	 * @param page the page
+	 * @return the all job candidate relations for recommendation paginated
+	 */
 	@Query(value = "Select NEW com.hrdatabank.mtproject.model.JobCandidateRelationDto(jc.jobCandidateRelationPK.idJob, jc.jobCandidateRelationPK.idCandidate, jc.callShopMessageCounter, jc.noCallOrForgotReason, jc.noTalkWithShop, jc.askTalkWithShop, jc.progress, jc.shopProgress, jc.botChekProgress, jc.offered, jc.applied, jc.matched, jc.offerDate, jc.appliedDate, jc.matchDate, jc.postedDate, jc.noTalkWithShopDate, jc.noCallOrForgotDate, jc.callShopMessageDate, jc.interviewDate, jc.remindInterviewDate, jc.remindInterviewDayDate, jc.askForWhenInterviewDate, jc.askCandidateHowWasInterviewDate, jc.resultInterviewDate, jc.startWorkingDate, jc.youStartWorkingTodayDate, jc.askForResultDateCandidate, jc.askForSetInterview, jc.askShopHowWasInterviewDate) from JobCandidateRelation jc", countName = "select  count(*) from JobCandidateRelation jc")
 	public Page<JobCandidateRelationDto> getAllJobCandidateRelationsForRecommendationPaginated(Pageable page);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Display applications by criteria.
+	 * @param companyIds the company ids
+	 * @param shopIds the shop ids
+	 * @param idJob the id job
+	 * @param startDate the start date
+	 * @param endDate the end date
+	 * @param lastActionStartDate the last action start date
+	 * @param lastActionEndDate the last action end date
+	 * @param progressShop the progress shop
+	 * @param progress the progress
+	 * @param jlpt the jlpt
+	 * @param durationJp the duration jp
+	 * @param durationEn the duration en
+	 * @param freeText the free text
+	 * @param pageable the pageable
+	 * @return the page
+	 */
 	@Query(value = "Select  NEW com.hrdatabank.mtproject.model.ApplicationDto(jc.appliedDate, jc.startingDate, jc.approved, jc.progress,jc.shopProgress,jc.candidate,jc.job,jc.paymentStatus, jc.candidateName, jc.candidateNameKatakana, jc.candidatePhone,jc.candidateJLPT, jc.candidateDurationInJapan, jc.candidateBirthday) from JobCandidateRelation jc where (jc.job.shop.company.idCompany IN :companyIds or :companyIds IS NULL) and  (jc.job.shop.idShop IN :shopIds or :shopIds IS NULL) and (jc.job.idJob=:idJob or :idJob=0) and  (jc.appliedDate BETWEEN :startDate and :endDate)  and (jc.candidate.botInformation.lastActionDate  BETWEEN :lastActionStartDate and :lastActionEndDate) and (jc.shopProgress=:progressShop or :progressShop='all' or :progressShop='' or (:progressShop='応募済み' and jc.shopProgress IS NULL)) and  (jc.shopProgress is null  or :progress='') and (jc.candidateJLPT=:jlpt or :jlpt='' ) and (jc.candidateDurationInJapan=:durationJp or jc.candidateDurationInJapan=:durationEn or :durationJp='') and (lower(jc.candidateJLPT) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidatePhone) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.requiredDurationInJapan) like lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateDurationInJapan) like lower(CONCAT('%',:freeText,'%'))  or  lower(jc.job.positionName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.jobType)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.shop.nameShop)  like  lower(CONCAT('%',:freeText,'%'))  or  :freeText='' or lower(jc.shopProgress) like  lower(CONCAT('%',:freeText,'%'))  or lower(jc.job.requiredJLPT)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.email) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateName) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.memo) like  lower(CONCAT('%',:freeText,'%'))  or  CONCAT(jc.candidate.idUser, '') like  lower(CONCAT('%',:freeText,'%')))", countQuery = "Select  count (jc) from JobCandidateRelation jc where (jc.job.shop.company.idCompany IN :companyIds or :companyIds IS NULL) and (jc.job.idJob=:idJob or :idJob=0) and (jc.job.shop.idShop IN :shopIds or :shopIds IS NULL) and (jc.appliedDate BETWEEN :startDate and :endDate)  and (jc.candidate.botInformation.lastActionDate BETWEEN :lastActionStartDate and :lastActionEndDate) and (jc.shopProgress=:progressShop or :progressShop='all' or :progressShop='' or (:progressShop='応募済み' and jc.shopProgress IS NULL)) and  (jc.shopProgress is null  or :progress='')  and (jc.candidateJLPT=:jlpt or :jlpt='' ) and (jc.candidateDurationInJapan=:durationJp or jc.candidateDurationInJapan=:durationEn or :durationJp='') and (lower(jc.candidateJLPT) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.requiredDurationInJapan) like lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateDurationInJapan) like lower(CONCAT('%',:freeText,'%'))  or  lower(jc.job.positionName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.jobType)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.shop.nameShop)  like  lower(CONCAT('%',:freeText,'%'))  or  :freeText='' or lower(jc.shopProgress) like  lower(CONCAT('%',:freeText,'%'))  or lower(jc.job.requiredJLPT)  like  lower(CONCAT('%',:freeText,'%')) or  lower(jc.candidatePhone) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.email) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.memo) like  lower(CONCAT('%',:freeText,'%')) or  CONCAT(jc.candidate.idUser, '') like  lower(CONCAT('%',:freeText,'%')))")
 	public Page<ApplicationDto> displayApplicationsByCriteria(@Param("companyIds") List<Integer> companyIds,
 			@Param("shopIds") List<Integer> shopIds, @Param("idJob") int idJob, @Param("startDate") Date startDate,
@@ -958,6 +1277,33 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			@Param("progress") String progress, @Param("jlpt") String jlpt, @Param("durationJp") String durationJp,
 			@Param("durationEn") String durationEn, @Param("freeText") String freeText, Pageable pageable);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the applications by criteria for export.
+	 * @param companyIds the company ids
+	 * @param shopIds the shop ids
+	 * @param idJob the id job
+	 * @param startDate the start date
+	 * @param endDate the end date
+	 * @param lastActionStartDate the last action start date
+	 * @param lastActionEndDate the last action end date
+	 * @param progressShop the progress shop
+	 * @param progress the progress
+	 * @param jlpt the jlpt
+	 * @param durationJp the duration jp
+	 * @param durationEn the duration en
+	 * @param freeText the free text
+	 * @return the applications by criteria for export
+	 */
 	@Query(value = "Select  NEW com.hrdatabank.mtproject.model.Application(jc.appliedDate,jc.startingDate, jc.approved,jc.progress,jc.shopProgress,jc.candidate,jc.job,jc.paymentStatus, jc.candidateName, jc.candidateNameKatakana, jc.candidatePhone,jc.candidateJLPT, jc.candidateDurationInJapan, jc.candidateBirthday) from JobCandidateRelation jc where (jc.job.shop.company.idCompany IN :companyIds or :companyIds IS NULL) and  (jc.job.shop.idShop IN :shopIds or :shopIds IS NULL) and (jc.job.idJob=:idJob or :idJob=0) and  (jc.appliedDate BETWEEN :startDate and :endDate)  and (jc.candidate.botInformation.lastActionDate  BETWEEN :lastActionStartDate and :lastActionEndDate) and (jc.shopProgress=:progressShop or :progressShop='all' or :progressShop='' or (:progressShop='応募済み' and jc.shopProgress IS NULL)) and  (jc.shopProgress is null  or :progress='') and (jc.candidateJLPT=:jlpt or :jlpt='' ) and (jc.candidateDurationInJapan=:durationJp or jc.candidateDurationInJapan=:durationEn or :durationJp='') and (lower(jc.candidateJLPT) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidatePhone) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.requiredDurationInJapan) like lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateDurationInJapan) like lower(CONCAT('%',:freeText,'%'))  or  lower(jc.job.positionName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.jobType)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.shop.nameShop)  like  lower(CONCAT('%',:freeText,'%'))  or  :freeText='' or lower(jc.shopProgress) like  lower(CONCAT('%',:freeText,'%'))  or lower(jc.job.requiredJLPT)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.email) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateName) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.memo) like  lower(CONCAT('%',:freeText,'%'))  or  CONCAT(jc.candidate.idUser, '') like  lower(CONCAT('%',:freeText,'%')))", countQuery = "Select  count (jc) from JobCandidateRelation jc where (jc.job.shop.company.idCompany IN :companyIds or :companyIds IS NULL) and (jc.job.idJob=:idJob or :idJob=0) and (jc.job.shop.idShop IN :shopIds or :shopIds IS NULL) and (jc.appliedDate BETWEEN :startDate and :endDate)  and (jc.candidate.botInformation.lastActionDate BETWEEN :lastActionStartDate and :lastActionEndDate) and (jc.shopProgress=:progressShop or :progressShop='all' or :progressShop='' or (:progressShop='応募済み' and jc.shopProgress IS NULL)) and  (jc.shopProgress is null  or :progress='')  and (jc.candidateJLPT=:jlpt or :jlpt='' ) and (jc.candidateDurationInJapan=:durationJp or jc.candidateDurationInJapan=:durationEn or :durationJp='') and (lower(jc.candidateJLPT) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.requiredDurationInJapan) like lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateDurationInJapan) like lower(CONCAT('%',:freeText,'%'))  or  lower(jc.job.positionName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.jobType)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.job.shop.nameShop)  like  lower(CONCAT('%',:freeText,'%'))  or  :freeText='' or lower(jc.shopProgress) like  lower(CONCAT('%',:freeText,'%'))  or lower(jc.job.requiredJLPT)  like  lower(CONCAT('%',:freeText,'%')) or  lower(jc.candidatePhone) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.email) like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidateName)  like  lower(CONCAT('%',:freeText,'%')) or lower(jc.candidate.memo) like  lower(CONCAT('%',:freeText,'%')) or  CONCAT(jc.candidate.idUser, '') like  lower(CONCAT('%',:freeText,'%')))")
 	public List<Application> getApplicationsByCriteriaForExport(@Param("companyIds") List<Integer> companyIds,
 			@Param("shopIds") List<Integer> shopIds, @Param("idJob") int idJob, @Param("startDate") Date startDate,
@@ -966,11 +1312,39 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			@Param("progress") String progress, @Param("jlpt") String jlpt, @Param("durationJp") String durationJp,
 			@Param("durationEn") String durationEn, @Param("freeText") String freeText);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the applied and checked policy jobs by PK.
+	 * @param jobCandidateRelationPK the job candidate relation PK
+	 * @return the applied and checked policy jobs by PK
+	 */
 	@Query("Select count(jc) from JobCandidateRelation jc where jc.jobCandidateRelationPK=:jobCandidateRelationPK and privacyPolicyChecked = TRUE")
 	public long getAppliedAndCheckedPolicyJobsByPK(
 			@Param("jobCandidateRelationPK") JobCandidateRelationPK jobCandidateRelationPK);
 
-	/************ method for scheduler did you talk to the shop for Line **********/
+	/**
+	 * ********** method for scheduler did you talk to the shop for Line *********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the candidates for did you talk to shop.
+	 * @return the candidates for did you talk to shop
+	 */
 
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress = 'applied' "
 			+ "and j.interview_type != 'youcome' and jc.ask_talk_with_shop != 5 and jc.interview_date IS NULL and "
@@ -980,6 +1354,21 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd'),'yyyy-MM-dd') + interval '5' day = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd'),'yyyy-MM-dd') and to_char(CURRENT_TIMESTAMP, 'HH24') = '12'))", nativeQuery = true)
 	public List<Integer> getCandidatesForDidYouTalkToShop();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the jobs for did you talk to shop.
+	 * @param idCandidate the id candidate
+	 * @return the jobs for did you talk to shop
+	 */
 	@Query(value = "select jc.id_job from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) where c.candidatefb= FALSE and c.guest=FALSE and jc.id_candidate=:idCandidate and jc.applied = true and jc.progress = 'applied'"
 			+ " and j.interview_type != 'youcome' and jc.ask_talk_with_shop != 5 and jc.interview_date IS NULL and "
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') + interval '3' hour = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24') or "
@@ -988,7 +1377,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd'),'yyyy-MM-dd') + interval '5' day = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd'),'yyyy-MM-dd') and to_char(CURRENT_TIMESTAMP, 'HH24') = '12'))", nativeQuery = true)
 	public List<Integer> getJobsForDidYouTalkToShop(@Param("idCandidate") int idCandidate);
 
-	/************ method for scheduler remind interview for Line **********/
+	/**
+	 * ********** method for scheduler remind interview for Line *********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for remind before one day.
+	 * @return the job candidate relations for remind before one day
+	 */
 
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress = 'waiting for interview' and "
@@ -998,6 +1400,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ " and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<JobCandidateRelation> getJobCandidateRelationsForRemindBeforeOneDay();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for remind the day.
+	 * @return the job candidate relations for remind the day
+	 */
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress = 'waiting for interview' and "
 			+ "(((to_timestamp(to_char(jc.interview_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24')) "
@@ -1006,7 +1422,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ " and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<JobCandidateRelation> getJobCandidateRelationsForRemindTheDay();
 
-	/********** method scheduler how was the interview for Line ************/
+	/**
+	 * ******** method scheduler how was the interview for Line ***********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for how was it after interview.
+	 * @return the job candidate relations for how was it after interview
+	 */
 
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
@@ -1016,25 +1445,78 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<Integer> getJobCandidateRelationsForHowWasItAfterInterview();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for how was it after result.
+	 * @return the job candidate relations for how was it after result
+	 */
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
 			+ "(to_timestamp(to_char(jc.result_interview_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') + interval '24' hour = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24'))", nativeQuery = true)
 	public List<Integer> getJobCandidateRelationsForHowWasItAfterResult();
 
-	/********* method for scheduler working reminder for Line ***********/
+	/**
+	 * ******* method for scheduler working reminder for Line **********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for work reminder.
+	 * @return the job candidate relations for work reminder
+	 */
 
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
 			+ "(to_timestamp(to_char(jc.start_working_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24'))", nativeQuery = true)
 	public List<JobCandidateRelation> getJobCandidateRelationsForWorkReminder();
 
-	/********* method for scheduler how was the work for Line ***********/
+	/**
+	 * ******* method for scheduler how was the work for Line **********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job candidate relations for how was work.
+	 * @return the job candidate relations for how was work
+	 */
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= FALSE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
 			+ "(to_timestamp(to_char(jc.start_working_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') + interval '24' hour = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24'))", nativeQuery = true)
 	public List<Integer> getJobCandidateRelationsForHowWasWork();
 
-	/********* method for scheduler did you talk to the shop for Messenger ******/
+	/**
+	 * ******* method for scheduler did you talk to the shop for Messenger *****.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger candidates for did you talk to shop.
+	 * @return the messenger candidates for did you talk to shop
+	 */
 
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress = 'applied' "
 			+ "and j.interview_type != 'youcome' and jc.ask_talk_with_shop != 5 and jc.interview_date IS NULL and "
@@ -1044,6 +1526,21 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd'),'yyyy-MM-dd') + interval '5' day = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd'),'yyyy-MM-dd') and to_char(CURRENT_TIMESTAMP, 'HH24') = '12'))", nativeQuery = true)
 	public List<Integer> getMessengerCandidatesForDidYouTalkToShop();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger jobs for did you talk to shop.
+	 * @param idCandidate the id candidate
+	 * @return the messenger jobs for did you talk to shop
+	 */
 	@Query(value = "select jc.id_job from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) where c.candidatefb= TRUE and c.guest=FALSE and jc.id_candidate=:idCandidate and jc.applied = true and jc.progress = 'applied'"
 			+ " and j.interview_type != 'youcome' and jc.ask_talk_with_shop != 5 and jc.interview_date IS NULL and "
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') + interval '3' hour = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24') or "
@@ -1052,7 +1549,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "(to_timestamp(to_char(jc.applied_date, 'yyyy-MM-dd'),'yyyy-MM-dd') + interval '5' day = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd'),'yyyy-MM-dd') and to_char(CURRENT_TIMESTAMP, 'HH24') = '12'))", nativeQuery = true)
 	public List<Integer> getMessengerJobsForDidYouTalkToShop(@Param("idCandidate") int idCandidate);
 
-	/************ method for scheduler remind interview for Messenger **********/
+	/**
+	 * ********** method for scheduler remind interview for Messenger *********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for remind before one day.
+	 * @return the messenger job candidate relations for remind before one day
+	 */
 
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress = 'waiting for interview' and  jc.remind_interview_date IS NULL and "
@@ -1062,6 +1572,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ " and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<JobCandidateRelation> getMessengerJobCandidateRelationsForRemindBeforeOneDay();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for remind the day.
+	 * @return the messenger job candidate relations for remind the day
+	 */
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress = 'waiting for interview' and "
 			+ "(((to_timestamp(to_char(jc.interview_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24')) "
@@ -1070,7 +1594,20 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ " and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<JobCandidateRelation> getMessengerJobCandidateRelationsForRemindTheDay();
 
-	/********** method scheduler how was the interview for messenger ************/
+	/**
+	 * ******** method scheduler how was the interview for messenger ***********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for how was it after interview.
+	 * @return the messenger job candidate relations for how was it after interview
+	 */
 
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) INNER JOIN job j ON (j.id_job = jc.id_job) "
 			+ "where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
@@ -1080,19 +1617,59 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			+ "and (j.interview_type = 'youcome')))", nativeQuery = true)
 	public List<Integer> getMessengerJobCandidateRelationsForHowWasItAfterInterview();
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for how was it after result.
+	 * @return the messenger job candidate relations for how was it after result
+	 */
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
 			+ "(to_timestamp(to_char(jc.result_interview_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') + interval '24' hour = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24'))", nativeQuery = true)
 	public List<Integer> getMessengerJobCandidateRelationsForHowWasItAfterResult();
 
-	/********* method for scheduler working reminder for messenger ***********/
+	/**
+	 * ******* method for scheduler working reminder for messenger **********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for work reminder.
+	 * @return the messenger job candidate relations for work reminder
+	 */
 
 	@Query(value = "select jc.* from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= TRUE and c.guest=FALSE and jc.applied = true and jc.progress != 'failed' and "
 			+ "(to_timestamp(to_char(jc.start_working_date, 'yyyy-MM-dd HH24'), 'yyyy-MM-dd HH24') = to_timestamp(to_char(CURRENT_TIMESTAMP, 'yyyy-MM-dd HH24'),'yyyy-MM-dd HH24'))", nativeQuery = true)
 	public List<JobCandidateRelation> getMessengerJobCandidateRelationsForWorkReminder();
 
-	/********* method for scheduler how was the work for messenger ***********/
+	/**
+	 * ******* method for scheduler how was the work for messenger **********.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the messenger job candidate relations for how was work.
+	 * @return the messenger job candidate relations for how was work
+	 */
 
 	@Query(value = "select DISTINCT(jc.id_candidate) from job_candidate_relation jc INNER JOIN user_information c ON (jc.id_candidate = c.id_user) "
 			+ "where c.candidatefb= FALSE and c.guest=TRUE and jc.applied = true and jc.progress != 'failed' and "
@@ -1100,30 +1677,51 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	public List<Integer> getMessengerJobCandidateRelationsForHowWasWork();
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author Wala ben Amor
-	 * 
+	 * @param idCandidate the id candidate
+	 * @return the long
 	 */
 	@Query("Select count(jc) from JobCandidateRelation jc where jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.applied = true")
 	public long countAppliedJobsByCandidate(@Param("idCandidate") int idCandidate);
 
 	/**
-	 * 
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author Wala ben Amor
-	 * 
+	 * @param pageable the pageable
+	 * @return the all applications without candidate details
 	 */
 	@Query(value = "Select jc from JobCandidateRelation jc where jc.applied = true and jc.candidateName IS NULL  and jc.candidatePhone IS NULL and jc.candidateJLPT IS NULL  and jc.candidateDurationInJapan IS NULL ORDER BY jc.appliedDate DESC", countQuery = "Select count(jc) from JobCandidateRelation jc where jc.applied = true and jc.candidateName IS NULL  and jc.candidatePhone IS NULL and jc.candidateJLPT IS NULL  and jc.candidateDurationInJapan IS NULL ")
 	public Page<JobCandidateRelation> getAllApplicationsWithoutCandidateDetails(Pageable pageable);
 
 	/**
-	 * 
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author Wala ben Amor
-	 * 
+	 * @return the long
 	 */
 
 	@Query(value = "Select count(jc) from JobCandidateRelation jc where jc.applied = true and jc.candidateName IS NULL  and jc.candidatePhone IS NULL and jc.candidateJLPT IS NULL  and jc.candidateDurationInJapan IS NULL")
 	public long countApplicationsWithoutCandidateDetails();
 
-	/********************** Methods for Payment Cycle *****************************/
+	/**
+	 * ******************** Methods for Payment Cycle ****************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the payment request list.
+	 * @param idCompany the id company
+	 * @param pageable the pageable
+	 * @return the payment request list
+	 */
 
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
@@ -1177,14 +1775,13 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	 *         Project Name: Module-core-hr
 	 * 
 	 *         Class Name: JobCandidateRelationRepository.java
-	 *
+	 * 
 	 *         Count all hired candidates grouped by request month and company name
 	 *         for Admin side payment cycle with unconfirmed and confirmed request
 	 *         amounts paginated.
-	 * @param nameCompany
-	 *            the company name
-	 * @param requestMonth
-	 *            the request Month
+	 * @param nameCompany            the company name
+	 * @param requestMonth            the request Month
+	 * @param pageable the pageable
 	 * @return the company name, the request month, number of hired candidates
 	 *         grouped by request month, unconfirmed request amount, confirmed
 	 *         request amount, the payment cycle
@@ -1207,10 +1804,9 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	 *         Class Name: JobCandidateRelationRepository.java
 	 * 
 	 *         Get shops details from payment cycle admin page
-	 * @param nameCompany
-	 *            the company name
-	 * @param requestMonth
-	 *            the request Month
+	 * @param nameCompany            the company name
+	 * @param requestMonth            the request Month
+	 * @param pageable the pageable
 	 * @return nameShop, number of hired candidates, unconfirmed request amount,
 	 *         confirmed request amount
 	 */
@@ -1220,15 +1816,35 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			@Param("requestMonth") String requestMonth, Pageable pageable);
 
 	/**
-	 * 
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
 	 * @author Wala ben Amor
-	 * 
+	 * @param idCompany the id company
+	 * @param requestMonth the request month
+	 * @param pageable the pageable
+	 * @return the all job candidate relations by request month
 	 */
 	@Query("Select NEW com.hrdatabank.mtproject.model.JobCandidateRelationDto(jc.jobCandidateRelationPK.idJob, jc.jobCandidateRelationPK.idCandidate,jc.job.shop.idShop,jc.candidateName, jc.candidateNameKatakana, jc.candidatePhone,jc.job.shop.nameShop, jc.job.positionName, jc.startingDate,jc.approveDate,jc.job.casePrice, jc.approved, jc.appliedDate) from JobCandidateRelation jc where jc.job.shop.company.idCompany=:idCompany and  lower(jc.requestMonth) LIKE lower(:requestMonth)")
 	public Page<JobCandidateRelationDto> getAllJobCandidateRelationsByRequestMonth(@Param("idCompany") int idCompany,
 			@Param("requestMonth") String requestMonth, Pageable pageable);
 
-	/**********************************************************************/
+	/**
+	 * *******************************************************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the job canidate relation by phone.
+	 * @param phone the phone
+	 * @param startDate the start date
+	 * @param endDate the end date
+	 * @return the job canidate relation by phone
+	 */
 
 	/**
 	 * get all application by phone number
@@ -1241,35 +1857,123 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
 	/**
-	 * get all application by Id candidate limit
-	 * 
+	 * get all application by Id candidate limit.
+	 *
 	 * @author djo
-	 * 
+	 * @param idCandidateStart the id candidate start
+	 * @param idCandidateEnd the id candidate end
+	 * @param startDate the start date
+	 * @param endDate the end date
+	 * @return the job canidate relation by id candidate limit
 	 */
 	@Query("Select jc from JobCandidateRelation jc where jc.candidate.idUser > :idCandidateStart and jc.candidate.idUser <= :idCandidateEnd and jc.appliedDate>:startDate and jc.appliedDate<=:endDate")
 	public List<JobCandidateRelation> getJobCanidateRelationByIdCandidateLimit(
 			@Param("idCandidateStart") int idCandidateStart, @Param("idCandidateEnd") int idCandidateEnd,
 			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
-	/************************ Report Module Functions ***************************/
+	/**
+	 * ********************** Report Module Functions **************************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Find all hired candidates.
+	 * @param pageable the pageable
+	 * @param month the month
+	 * @param year the year
+	 * @param company the company
+	 * @return the page
+	 */
 
 	@Query("Select NEW com.hrdatabank.mtproject.model.ReportDto(jc.candidateName, jc.candidateNameCp, jc.candidateNameKatakana, jc.candidateKatakanaCp, jc.candidateBirthday, jc.birthdateCp, jc.appliedDate, jc.startingDate, jc.casePrice, jc.job.shop.company.nameCompany, jc.job.shop.company.addressCompany, jc.job.shop.company.phoneNumber, jc.job.shop.company.traningPeriod, jc.job.shop.company.educationHistory, jc.job.shop.company.companyContractPeriod, jc.job.shop.company.responsiblePerson, jc.job.shop.company.companyFax, jc.job.shop ,CONCAT(jc.job.shop.nameShop,jc.job.positionName), jc.job.positionName, jc.job.openJobDate, jc.job.requiredJLPT, jc.job.startWorkingTime, jc.job.finishWorkingTime, jc.job.hourlyWage, jc.job.idJob,jc.job.requiredDurationInJapan, jc.validityDateCp, jc.job.shop.nameShop, jc.job.shop.addressShop, jc.shopProgress, jc.job.shop.transportationAllowance, jc.jobCandidateRelationPK.idCandidate, jc.staffNameCp, jc.genderCp, jc.candidateAddressCp, jc.candidateAddressKatakanaCp, jc.candidatePhone, jc.candidatePhoneCp, jc.candidateFaxCp, jc.candidatePreferenceCp, jc.staffCommentCp, jc.candidateDocumentCp, jc.job.shop.company.idCompany,	 jc.jobNameCp, jc.employTypeCp,jc.requiredJlptCp,jc.requiredDurationCp,jc.shopNameCp, jc.shopAddressCp,jc.nearestStationCp, jc.hourlyWageCp,jc.transportationAllowanceCp,jc.startTimeCp,jc.finishTimeCp,jc.companyFaxCp,jc.responsiblePersonCp,jc.companyContractPeriodCp,jc.traningPeriodCp,jc.educationHistoryCp,jc.applyDateCp,jc.companyNameCp,jc.companyAddressCp, jc.companyPhoneNumberCp,jc.positionNameCp) from JobCandidateRelation jc where (lower(jc.shopProgress) like 'hired'  or  lower(jc.shopProgress) like '入社') and ((jc.requestMonth like CONCAT(:month,' ',:year)) or (:year is NULL) or (:month is Null) or (:year is NULL and :month is NULL)  or (:year like '')  or (:month like '') or (:year like '' and :month like '')) and (jc.job.shop.company.idCompany =:company or :company=0) ORDER BY jc.startingDate DESC")
 	public Page<ReportDto> findAllHiredCandidates(Pageable pageable, @Param("month") String month,
 			@Param("year") String year, @Param("company") int company);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Upadet hired candidate page.
+	 * @param pageable the pageable
+	 * @param month the month
+	 * @param year the year
+	 * @param company the company
+	 * @return the page
+	 */
 	@Query("Select NEW com.hrdatabank.mtproject.model.ReportDto(jc.candidateName,jc.candidateNameCp,jc.candidateNameKatakana,jc.candidateKatakanaCp,jc.candidateBirthday, jc.birthdateCp, jc.appliedDate ,jc.startingDate, jc.job.casePrice, jc.job.shop.company.nameCompany, jc.job.shop.company.addressCompany ,jc.job.shop.company.phoneNumber,jc.job.shop.company.traningPeriod , jc.job.shop.company.educationHistory, jc.job.shop.company.companyContractPeriod,jc.job.shop.company.responsiblePerson,jc.job.shop.company.companyFax, jc.job.shop ,CONCAT(jc.job.shop.nameShop,jc.job.positionName), jc.job.positionName, jc.job.openJobDate,jc.job.requiredJLPT, jc.job.startWorkingTime,jc.job.finishWorkingTime,jc.job.hourlyWage, jc.job.idJob,jc.job.requiredDurationInJapan, jc.validityDateCp, jc.job.shop.nameShop,jc.job.shop.addressShop,jc.shopProgress,jc.job.shop.transportationAllowance, jc.jobCandidateRelationPK.idCandidate , jc.staffNameCp, jc.genderCp, jc.candidateAddressCp,jc.candidateAddressKatakanaCp ,jc.candidatePhone,jc.candidatePhoneCp, jc.candidateFaxCp , jc.candidatePreferenceCp , jc.staffCommentCp ,jc.candidateDocumentCp, jc.job.shop.company.idCompany,	 jc.jobNameCp, jc.employTypeCp,jc.requiredJlptCp,jc.requiredDurationCp,jc.shopNameCp, jc.shopAddressCp,jc.nearestStationCp, jc.hourlyWageCp,jc.transportationAllowanceCp,jc.startTimeCp,jc.finishTimeCp,jc.companyFaxCp,jc.responsiblePersonCp,jc.companyContractPeriodCp,jc.traningPeriodCp,jc.educationHistoryCp,jc.applyDateCp,jc.companyNameCp,jc.companyAddressCp, jc.companyPhoneNumberCp,jc.positionNameCp) from JobCandidateRelation jc  where (lower(jc.shopProgress) like 'hired'  or  lower(jc.shopProgress) like '入社') and ( (jc.requestMonth like CONCAT(:month,' ',:year)) or (:year is NULL) or (:month is Null) or (:year is NULL and :month is NULL)  or (:year like '')  or (:month like '') or (:year like '' and :month like '')) and (jc.job.shop.company.idCompany =:company or :company=0) ORDER BY jc.startingDate DESC")
 	public Page<JobCandidateRelation> upadetHiredCandidatePage(Pageable pageable, @Param("month") String month,
 			@Param("year") String year, @Param("company") int company);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Edits the hired candidate.
+	 * @param idCandidate the id candidate
+	 * @param idJob the id job
+	 * @return the job candidate relation
+	 */
 	@Query(value = "SELECT jc FROM JobCandidateRelation jc WHERE jc.jobCandidateRelationPK.idCandidate=:idCandidate and jc.jobCandidateRelationPK.idJob=:idJob")
 	public JobCandidateRelation editHiredCandidate(@Param("idCandidate") int idCandidate, @Param("idJob") int idJob);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * this method Edits the hired candidate.
+	 * @param idCandidate the id candidate
+	 * @param idJob the id job
+	 * @param staffName the staff name
+	 * @param candidateAddress the candidate address
+	 * @param candidateName the candidate name
+	 */
 	@Query(value = "UPDATE job_candidate_relation SET  staff_name_cp=:staffName, candidate_address_cp=:candidateAddress, position_name_cp=:positionName,candidate_name_cp=:candidateName WHERE (id_candidate =:idCandidate) and (id_job=:idJob)", nativeQuery = true)
 	public void editHiredCandidate(@Param("idCandidate") int idCandidate, @Param("idJob") int idJob,
 			@Param("idJob") String staffName, @Param("candidateAddress") String candidateAddress,
 			@Param("candidateName") String candidateName);
 
-	/*************************/
+	/**
+	 * **********************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the report dto by id job and id candidate.
+	 * @param idJob the id job
+	 * @param idCandidate the id candidate
+	 * @return the report dto by id job and id candidate
+	 */
 
 	// @Query("Select NEW
 	// com.hrdatabank.mtproject.model.ReportDto(jc.candidateName,jc.candidateNameCp,jc.candidateNameKatakana,jc.candidateKatakanaCp,jc.candidateBirthday,
@@ -1295,13 +1999,60 @@ public interface JobCandidateRelationRepository extends JpaRepository<JobCandida
 	public ReportDto getReportDtoByIdJobAndIdCandidate(@Param("idJob") int idJob,
 			@Param("idCandidate") int idCandidate);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the total approved amount.
+	 * @param idCompany the id company
+	 * @return the total approved amount
+	 */
 	@Query(value = "SELECT COALESCE(SUM(cast(j.case_price as float) ),0) FROM public.job_candidate_relation jc INNER JOIN public.job j ON jc.id_job = j.id_job INNER JOIN shop  s ON s.id_shop = j.id_shop  INNER JOIN company  c ON c.id_company = s.id_company  where  (lower(jc.shop_progress) = 'hired'  or  lower(jc.shop_progress) like '入社') and jc.approved = TRUE and c.id_company=:idCompany", nativeQuery = true)
 	public Double getTotalApprovedAmount(@Param("idCompany") int idCompany);
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the hired candidate by id.
+	 * @param idCandidate the id candidate
+	 * @param idJob the id job
+	 * @return the hired candidate by id
+	 */
 	@Query(value = "select jc from JobCandidateRelation jc where (jc.jobCandidateRelationPK.idCandidate =:idCandidate) and (jc.jobCandidateRelationPK.idJob =:idJob)")
 	public JobCandidateRelation getHiredCandidateById(@Param("idCandidate") int idCandidate, @Param("idJob") int idJob);
 
-	/*************************/
+	/**
+	 * **********************.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: JobCandidateRelationRepository.java
+	 * 
+	 * Gets the all hired candidates.
+	 * @param month the month
+	 * @param year the year
+	 * @param company the company
+	 * @return the all hired candidates
+	 */
 
 	// @Query("Select NEW com.hrdatabank.mtproject.model.ReportDto(jc.candidateName,
 	// jc.candidateNameCp, jc.candidateNameKatakana, jc.candidateKatakanaCp,

@@ -23,6 +23,20 @@ import lombok.Data;
 /**
  * The Class Job.
  */
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: Job.java
+ * 
+ * Instantiates a new job.
+ */
 @Data
 @Entity
 public class Job implements Serializable {
@@ -107,9 +121,13 @@ public class Job implements Serializable {
 	@Column(length = 15000)
 	private String workTimeDetail;
 
+	/** The prefecture. */
 	private String prefecture;
 
+	/** The affiliate type. */
 	private String affiliateType;
+	
+	/** The tag relationcontents. */
 	@Column(length = 15000)
 	private String tagRelationcontents;
 
@@ -130,6 +148,7 @@ public class Job implements Serializable {
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean status;
 
+	/** The checked algorithm. */
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean checkedAlgorithm;
 
@@ -160,9 +179,11 @@ public class Job implements Serializable {
 	@JsonIgnoreProperties({ "jobs" })
 	private Shop shop;
 
+	/** The case price. */
 	@Column(columnDefinition = "varchar(255) default '0'")
 	private String casePrice;
 
+	/** The injection date. */
 	private LocalDate injectionDate = LocalDate.now();
 
 }

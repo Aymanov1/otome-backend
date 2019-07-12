@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.crawler.web.enumeration.Constants;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,85 +32,206 @@ import com.hrdatabank.otome.domain.Job;
 import com.hrdatabank.otome.domain.Shop;
 import com.hrdatabank.otome.repositories.JobRepository;
 
+/**
+ * The Class JsenLacottoServiceImple.
+ */
 @Service
 public class JsenLacottoServiceImple implements IJsenLacottoService {
+
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(JsenLacottoServiceImple.class);
 
+	/** The job service. */
 	@Autowired
 	private JobService jobService;
+
+	/** The shop service. */
 	@Autowired
 	private ShopService shopService;
+
+	/** The company service. */
 	@Autowired
 	private CompanyService companyService;
+
+	/** The job repository. */
 	@Autowired
 	private JobRepository jobRepository;
-	
-	public AtomicBoolean stopLacotto = new AtomicBoolean(false);
-	public AtomicBoolean stopJsen= new AtomicBoolean(false);
 
+	/** The stop lacotto. */
+	public AtomicBoolean stopLacotto = new AtomicBoolean(false);
+
+	/** The stop jsen. */
+	public AtomicBoolean stopJsen = new AtomicBoolean(false);
+
+	/** The nb skip occupation code not found. */
 	private int nb_skipOccupationCodeNotFound;
+
+	/** The nb skip occupation code null. */
 	private int nb_skipOccupationCodeNull;
+
+	/** The nb skip occupation code exception. */
 	private int nb_skipOccupationCodeException;
+
+	/** The nb skip id employment not found. */
 	private int nb_skipIdEmploymentNotFound;
+
+	/** The nb skip id employment empty. */
 	private int nb_skipIdEmploymentEmpty;
+
+	/** The nb skip id employment exception. */
 	private int nb_skipIdEmploymentException;
+
+	/** The nb skip hourly wage not found. */
 	private int nb_skipHourlyWageNotFound;
+
+	/** The nb skip hourly wage exception. */
 	private int nb_skipHourlyWageException;
+
+	/** The nb skip salary type id 1. */
 	private int nb_skipSalaryTypeId_1;
+
+	/** The nb skip salary type id exception. */
 	private int nb_skipSalaryTypeIdException;
+
+	/** The nb skip longitude and latitude null. */
 	private int nb_skipLongitudeAndLatitudeNull;
+
+	/** The nb skip longitude and latitude exception. */
 	private int nb_skipLongitudeAndLatitudeException;
+
+	/** The nb skip address shop null. */
 	private int nb_skipAddressShopNull;
+
+	/** The nb skip longitude or latitude null. */
 	private int nb_skipLongitudeOrLatitudeNull;
+
+	/** The nb skip column address null. */
 	private int nb_skipColumnAddressNull;
+
+	/** The nb skip address exception. */
 	private int nb_skipAddressException;
+
+	/** The nb skip work time null. */
 	private int nb_skipWorkTimeNull;
+
+	/** The nb skip start or finish time null. */
 	private int nb_skipStartOrFinishTimeNull;
+
+	/** The nb skip start and finish time exception 1. */
 	private int nb_skipStartAndFinishTimeException_1;
+
+	/** The nb skip start and finish time exception 2. */
 	private int nb_skipStartAndFinishTimeException_2;
+
+	/** The nb skip id job detail null. */
 	private int nb_skipIdJobDetailNull;
+
+	/** The nb skip job expired. */
 	private int nb_skipJobExpired;
+
+	/** The nb skip url null. */
 	private int nb_skipUrlNull;
+
+	/** The nb skip shop name or address shop null. */
 	private int nb_skipShopNameOrAddressShopNull;
 
+	/** The i. */
 	private int i = 0;
+
+	/** The j. */
 	private int j = 0;
 
+	/** The job. */
 	private Job job;
+
+	/** The shop. */
 	private Shop shop;
+
+	/** The company. */
 	private Company company;
+
+	/** The old shop. */
 	private int oldShop = 0;
-	private DateFormat formatter = new SimpleDateFormat(HH_MM);
+
+	/** The formatter. */
+	private DateFormat formatter = new SimpleDateFormat(Constants.HH_MM.getValue());
+
+	/** The job detail. */
 	private String jobDetail = "";
+
+	/** The shop name. */
 	private String shopName = "";
+
+	/** The address shop. */
 	private String addressShop = null;
+
+	/** The skip job. */
 	private boolean skipJob = false;
+
+	/** The skipped jobs. */
 	private int skippedJobs = 0;
+
+	/** The saved jobs. */
 	private int savedJobs = 0;
 
+	/** The url expired. */
 	private List<String> urlExpired = new ArrayList<String>();
+
+	/** The url NOT expired. */
 	private List<String> urlNOTExpired = new ArrayList<String>();
+
+	/** The number of rows skipped. */
 	private List<Integer> numberOfRowsSkipped = new ArrayList<Integer>();
+
+	/** The reason of rows skipped. */
 	private List<String> reasonOfRowsSkipped = new ArrayList<String>();
 
+	/** The number of rows saved. */
 	private List<Integer> numberOfRowsSaved = new ArrayList<Integer>();
 
+	/** The reason to skip. */
 	private static String REASON_TO_SKIP = "Log investigation skip \n\n";
 
+	/** The list batch jobs. */
 	private List<Job> listBatchJobs;
 
+	/** The list reader. */
 	private ICsvListReader listReader = null;
 
+	/** The num line. */
 	private int numLine;
+
+	/** The saved job. */
 	private int savedJob;
+
+	/** The skipped job. */
 	private int skippedJob;
+
+	/** The reason salary type. */
 	private int reason_salary_type;
+
+	/** The reason category job. */
 	private int reason_category_job;
+
+	/** The reason start finish time. */
 	private int reason_start_finish_time;
+
+	/** The reason job url null. */
 	private int reason_job_url_null;
+
+	/** The reason id job detail null. */
 	private int reason_id_job_detail_null;
+
+	/** The reason shop null. */
 	private int reason_shop_null;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.hrdatabank.otome.services.IJsenLacottoService#importJsenCSV(java.lang.
+	 * String)
+	 */
 	@Override
 	public void importJsenCSV(String fileName) {
 		System.out.println("start injecting");
@@ -126,7 +248,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				writer.write("/*****************************************************************************/ \n");
 
 				while ((listReader.read()) != null) {
-					if(stopJsen.get()) {
+					if (stopJsen.get()) {
 						return;
 					}
 					final List<Object> data = listReader.executeProcessors(JsenLacottoUtils.getProcessors(111));
@@ -139,7 +261,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				e.printStackTrace();
 			}
 
-		}catch (Exception e) {
+		} catch (Exception e) {
 		} finally {
 			if (listReader != null) {
 				try {
@@ -149,9 +271,30 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				}
 			}
 		}
-		
+
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         this method Jsen.
+	 * @param data
+	 *            the data
+	 * @param writer
+	 *            the writer
+	 * @throws ParseException
+	 *             the parse exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	private void jsen(List<Object> data, Writer writer) throws ParseException, IOException {
 
 		String reason_to_skip = "";
@@ -371,7 +514,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			finishWorkingTime = "23:59";
 		}
 
-		DateFormat formatter = new SimpleDateFormat(HH_MM);
+		DateFormat formatter = new SimpleDateFormat(Constants.HH_MM.getValue());
 		if (!startWorkingTime.equals("") && !finishWorkingTime.equals("")) {
 
 			Date startWorkingTimeDate = formatter.parse(startWorkingTime);
@@ -486,6 +629,19 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         this method Inits the jsen.
+	 */
 	private void initJsen() {
 		savedJob = 0;
 		skippedJob = 0;
@@ -500,6 +656,12 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 		listBatchJobs = new ArrayList<>();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.hrdatabank.otome.services.IJsenLacottoService#
+	 * importCSVForLacottoJobsWithOpenCsv(java.lang.String)
+	 */
 	@Override
 	public void importCSVForLacottoJobsWithOpenCsv(String fileName) {
 
@@ -512,7 +674,7 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			companyCheck("テスト会社");
 
 			while ((listReader.read()) != null) {
-				if(stopLacotto.get()) {
+				if (stopLacotto.get()) {
 					return;
 				}
 				final List<Object> data = listReader.executeProcessors(JsenLacottoUtils.getProcessors(20));
@@ -545,9 +707,9 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 			listBatchJobs = null;
 			listReader.close();
 
-		}catch (Exception e) {
-			
-		}finally {
+		} catch (Exception e) {
+
+		} finally {
 			if (listReader != null) {
 				try {
 					listReader.close();
@@ -556,26 +718,98 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 				}
 			}
 		}
-		
 
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         Gets the stop lacotto.
+	 * @return the stop lacotto
+	 */
 	public AtomicBoolean getStopLacotto() {
 		return stopLacotto;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         Sets the stop lacotto.
+	 * @param stopLacotto
+	 *            the new stop lacotto
+	 */
 	public void setStopLacotto(AtomicBoolean stopLacotto) {
 		this.stopLacotto = stopLacotto;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         Gets the stop jsen.
+	 * @return the stop jsen
+	 */
 	public AtomicBoolean getStopJsen() {
 		return stopJsen;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         Sets the stop jsen.
+	 * @param stopJsen
+	 *            the new stop jsen
+	 */
 	public void setStopJsen(AtomicBoolean stopJsen) {
 		this.stopJsen = stopJsen;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         this method Company check.
+	 * @param companyName
+	 *            the company name
+	 */
 	// テスト会社
 	private void companyCheck(String companyName) {
 		company = companyService.findByNameCompany(companyName);
@@ -589,6 +823,19 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 		}
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         this method Inits the lacotto.
+	 */
 	private void initLacotto() {
 		i = 0;
 		job = new Job();
@@ -635,6 +882,21 @@ public class JsenLacottoServiceImple implements IJsenLacottoService {
 		nb_skipShopNameOrAddressShopNull = 0;
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 *         Using JRE: 1.8
+	 * 
+	 *         Project Name: otome-backend
+	 * 
+	 *         Class Name: JsenLacottoServiceImple.java
+	 * 
+	 *         this method Lacotto.
+	 * @param data
+	 *            the data
+	 */
 	private void lacotto(List<Object> data) {
 
 		i++;

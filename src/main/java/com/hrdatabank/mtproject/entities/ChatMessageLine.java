@@ -19,14 +19,62 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ChatMessageLine.
  */
 @Entity
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Builder
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: ChatMessageLine.java
+ * 
+ * Instantiates a new chat message line.
+ */
 @NoArgsConstructor
+
+/**
+ * Copyright (c) 2019 by HRDatabank. All rights reserved.
+ *
+ * @author Aymanov
+ * 
+ * Using JRE: 1.8
+ * 
+ * Project Name: otome-backend
+ * 
+ * Class Name: ChatMessageLine.java
+ * 
+ * Instantiates a new chat message line.
+ * @param idChatMessageLine the id chat message line
+ * @param messageDirection the message direction
+ * @param messageText the message text
+ * @param adminName the admin name
+ * @param messageDate the message date
+ * @param readState the read state
+ * @param chatLineAdmin the chat line admin
+ */
 @AllArgsConstructor
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
 @Data
+
+/* (non-Javadoc)
+ * @see java.lang.Object#hashCode()
+ */
 @EqualsAndHashCode(callSuper = false)
 @Table(name="chat_message_line")
 public class ChatMessageLine implements Serializable {

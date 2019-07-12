@@ -22,22 +22,45 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+/**
+ * The Class WebSecurity.
+ */
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
+	/** The user details service. */
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+	
+	/** The b crypt password encoder. */
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: WebSecurity.java
+	 * 
+	 * Instantiates a new web security.
+	 * @param userDetailsService the user details service
+	 * @param bCryptPasswordEncoder the b crypt password encoder
+	 */
 	public WebSecurity(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.userDetailsService = userDetailsService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("helloooooo");
 		/**
 		 * works fine with permit all
 		 */
@@ -45,7 +68,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, SWAGGER).permitAll()
 				.antMatchers(API_DOC, SWAGGER_RESOURCES, SWAGGER, WEBJARS, SWAGGER_JSON).permitAll()
 				.antMatchers("/actuator/**").permitAll()
-//				.antMatchers("/crawler/**").permitAll()
 				.antMatchers("/sftp/**").permitAll()
 				.antMatchers("/test/**").permitAll()
 				.antMatchers("/fetch/**").permitAll()
@@ -59,11 +81,28 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder)
+	 */
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: WebSecurity.java
+	 * 
+	 * Cors configuration source.
+	 * @return the cors configuration source
+	 */
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

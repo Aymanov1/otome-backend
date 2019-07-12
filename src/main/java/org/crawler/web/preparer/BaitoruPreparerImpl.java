@@ -29,6 +29,7 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 	@Autowired
 	private BaitoruCrawlerServiceLauncherImpl baitoruCrawlerServiceLauncherImpl;
 
+	/** The done. */
 	private CompletableFuture<Boolean> done;
 
 	/** The Constant logger. */
@@ -58,14 +59,18 @@ public class BaitoruPreparerImpl implements IAbstractPreparer {
 					BaitoruInitializer.getInstance().getBasicsURLWebsite().get(area),
 					BaitoruInitializer.getInstance().getJobMap().get(category));
 			CompletableFuture.allOf(completableFuture).join();
-			done = baitoruCrawlerServiceLauncherImpl
-					.startCrawlingURLs(completableFuture.get());
+			done = baitoruCrawlerServiceLauncherImpl.startCrawlingURLs(completableFuture.get());
 			CompletableFuture.allOf(done).join();
 		} catch (InterruptedException | ExecutionException e) {
 			LOGGER.log(Level.SEVERE, "startPartCrawling", e);
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.crawler.web.preparer.IAbstractPreparer#stopCrawling()
+	 */
 	@Override
 	public void stopCrawling() {
 		BaitoruCrawlerController.getInstance().getController().shutdown();

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.hrdatabank.mtproject.entities.ChatMessageLine;
 import com.hrdatabank.mtproject.repositories.ChatMessageLineRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ChatMessageLineService.
  */
@@ -25,7 +26,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -44,7 +45,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -66,7 +67,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -86,7 +87,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -106,7 +107,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -125,7 +126,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -145,7 +146,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -154,8 +155,9 @@ public class ChatMessageLineService {
 	 *         Class Name: ChatMessageLineService.java
 	 * 
 	 *         List all chat messages by id chat admin.
-	 * @param idChatLineAdmin
-	 *            the id chat line admin
+	 * @param idChatLineAdmin            the id chat line admin
+	 * @param page the page
+	 * @param size the size
 	 * @return the list
 	 */
 	public List<ChatMessageLine> getPaginatedhatMessagesByIdChatAdmin(int idChatLineAdmin, int page, int size) {
@@ -163,6 +165,21 @@ public class ChatMessageLineService {
 				PageRequest.of(page, size));
 	}
 
+	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
+	 *
+	 * @author Aymanov
+	 * 
+	 * Using JRE: 1.8
+	 * 
+	 * Project Name: otome-backend
+	 * 
+	 * Class Name: ChatMessageLineService.java
+	 * 
+	 * Count all chat messages by id chat admin.
+	 * @param idChatLineAdmin the id chat line admin
+	 * @return the long
+	 */
 	public long countAllChatMessagesByIdChatAdmin(int idChatLineAdmin) {
 		return chatMessageLineRepository.countAllChatMessagesByIdChatAdmin(idChatLineAdmin);
 	}
@@ -170,7 +187,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -190,7 +207,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -210,7 +227,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -238,7 +255,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -264,7 +281,7 @@ public class ChatMessageLineService {
 	/**
 	 * Copyright (c) 2018 by HRDatabank. All rights reserved.
 	 *
-	 * @author yassine amira
+	 * @author Hanios
 	 * 
 	 *         Using JRE: 1.8
 	 * 
@@ -288,14 +305,13 @@ public class ChatMessageLineService {
 	}
 
 	/**
+	 * Copyright (c) 2019 by HRDatabank. All rights reserved.
 	 *
 	 * @author Houaoui Awatef
 	 * 
 	 *         Gets All the ChatMessageLine Between DateFrom And DateTo.
-	 * @param dateFrom
-	 *            the date from
-	 * @param dateTo
-	 *            the date to
+	 * @param dateFrom            the date from
+	 * @param dateTo            the date to
 	 * @return ChatMessageLine list
 	 */
 	public List<ChatMessageLine> getAllChatMessageLineBetweenDateFromAndDateTo(String dateFrom, String dateTo) {
